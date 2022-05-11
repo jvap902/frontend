@@ -1,11 +1,22 @@
 let modal = null
+let modal_item = null
 let btnLogar = null
 
 onload = async () => {
     modal = new bootstrap.Modal(document.getElementById('exampleModal'))
-    
-    /*
-    btnLogar = document.getElementById("logar")
+    modal_item = new bootstrap.Modal(document.getElementById('div_item'))
+
+    const login = document.getElementById("login")
+    login.addEventListener('click', () => {
+        Formulario()
+      })
+
+    const item = document.getElementById("item")
+    item.addEventListener('click', () => {
+        cadastra_item()
+      })
+
+  /*btnLogar = document.getElementById("logar")
 
     btnLogar.addEventListener("click", async () => {
       const nome = document.getElementById("nome").value
@@ -17,16 +28,6 @@ onload = async () => {
       body.append('email', email)
       body.append('senha', senha)
       })*/
-
-    const login = document.getElementById("login")
-    login.addEventListener('click', () => {
-        Formulario()
-      })
-
-    const item = document.getElementById("item")
-    item.addEventListener('click', () => {
-        cadastra_item()
-      })
 }
 const Formulario = (id = "", nome = "", email = "", senha = "") => {
     const nomeInput = document.getElementById('nome')
