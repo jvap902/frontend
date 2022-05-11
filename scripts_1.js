@@ -18,9 +18,14 @@ onload = async () => {
       body.append('senha', senha)
       })*/
 
-    const novo = document.getElementById("login")
-    novo.addEventListener('click', () => {
+    const login = document.getElementById("login")
+    login.addEventListener('click', () => {
         Formulario()
+      })
+
+    const item = document.getElementById("item")
+    item.addEventListener('click', () => {
+        cadastra_item()
       })
 }
 const Formulario = (id = "", nome = "", email = "", senha = "") => {
@@ -35,7 +40,14 @@ const Formulario = (id = "", nome = "", email = "", senha = "") => {
     idInput.value = id
 }
 
-const cadastra = (id = "", item = "", ingredientes = "") =>{
+const cadastra_item = (id_item = "", item = "", ingredientes = "") =>{
   const itemInput = document.getElementById('item')
+  const ingredientesInput = document.getElementById('ingrediente')
+  const id_itemInput = document.getElementById('id_item')
+
+  itemInput.value = item
+  ingredientesInput.value = ingredientes
+  id_itemInput.value = id_item
+
   //segue a mesma logica de antes
 }
