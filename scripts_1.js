@@ -3,9 +3,11 @@ let btnLogar = null
 
 onload = async () => {
     modal = new bootstrap.Modal(document.getElementById('exampleModal'))
+    
+    /*
     btnLogar = document.getElementById("logar")
 
-    /*btnLogar.addEventListener("click", async () => {
+    btnLogar.addEventListener("click", async () => {
       const nome = document.getElementById("nome").value
       const email = document.getElementById("email").value
       const senha = document.getElementById("senha").value
@@ -20,13 +22,6 @@ onload = async () => {
     novo.addEventListener('click', () => {
         Formulario()
       })
-
-
-    const login = document.getElementById("login")
-    login.addEventListener('click', () => {
-      Formulario()  
-    })
-
 }
 const Formulario = (id = "", nome = "", email = "", senha = "") => {
     const nomeInput = document.getElementById('nome')
@@ -38,4 +33,9 @@ const Formulario = (id = "", nome = "", email = "", senha = "") => {
     emailInput.value = email
     senhaInput.value = senha
     idInput.value = id
+}
+
+const cadastra = (id = "", item = "", ingredientes = "") =>{
+  const itemInput = document.getElementById('item')
+  //segue a mesma logica de antes
 }
