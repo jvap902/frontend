@@ -14,18 +14,19 @@
 <body>
 
     <nav class="navbar fixed-top navbar-light">
-        <div class="container-fluid">
+        <div>
           <a class="navbar-brand">Cardápio RU</a>
-          <form class="d-flex">
+        </div>
+        <div class="d-flex">
+        <form class="d-flex">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Procurar</button>
-          </form>
+            <button class="btn btn-outline-success" type="submit">Procurar</button> <!--fazer menor-->
+        </form>
+            <button type="button" id="login" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Fazer login</button>
         </div>
       </nav>
 
-    <div>
-        <button type="button" id="login" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Fazer login</button>
-    </div>
+    
     
     <div class="tabelas"> <!--essa vai ser a div que vai conter as tabelas-->
         <table>
@@ -91,7 +92,7 @@
                         <label for="ingrediente" class="form-label">Ingrediente</label>
                         <input type="text" class="form-control" id="email" placeholder="Insira um ingrediente">
                         <tr></tr>
-                        <button type="button" class="btn btn-success sm" data-bs-dismiss="modal" id="adc_ingrediente">Adicionar ingrediente</button>
+                        <button type="button" class="btn btn-primary sm" data-bs-dismiss="modal" id="adc_ingrediente">Adicionar ingrediente</button>
                       </div>
                 </div>
                 <div class="modal-footer">
