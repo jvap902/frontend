@@ -1,13 +1,24 @@
-.d-flex{
-  margin: 10px;
+/*paleta: https://coolors.co/050f07-194d23-36a149-85d694-c2ebc9 */
+
+.navbar{
+  background-color: #36A149;
 }
 
-html,
-body {
-  height: 100%;
+#pesquisa, #login{
+  border-radius: 10%;
+  background-color: white;
+}
+
+#login{
+  margin-left: 40px;
+  margin-right: 25px;
+}
+
+h2{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
 }
 
 .tabelas{
-  margin: auto;
+  padding-top: 5%;
 }
-/*colocar tudo para baixo?*/
