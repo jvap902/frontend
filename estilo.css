@@ -4,21 +4,29 @@
   background-color: #36A149;
 }
 
-#pesquisa, #login{
+#navpesquisa, #navlogin{
   border-radius: 10%;
   background-color: white;
 }
 
-#login{
+#navlogin{
   margin-left: 40px;
   margin-right: 25px;
 }
 
 h2{
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Verdana;
   color: white;
 }
 
 .tabelas{
   padding-top: 5%;
+}
+
+.modal-content{
+  border-color: #36A149;
+  border-width: 2px;
+  font-family: Verdana;
+  color:  #050F07;
+  
 }
