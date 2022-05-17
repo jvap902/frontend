@@ -54,9 +54,3 @@ const cadastra_item = (id_item = "", item = "", ingredientes = "") =>{
   
   //segue a mesma logica de antes
 }
-
- btnAdicionar.addEventListener('click', () => {
-      document.getElementById('adc_ingrediente')
-      
- })
- 
