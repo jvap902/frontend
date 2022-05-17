@@ -4,7 +4,7 @@
   background-color: #36A149;
 }
 
-#navpesquisa, #navlogin{
+#navPesquisa, #navLogin{
   border-radius: 10%;
   background-color: white;
 }
@@ -29,4 +29,8 @@ h2{
   font-family: Verdana;
   color:  #050F07;
   
+}
+
+#navCardapio{
+  padding-top: 5%;
 }
