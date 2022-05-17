@@ -18,19 +18,6 @@ onload = async () => {
         cadastra_item()
       })
 
-  /*btnLogar = document.getElementById("logar")
-
-    btnLogar.addEventListener("click", async () => {
-      const nome = document.getElementById("nome").value
-      const email = document.getElementById("email").value
-      const senha = document.getElementById("senha").value
-
-      const body = new FormData()
-      body.append('nome', nome)
-      body.append('email', email)
-      body.append('senha', senha)
-      })*/
-
     const btnAdicionar = document.getElementById('adc_ingrediente')
     btnAdicionar.addEventListener('click', async () => {
       document
