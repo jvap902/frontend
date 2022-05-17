@@ -4,7 +4,7 @@ let btnLogar = null
 let btnAdicionar = null
 
 onload = async () => {
-    modal = new bootstrap.Modal(document.getElementById('exampleModal'))
+    modal = new bootstrap.Modal(document.getElementById('loginModal'))
     modal_item = new bootstrap.Modal(document.getElementById('div_item'))
     btnAdicionar = document.getElementById("adc_ingrediente")
 
@@ -51,10 +51,12 @@ const cadastra_item = (id_item = "", item = "", ingredientes = "") =>{
   itemInput.value = item
   ingredientesInput.value = ingredientes
   id_itemInput.value = id_item
-
+  
   //segue a mesma logica de antes
 }
 
  btnAdicionar.addEventListener('click', () => {
-     
+      document.getElementById('adc_ingrediente')
+      
  })
+ 
