@@ -30,6 +30,12 @@ onload = async () => {
       body.append('email', email)
       body.append('senha', senha)
       })*/
+
+    const btnAdicionar = document.getElementById('adc_ingrediente')
+    btnAdicionar.addEventListener('click', () => {
+        array.push('ingredientes')
+    })
+
 }
 const Formulario = (id = "", nome = "", email = "", senha = "") => {
     const nomeInput = document.getElementById('nome')
@@ -49,8 +55,10 @@ const cadastra_item = (id_item = "", item = "", ingredientes = "") =>{
   const id_itemInput = document.getElementById('id_item')
 
   itemInput.value = item
-  ingredientesInput.value = ingredientes
+  ingredientesInput.value = array(ingredientes)
   id_itemInput.value = id_item
+
+  
   
   //segue a mesma logica de antes
 }
