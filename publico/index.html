@@ -49,7 +49,7 @@
     </div>
     
     
-    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true"> <!--Div do formulário de login. Tem que mudar o id disso -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true"> <!--Div do formulário de login-->
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -57,19 +57,21 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <input type="hidden" id="id"/>
-                    <div class="mb-3">
-                        <label for="nome" class="form-label">Nome</label>
-                        <input type="text" class="form-control" id="nome" placeholder="Entre com o seu nome">
-                      </div>
-                      <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="text" class="form-control" id="email" placeholder="Entre com o seu email">
-                      </div>
-                      <div class="mb-3">
-                        <label for="senha" class="form-label">Senha</label>
-                        <input type="password" class="form-control" id="senha">
-                      </div>
+                    <form action="autentica.php"> <!--não se sabe o nome do arquivo ainda-->
+                        <input type="hidden" id="id"/>
+                        <div class="mb-3">
+                            <label for="nome" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="nome" placeholder="Entre com o seu nome">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="text" class="form-control" id="email" placeholder="Entre com o seu email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="senha" class="form-label">Senha</label>
+                            <input type="password" class="form-control" id="senha">
+                        </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
@@ -90,17 +92,19 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <input type="hidden" id="id"/>
-                    <div class="mb-3">
-                        <label for="item" class="form-label">Item</label>
-                        <input type="text" class="form-control" id="nome" placeholder="Insira o nome do item">
-                      </div>
-                      <div class="mb-3">
-                        <label for="ingrediente" class="form-label">Ingrediente</label>
-                        <input type="text" class="form-control" id="email" placeholder="Insira um ingrediente">
-                        <tr></tr>
-                        <button type="button" class="btn btn-primary sm" data-bs-dismiss="modal" id="adc_ingrediente">Adicionar ingrediente</button>
-                      </div>
+                    <form action="cadastra_ingrediente.php"> <!--não se sabe o nome do arquivo ainda-->
+                        <input type="hidden" id="id"/>
+                        <div class="mb-3">
+                            <label for="item" class="form-label">Item</label>
+                            <input type="text" class="form-control" id="nome" placeholder="Insira o nome do item">
+                        </div>
+                        <div class="mb-3">
+                            <label for="ingrediente" class="form-label">Ingrediente</label>
+                            <input type="text" class="form-control" id="email" placeholder="Insira um ingrediente">
+                            <tr></tr>
+                            <button type="button" class="btn btn-primary sm" data-bs-dismiss="modal" id="adc_ingrediente">Adicionar ingrediente</button>
+                        </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
