@@ -4,12 +4,14 @@
   background-color: #36A149;
 }
 
-#navPesquisa, #navLogin, #navlogout{
+#navPesquisa, #navLogin{
   border-radius: 10%;
   background-color: white;
 }
 
-#navlogin, #navlogout{
+
+
+#navlogin, #navLogout{
   margin-left: 40px;
   margin-right: 25px;
 }
