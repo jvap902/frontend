@@ -90,17 +90,19 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <input type="hidden" id="id"/>
-                    <div class="mb-3">
-                        <label for="item" class="form-label">Item</label>
-                        <input type="text" class="form-control" id="nome" placeholder="Insira o nome do item">
-                      </div>
-                      <div class="mb-3">
-                        <label for="ingrediente" class="form-label">Ingrediente</label>
-                        <input type="text" class="form-control" id="email" placeholder="Insira um ingrediente">
-                        <tr></tr>
-                        <button type="button" class="btn btn-primary sm" data-bs-dismiss="modal" id="adc_ingrediente">Adicionar ingrediente</button>
-                      </div>
+                    <form action="cadastra_ingrediente.php"> <!--não se sabe o nome do arquivo ainda-->
+                        <input type="hidden" id="id"/>
+                        <div class="mb-3">
+                            <label for="item" class="form-label">Item</label>
+                            <input type="text" class="form-control" id="nome" placeholder="Insira o nome do item">
+                        </div>
+                        <div class="mb-3">
+                            <label for="ingrediente" class="form-label">Ingrediente</label>
+                            <input type="text" class="form-control" id="email" placeholder="Insira um ingrediente">
+                            <tr></tr>
+                            <button type="button" class="btn btn-primary sm" data-bs-dismiss="modal" id="adc_ingrediente">Adicionar ingrediente</button>
+                        </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
