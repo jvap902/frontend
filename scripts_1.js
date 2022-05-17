@@ -3,6 +3,8 @@ let modal_item = null
 let btnLogar = null
 let btnAdicionar = null
 
+const ingredientes = []
+
 onload = async () => {
     modal = new bootstrap.Modal(document.getElementById('loginModal'))
     modal_item = new bootstrap.Modal(document.getElementById('div_item'))
@@ -20,7 +22,8 @@ onload = async () => {
 
     const btnAdicionar = document.getElementById('adc_ingrediente')
     btnAdicionar.addEventListener('click', async () => {
-      document
+      const ingredientes = document.getElementById('ingrediente').value;
+      vetor.push(ingredientes)
     })
 
 }
