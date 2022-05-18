@@ -111,25 +111,21 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="autentica.php"> <!--não se sabe o nome do arquivo ainda-->
+                    <form action="../../pw3-cardapio_ru-backend/autenticar.php"> <!--não se sabe o nome do arquivo ainda-->
                         <input type="hidden" id="id"/>
-                        <div class="mb-3">
-                            <label for="nome" class="form-label">Nome</label>
-                            <input type="text" class="form-control" id="nome" placeholder="Entre com o seu nome">
-                        </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
                             <input type="text" class="form-control" id="email" placeholder="Entre com o seu email">
                         </div>
                         <div class="mb-3">
                             <label for="senha" class="form-label">Senha</label>
-                            <input type="password" class="form-control" id="senha">
+                            <input type="password" class="form-control" id="senha" placeholder="Entre com a sua senha">
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                    <button id="logar" type="button" class="btn btn-success">Logar</button>
+                    <button id="logar" type="submit" class="btn btn-success">Logar</button>
                 </div>
             </div>
         </div>
