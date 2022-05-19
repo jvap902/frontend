@@ -3,7 +3,7 @@ let modal_item = null
 let btnLogar = null
 let btnAdicionar = null
 
-const ingredientes = []
+const arrayIngredientes = []
 
 onload = async () => {
     modal = new bootstrap.Modal(document.getElementById('loginModal'))
@@ -21,9 +21,9 @@ onload = async () => {
       })
 
     const btnAdicionar = document.getElementById('adc_ingrediente')
-    btnAdicionar.addEventListener('click', async () => {
-      const ingredientes = document.getElementById('ingrediente').value;
-      vetor.push(ingredientes)
+    btnAdicionar.addEventListener('click', () => {
+      const listaIngrediente = document.getElementById('ingrediente').value;
+      arrayIngredientes.push(listaIngrediente)
     })
 
 }
@@ -39,14 +39,16 @@ const Formulario = (id = "", nome = "", email = "", senha = "") => {
     idInput.value = id
 }
 
-const cadastra_item = (id_item = "", item = "", ingredientes = "") =>{
+const cadastra_item = (id_item = "", item = "", arrayIngredientes/*??*/) =>{
   const itemInput = document.getElementById('item')
   const ingredientesInput = document.getElementById('ingrediente')
   const id_itemInput = document.getElementById('id_item')
 
   itemInput.value = item
-  ingredientesInput.value = ingredientes
+  ingredientesInput.value = arrayIngredientes //?
   id_itemInput.value = id_item
+
+  console.log(arrayIngredientes)
 
   
   
