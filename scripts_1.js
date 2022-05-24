@@ -24,8 +24,9 @@ onload = async () => {
       })
 */
     btnAdicionarIngrediente.addEventListener('click', async () => {
-      const listaIngrediente = document.getElementById('ingrediente').value;
+      const listaIngrediente = document.getElementById('ingrediente').value
       arrayIngredientes.push(listaIngrediente)
+      MostraIngrediente(listaIngrediente)
     })
 
 
@@ -53,4 +54,10 @@ const cadastra_item = (id_item = "", item = "", arrayIngredientes = ""/*??*/) =>
   id_itemInput.value = id_item
 
   //segue a mesma logica de antes
+}
+
+function MostraIngrediente (ingrediente) {
+  const Div = document.getElementById('ingredientes_adc')
+
+  Div.innerText = ingrediente
 }
