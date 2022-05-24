@@ -9,11 +9,11 @@
   background-color: white;
 }
 
-
-
+/* esse nao funciona  */
 #navlogin, #navLogout{
   margin-left: 40px;
   margin-right: 25px;
+  border-color: white;
 }
 
 h2{
@@ -21,7 +21,7 @@ h2{
   color: white;
 }
 
-.tabelas{
+table{
   padding-top: 5%;
 }
 
@@ -31,8 +31,4 @@ h2{
   font-family: Verdana;
   color:  #050F07;
   
-}
-
-#accordionSemanas{
-  padding-top: 5%;
 }
