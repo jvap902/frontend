@@ -35,59 +35,25 @@
   </nav>
 
 
-  <div class="accordion" id="accordionPanelsStayOpenExample">
+  <!-- inicio das semanas -->
+  <div class="accordion" id="accordionSemanas">
+    <!-- inico de uma semana -->
     <div class="accordion-item">
-      <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-        <button class="accordion-button" type="button" data-bs-toggle="collapse"
-          data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-          Accordion Item #1
-        </button>
-      </h2>
+      <h2 class="accordion-header" id="panelsStayOpen-headingOne"> <button class="accordion-button" type="button"
+          data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+          aria-controls="panelsStayOpen-collapseOne"> Semana xx </button> </h2>
       <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
         aria-labelledby="panelsStayOpen-headingOne">
         <div class="accordion-body">
-          <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin
-          adds the appropriate classes that we use to style each element. These classes control the overall appearance,
-          as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or
-          overriding our default variables. It's also worth noting that just about any HTML can go within the
-          <code>.accordion-body</code>, though the transition does limit overflow.
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-          data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-          Accordion Item #2
-        </button>
-      </h2>
-      <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
-        aria-labelledby="panelsStayOpen-headingTwo">
-        <div class="accordion-body">
-          <div class="accordion" id="accordionPanelsStayOpenExample1">
+          <!-- inicio dos dias -->
+          <div class="accordion" id="accordionDias">
+            <!-- incio de um dia -->
             <div class="accordion-item">
-              <h2 class="accordion-header" id="panelsStayOpen1-headingOne">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#panelsStayOpen1-collapseOne" aria-expanded="true"
-                  aria-controls="panelsStayOpen-collapseOne">
-                  Accordion Item #11
-                </button>
-              </h2>
+              <h2 class="accordion-header" id="panelsStayOpen2-headingTwo"> <button class="accordion-button"
+                  type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen1-collapseOne"
+                  aria-expanded="true" aria-controls="panelsStayOpen-collapseOne"> Dia xx/xx/xxxx </button> </h2>
               <div id="panelsStayOpen1-collapseOne" class="accordion-collapse collapse"
                 aria-labelledby="panelsStayOpen1-headingOne">
-                <div class="accordion-body">Teste</div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="panelsStayOpen1-headingTwo">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#panelsStayOpen1-collapseTwo" aria-expanded="true"
-                  aria-controls="panelsStayOpen-collapseOne">
-                  Accordion Item #11
-                </button>
-              </h2>
-              <div id="panelsStayOpen1-collapseTwo" class="accordion-collapse collapse"
-                aria-labelledby="panelsStayOpen1-headingTwo">
                 <div class="accordion-body">Teste</div>
               </div>
             </div>
@@ -95,25 +61,42 @@
         </div>
       </div>
     </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="panelsStayOpen-headingThree">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-          data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
-          aria-controls="panelsStayOpen-collapseThree">
-          Accordion Item #3
-        </button>
-      </h2>
-      <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
-        aria-labelledby="panelsStayOpen-headingThree">
-        <div class="accordion-body">
-          <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin
-          adds the appropriate classes that we use to style each element. These classes control the overall appearance,
-          as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or
-          overriding our default variables. It's also worth noting that just about any HTML can go within the
-          <code>.accordion-body</code>, though the transition does limit overflow.
+  </div> <!-- fim da semana e inicio de outra -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingTwo"> <button class="accordion-button collapsed"
+        type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+        aria-controls="panelsStayOpen-collapseTwo"> Accordion Item #2 </button> </h2>
+    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
+      aria-labelledby="panelsStayOpen-headingTwo">
+      <div class="accordion-body">
+        <div class="accordion" id="accordionPanelsStayOpenExample1">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen1-headingOne"> <button class="accordion-button" type="button"
+                data-bs-toggle="collapse" data-bs-target="#panelsStayOpen1-collapseOne" aria-expanded="true"
+                aria-controls="panelsStayOpen-collapseOne"> Accordion Item #11 </button> </h2>
+            <div id="panelsStayOpen1-collapseOne" class="accordion-collapse collapse"
+              aria-labelledby="panelsStayOpen1-headingOne">
+              <div class="accordion-body">Teste</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+  </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingThree"> <button class="accordion-button collapsed"
+        type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+        aria-controls="panelsStayOpen-collapseThree"> Accordion Item #3 </button> </h2>
+    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
+      aria-labelledby="panelsStayOpen-headingThree">
+      <div class="accordion-body"> <strong>This is the third item's accordion body.</strong> It is hidden by default,
+        until the collapse plugin adds the appropriate classes that we use to style each element. These classes control
+        the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with
+        custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within
+        the <code>.accordion-body</code>, though the transition does limit overflow. </div>
+    </div>
+  </div>
   </div>
 
   <div class="tabelas">
@@ -142,7 +125,8 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div>
-          <form action="../../pw3-cardapio_ru-backend/autenticar.php" method="POST"> <!--formulario de login-->
+          <form action="../../pw3-cardapio_ru-backend/autenticar.php" method="POST">
+            <!--formulario de login-->
             <div class="modal-body">
               <input type="hidden" id="id" />
               <div class="mb-3">
