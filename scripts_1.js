@@ -2,15 +2,16 @@ let modal = null
 let modal_item = null
 let btnLogar = null
 let btnAdicionar = null
+let listaIngrediente = null
 
 const arrayIngredientes = []
 
-onload = async () => {
-    modal = new bootstrap.Modal(document.getElementById('loginModal'))
+onload = () => {
+    //modal = new bootstrap.Modal(document.getElementById('loginModal'))
     modal_item = new bootstrap.Modal(document.getElementById('div_item'))
-    btnSalvarItem = document.getElementById('salvar')
+    // btnSalvarItem = document.getElementById('salvar')
     btnAdicionarIngrediente = document.getElementById("adc_ingrediente")
-    btnLogar = document.getElementById("logar")
+    // btnLogar = document.getElementById("logar")
 
 /*
     const login = document.getElementById("login")
@@ -24,9 +25,19 @@ onload = async () => {
       })
 */
     btnAdicionarIngrediente.addEventListener('click', async () => {
-      const listaIngrediente = document.getElementById('ingrediente').value
-      arrayIngredientes.push(listaIngrediente)
-      MostraIngrediente(listaIngrediente)
+      const input = document.getElementById('ingrediente')
+      
+      arrayIngredientes.push(input.value)
+      input.value = ""
+      
+      const ul = document.getElementById('ingredientes_adc')
+      ul.innerHTML = ""
+      arrayIngredientes.forEach(v => {
+        const li = document.createElement('LI')
+        li.innerHTML = v
+        ul.appendChild(li)
+      })
+
     })
 
 
@@ -54,10 +65,4 @@ const cadastra_item = (id_item = "", item = "", arrayIngredientes = ""/*??*/) =>
   id_itemInput.value = id_item
 
   //segue a mesma logica de antes
-}
-
-function MostraIngrediente (ingrediente) {
-  const Div = document.getElementById('ingredientes_adc')
-
-  Div.innerText = ingrediente
 }
