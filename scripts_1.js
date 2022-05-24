@@ -30,7 +30,7 @@ onload = async () => {
      /* 
       const body = new FormData()
       body.append('item', item)
-      body.append('sobrenome', sobrenome)
+      body.append('ingrediente', arrayIngredientes)
 
       const response = await fetch(``){
         method: "POST",
