@@ -8,7 +8,9 @@ const arrayIngredientes = []
 onload = async () => {
     modal = new bootstrap.Modal(document.getElementById('loginModal'))
     modal_item = new bootstrap.Modal(document.getElementById('div_item'))
-    btnAdicionar = document.getElementById("adc_ingrediente")
+    btnSalvarItem = document.getElementById('salvar')
+    btnAdicionarIngrediente = document.getElementById("adc_ingrediente")
+    btnLogar = document.getElementById("logar")
 
 /*
     const login = document.getElementById("login")
@@ -21,25 +23,12 @@ onload = async () => {
         cadastra_item()
       })
 */
-    btnAdicionar.addEventListener('click', async () => {
+    btnAdicionarIngrediente.addEventListener('click', async () => {
       const listaIngrediente = document.getElementById('ingrediente').value;
-      const item = document.getElementById('item').value
-
       arrayIngredientes.push(listaIngrediente)
-
-     /* 
-      const body = new FormData()
-      body.append('item', item)
-      body.append('ingrediente', arrayIngredientes)
-
-      const response = await fetch(``){
-        method: "POST",
-        body
-      }
-      const itens = await response.json()
-      */
-
     })
+
+
 
 }
 const preencheFormulario = (id = "", nome = "", email = "", senha = "") => {
