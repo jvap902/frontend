@@ -24,14 +24,14 @@ onload = () => {
 */
 
   btnLogar.addEventListener('click', async () => {
-    inputEmail = document.getElementById('email').value
-    inputSenha = document.getElementById('senha').value
+    const inputEmail = document.getElementById('email').value
+    const inputSenha = document.getElementById('senha').value
 
     const body = new FormData()
     body.append('email', inputEmail)
     body.append('senha', inputSenha)
 
-    const response = await fetch(`autenticar.php`, {
+    const response = await fetch(/*baseurl*/`autenticar.php`, {
       method: "POST",
       body
     })
