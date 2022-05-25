@@ -25,6 +25,10 @@ onload = () => {
 
     })
 
+    btnSalvarItem.addEventListener('click', async () => {
+      
+    })
+
 
 
 }
