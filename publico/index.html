@@ -27,15 +27,30 @@
         <button class="btn btn-sm btn-outline-success" type="submit" id="navPesquisa"><img
             src="https://www.iconpacks.net/icons/2/free-search-icon-2903-thumb.png" width="20" /></button>
       </form>
-      <button type="button" id="navLogin"  data-bs-toggle="modal"
-        data-bs-target="#loginModal"><img
-          src="https://moodle.bento.ifrs.edu.br/theme/image.php/academi/core/1652445467/u/f1" width="20" />
-        Login</button>
+      <button type="button" id="navLogin"  data-bs-toggle="modal" data-bs-target="#loginModal">
+        <img src="https://moodle.bento.ifrs.edu.br/theme/image.php/academi/core/1652445467/u/f1" width="20" />Login
+      </button>
     </div>
   </nav>
 
 
 
+  <div id="tabelas">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Semana</th>
+        </tr>
+        <tr>
+          <th>Data</th>
+        </tr>
+      </thead>
+      <tbody>
+  
+      </tbody>
+    </table>
+  </div>
+  
 
 
   <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
@@ -51,10 +66,6 @@
             <!--formulario de login-->
             <div class="modal-body">
               <input type="hidden" name="id" id="id" />
-              <div class="mb-3">
-                <label for="nome" class="form-label">Nome</label>
-                <input type="text" class="form-control" name="email" id="nome" placeholder="Entre com o seu nome">
-              </div>
               <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" class="form-control" name="email" id="email" placeholder="Entre com o seu email">
