@@ -1,3 +1,4 @@
+//publico
 let modal = null
 let modal_item = null
 let btnLogar = null
@@ -22,6 +23,23 @@ onload = () => {
       })
 */
 
+  btnLogar.addEventListener('click', async () => {
+    inputEmail = document.getElementById('email').value
+    inputSenha = document.getElementById('senha').value
+
+    const body = new FormData()
+    body.append('email', inputEmail)
+    body.append('senha', inputSenha)
+
+    const response = await fetch(`autenticar.php`, {
+      method: "POST",
+      body
+    })
+    
+    const login = await response.json()
+  })
+  
+
 }
 const preencheFormulario = (id = "", nome = "", email = "", senha = "") => {
     const nomeInput = document.getElementById('nome')
@@ -35,13 +53,13 @@ const preencheFormulario = (id = "", nome = "", email = "", senha = "") => {
     idInput.value = id
 }
 
-const item = (id_item = "", item = "", ingrediente = "") =>{
+const item = (id_item = "", item = "", ingredientes = "") =>{
   const itemInput = document.getElementById('item')
   const ingredientesInput = document.getElementById('ingrediente')
   const id_itemInput = document.getElementById('id_item')
 
   itemInput.value = item
-  ingredientesInput.value = ingrediente
+  ingredientesInput.value = ingredientes
   id_itemInput.value = id_item
 
   //segue a mesma logica de antes
