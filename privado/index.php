@@ -1,5 +1,7 @@
 <?php
-?><!DOCTYPE html>
+ require "../../pw3-cardapio_ru-backend/permissao.php"
+?>
+<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>

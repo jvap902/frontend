@@ -25,9 +25,16 @@ h2{
 
 #tabelas{
   margin-top: 5% !important;
+  font-family: Verdana;
 }
+
 table.table-bordered{
   border:2px solid #194d23;
+}
+
+ver isso para deixar cores diferentes no head e o resto
+th{
+  background-color: #C2EBC9;
 }
 
 .modal-content{
