@@ -30,8 +30,8 @@
         <button class="btn btn-sm btn-outline-success" type="submit" id="navPesquisa"><img
             src="https://www.iconpacks.net/icons/2/free-search-icon-2903-thumb.png" width="20" /></button>
       </form>
-      <button id="navLogin"  type="button"  data-bs-toggle="modal" data-bs-target="#loginModal">
-        <img src="https://moodle.bento.ifrs.edu.br/theme/image.php/academi/core/1652445467/u/f1" width="20" />Login
+      <button id="navLogin"  type="button"  class="btn" data-bs-toggle="modal" data-bs-target="#loginModal">
+        <img src="https://moodle.bento.ifrs.edu.br/theme/image.php/academi/core/1652445467/u/f1" width="20" />  Login
       </button>
     </div>
   </nav>
@@ -44,7 +44,9 @@
         <tr>
           <th colspan="6" class="text-center">Semana xxx</th>
         </tr>
-        <tr>
+      </thead>
+      <tbody>
+      <tr>
           <th ></th>
           <th class="text-center">Dia xx/xx/xxxx</th>
           <th class="text-center">Dia xx/xx/xxxx</th>
@@ -52,8 +54,6 @@
           <th class="text-center">Dia xx/xx/xxxx</th>
           <th class="text-center">Dia xx/xx/xxxx</th>
         </tr>
-      </thead>
-      <tbody>
         <tr>
           <th scope="row">Café da manhã</th>
           <td>Pratos, pratos, pratos</td>
@@ -82,7 +82,6 @@
     </table>
   </div>
   
-
 
   <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
     <!--Div do formulário de login-->
