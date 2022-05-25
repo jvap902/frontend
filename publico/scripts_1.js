@@ -36,7 +36,6 @@ onload = () => {
       body
     })
     
-    const login = await response.json()
   })
   
 
