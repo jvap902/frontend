@@ -1,6 +1,6 @@
 <?php
 
-    require_once ("../pw3-cardapio_ru-backend/permissao.php")
+    require_once ("../../pw3-cardapio_ru-backend/permissao.php")
 
 
 ?><!DOCTYPE html>
