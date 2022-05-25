@@ -31,7 +31,7 @@ onload = () => {
     body.append('email', inputEmail)
     body.append('senha', inputSenha)
 
-    const response = await fetch(/*baseurl*/`../pw3-cardapio_ru-backend/autenticar.php`, {
+    const response = await fetch(/*baseurl*/`../../pw3-cardapio_ru-backend/autenticar.php`, {
       method: "POST",
       body
     })
