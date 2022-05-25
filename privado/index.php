@@ -69,7 +69,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="../../pw3-cardapio_ru-backend.php">
+                    <form action="../../pw3-cardapio_ru-backend/salvarItens.php">
                         <input type="hidden" id="id"/>
                         <div class="mb-3">
                             <label for="item" class="form-label">Item</label>
