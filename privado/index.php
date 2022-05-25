@@ -1,6 +1,6 @@
 <?php
 
-    require_once ("../pw3-cardapio_ru-backend/permissao.php")
+    require_once ("../../pw3-cardapio_ru-backend/permissao.php")
 
 
 ?><!DOCTYPE html>
@@ -68,7 +68,7 @@
                         <input type="hidden" id="id"/>
                         <div class="mb-3">
                             <label for="item" class="form-label">Item</label>
-                            <input type="text" class="form-control" id="nome" placeholder="Insira o nome do item">
+                            <input type="text" class="form-control" id="item" placeholder="Insira o nome do item">
                         </div>
                         <div class="mb-3">
                             <label for="ingrediente" class="form-label">Ingrediente</label>

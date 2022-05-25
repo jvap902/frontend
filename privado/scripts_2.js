@@ -1,3 +1,5 @@
+const baseUrl = `../../pw3-cardapio_ru-backend/`
+
 let modal_item = null
 let btnAdicionar = null
 let listaIngrediente = null
@@ -26,11 +28,18 @@ onload = () => {
     })
 
     btnSalvarItem.addEventListener('click', async () => {
-      
+      const item = document.getElementById("item").value
+      const ingrediente = document.getElementById("ingrediente").value
+
+      const body = new FormData()
+        body.append('item', item)
+        body.append('ingrediente', ingrediente)
+
+        const response = await fetch(`${baseUrl}salvarItens.php`, {
+            method: "POST",
+            body
+      })
     })
-
-
-
 }
 
 const cadastra_item = (id_item = "", item = "", arrayIngredientes = ""/*??*/) =>{
