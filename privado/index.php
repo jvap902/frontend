@@ -59,7 +59,7 @@
     </div>
 
     <div> <!--div para o botao de cadastrar item-->
-        <button type="button" id="item" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#div_item">Cadastrar item</button>
+        <button type="button" id="btnCadastraItem" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#div_item">Cadastrar item</button>
     </div>
     <div class="modal fade" id="div_item" tabindex="-1" aria-labelledby="div_itemLabel" aria-hidden="true"> <!--Div do fomrulário de item-->
         <div class="modal-dialog modal-dialog-centered">
@@ -69,11 +69,11 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="cadastra_item.php"> <!--não se sabe o nome do arquivo ainda-->
+                    <form action="../../pw3-cardapio_ru-backend.php">
                         <input type="hidden" id="id"/>
                         <div class="mb-3">
                             <label for="item" class="form-label">Item</label>
-                            <input type="text" class="form-control" id="item" placeholder="Insira o nome do item">
+                            <input type="text" class="form-control" id="item" placeholder="Insira o nome do item" name="item">
                         </div>
                         <div class="mb-3">
                             <label for="ingrediente" class="form-label">Ingrediente</label>
