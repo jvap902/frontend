@@ -21,8 +21,8 @@ h2{
   color: white;
 }
 
-table{
-  padding-top: 5%;
+#tabelas{
+  margin-top: 50%;
 }
 
 .modal-content{
@@ -32,3 +32,4 @@ table{
   color:  #050F07;
   
 }
+
