@@ -1,3 +1,8 @@
+<?php
+
+require_once ("../pw3-cardapio_ru-backend/permissao.php")
+
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
