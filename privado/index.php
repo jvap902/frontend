@@ -1,5 +1,7 @@
 <?php
-?><!DOCTYPE html>
+ require "../../pw3-cardapio_ru-backend/permissao.php"
+?>
+<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
@@ -14,7 +16,7 @@
 
 <body>
 
-    <nav class="navbar fixed-top"> <!--navbar-->
+    <nav class="navbar fixed-top"> 
         <div>
           <h2>Cardápio RU</h2>
         </div>
@@ -24,7 +26,7 @@
             <button class="btn btn-sm btn-outline-success" type="submit" id="navPesquisa"><img src="https://www.iconpacks.net/icons/2/free-search-icon-2903-thumb.png" width="20"/></button> 
         </form>
         <form action="../publico/index.php">
-            <button type="submit" id="navLogout" class="btn btn-outline-danger"><img src="https://moodle.bento.ifrs.edu.br/theme/image.php/academi/core/1652445467/u/f1" width="20"/>  Logout</button>
+            <button type="submit" id="navLogout" class="btn"><img src="https://moodle.bento.ifrs.edu.br/theme/image.php/academi/core/1652445467/u/f1" width="20"/>  Logout</button>
         </form>
         </div>
     </nav>
