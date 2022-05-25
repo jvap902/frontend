@@ -8,8 +8,9 @@ const arrayIngredientes = []
 
 onload = () => {
     modal_item = new bootstrap.Modal(document.getElementById('div_item'))
-    btnSalvarItem = document.getElementById('salvar')
+    btnSalvarItem = document.getElementById(' ')
     btnAdicionarIngrediente = document.getElementById("adc_ingrediente")
+    btnLogout = document.getElementById("navLogout")
 
     btnAdicionarIngrediente.addEventListener('click', async () => {
       const input = document.getElementById('ingrediente')
@@ -29,7 +30,7 @@ onload = () => {
 
     btnSalvarItem.addEventListener('click', async () => {
       const item = document.getElementById("item").value
-      const ingrediente = document.getElementById("ingrediente").value
+      const ingrediente = arrayIngredientes
 
       const body = new FormData()
         body.append('item', item)
@@ -38,7 +39,15 @@ onload = () => {
         const response = await fetch(`${baseUrl}salvarItens.php`, {
             method: "POST",
             body
-      })
+        })
+
+        const prato = await response.json()
+
+        const [tbody] = document.getElementsByTagName('tbody')
+        const td = criarLinha(prato)
+        tbody.appendChild(td)
+
+        modal_item.hide();
     })
 }
 

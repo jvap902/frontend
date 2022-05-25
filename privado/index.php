@@ -1,8 +1,4 @@
 <?php
-
-    require_once ("../../pw3-cardapio_ru-backend/permissao.php")
-
-
 ?><!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -27,7 +23,9 @@
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-sm btn-outline-success" type="submit" id="navPesquisa"><img src="https://www.iconpacks.net/icons/2/free-search-icon-2903-thumb.png" width="20"/></button> 
         </form>
-            <button type="button" id="navLogout" class="btn btn-outline-danger" href="../publico/index.html"><img src="https://moodle.bento.ifrs.edu.br/theme/image.php/academi/core/1652445467/u/f1" width="20"/>  Logout</button>
+        <form action="../publico/index.php">
+            <button type="submit" id="navLogout" class="btn btn-outline-danger"><img src="https://moodle.bento.ifrs.edu.br/theme/image.php/academi/core/1652445467/u/f1" width="20"/>  Logout</button>
+        </form>
         </div>
     </nav>
     
@@ -48,7 +46,14 @@
                 </tr>
             </thead>
             <tbody>
-
+            <tr>
+                <th scope="row">Janta</th>
+                <td>Pratos, pratos, pratos</td>
+                <td>Pratos, pratos, pratos</td>
+                <td>Pratos, pratos, pratos</td>
+                <td>Pratos, pratos, pratos</td>
+                <td>Pratos, pratos, pratos</td>
+             </tr>
             </tbody>
         </table>
     </div>
