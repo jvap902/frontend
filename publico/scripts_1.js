@@ -31,7 +31,7 @@ onload = () => {
     body.append('email', inputEmail)
     body.append('senha', inputSenha)
 
-    const response = await fetch(/*baseurl*/`C:/xampp/htdocs/pw3/pw3-cardapio_ru-backend/autenticar.php`, {
+    const response = await fetch(/*baseurl*/`../pw3-cardapio_ru-backend/autenticar.php`, {
       method: "POST",
       body
     })
@@ -40,17 +40,6 @@ onload = () => {
   })
   
 
-}
-const preencheFormulario = (id = "", nome = "", email = "", senha = "") => {
-    const nomeInput = document.getElementById('nome')
-    const emailInput = document.getElementById('email')
-    const senhaInput = document.getElementById('senha')
-    const idInput = document.getElementById('id')
-
-    nomeInput.value = nome
-    emailInput.value = email
-    senhaInput.value = senha
-    idInput.value = id
 }
 
 const item = (id_item = "", item = "", ingredientes = "") =>{
