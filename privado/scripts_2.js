@@ -8,7 +8,7 @@ const arrayIngredientes = []
 
 onload = () => {
     modal_item = new bootstrap.Modal(document.getElementById('div_item'))
-    btnSalvarItem = document.getElementById(' ')
+    btnSalvarItem = document.getElementById('salvar')
     btnAdicionarIngrediente = document.getElementById("adc_ingrediente")
     btnLogout = document.getElementById("navLogout")
 
@@ -34,7 +34,7 @@ onload = () => {
 
       const body = new FormData()
         body.append('item', item)
-        body.append('ingrediente', ingrediente)
+        body.append('ingrediente[]', ingrediente)
 
         const response = await fetch(`${baseUrl}salvarItens.php`, {
             method: "POST",
