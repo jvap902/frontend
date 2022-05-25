@@ -31,9 +31,16 @@ onload = () => {
     body.append('email', inputEmail)
     body.append('senha', inputSenha)
 
+
+    //localStorage.setItem('credentials', token); Isso seta as credenciais
+
+    const credentials = localStorage.getItem('credentials');
+    var headers = { "Authorization" : `Bearer ${credentials}` }; //localstorage js (google)
+
     const response = await fetch(/*baseurl*/`../../pw3-cardapio_ru-backend/autenticar.php`, {
       method: "POST",
-      body
+      body,
+      headers
     })
     
   })
