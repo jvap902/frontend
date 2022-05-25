@@ -22,7 +22,8 @@ h2{
 }
 
 #tabelas{
-  margin-top: 50%;
+  margin-top: 500px !important;
+
 }
 
 .modal-content{
@@ -30,6 +31,5 @@ h2{
   border-width: 2px;
   font-family: Verdana;
   color:  #050F07;
-  
 }
 
