@@ -34,13 +34,13 @@ onload = () => {
 
     //localStorage.setItem('credentials', token); Isso seta as credenciais
 
-    const credentials = localStorage.getItem('credentials');
-    var headers = { "Authorization" : `Bearer ${credentials}` }; //localstorage js (google)
+    //const credentials = localStorage.getItem('credentials');
+    //var headers = { "Authorization" : `Bearer ${credentials}` }; //localstorage js (google)
 
     const response = await fetch(/*baseurl*/`../../pw3-cardapio_ru-backend/autenticar.php`, {
       method: "POST",
-      body,
-      headers
+      body
+      //headers
     })
     const data = await response.json();
 
@@ -60,6 +60,8 @@ onload = () => {
   
 
 }
+
+//cardapio.filter('janta').forEach(<td></td>)
 
 const item = (id_item = "", item = "", ingredientes = "") =>{
   const itemInput = document.getElementById('item')
