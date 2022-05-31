@@ -100,7 +100,7 @@
               </div>
               <div class="mb-3">
                 <label for="senha" class="form-label">Senha</label>
-                <input type="password" value="grupoajjjj" class="form-control" name="senha" id="senha" placeholder="Entre com a sua senha">
+                <input type="password" class="form-control" name="senha" id="senha" placeholder="Entre com a sua senha">
               </div>
             </div>
             <div class="modal-footer">

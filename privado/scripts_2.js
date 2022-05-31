@@ -1,7 +1,5 @@
 const baseUrl = `../../pw3-cardapio_ru-backend/`
 
-
-
 let modal_item = null
 let btnAdicionar = null
 let listaIngrediente = null
@@ -55,7 +53,7 @@ onload = () => {
         const td = criarLinha(prato)
         tbody.appendChild(td)
 
-        modal_item.hide();
+        modal_item.hide()
     })
 }
 
