@@ -1,5 +1,5 @@
 <?php
- require "../../pw3-cardapio_ru-backend/permissao.php"
+ //require "../../pw3-cardapio_ru-backend/permissao.php"
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -25,9 +25,7 @@
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-sm btn-outline-success" type="submit" id="navPesquisa"><img src="https://www.iconpacks.net/icons/2/free-search-icon-2903-thumb.png" width="20"/></button> 
         </form>
-        <form action="../publico/index.php">
-            <button type="submit" id="navLogout" class="btn"><img src="https://moodle.bento.ifrs.edu.br/theme/image.php/academi/core/1652445467/u/f1" width="20"/>  Logout</button>
-        </form>
+        <button type="button" id="navLogout" class="btn"><img src="https://moodle.bento.ifrs.edu.br/theme/image.php/academi/core/1652445467/u/f1" width="20"/>  Logout</button>
         </div>
     </nav>
     
@@ -96,6 +94,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="../logout.js"></script>
     <script src="scripts_2.js"></script>
 </body>
 <!--tentano-->

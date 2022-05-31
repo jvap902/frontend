@@ -1,16 +1,24 @@
 const baseUrl = `../../pw3-cardapio_ru-backend/`
 
+
+
 let modal_item = null
 let btnAdicionar = null
 let listaIngrediente = null
 
 const arrayIngredientes = []
 
+
 onload = () => {
+    const token = localStorage.getItem('token')
+    if (token === null) location.href = "../publico/index.php"
+
     modal_item = new bootstrap.Modal(document.getElementById('div_item'))
     btnSalvarItem = document.getElementById('salvar')
     btnAdicionarIngrediente = document.getElementById("adc_ingrediente")
     btnLogout = document.getElementById("navLogout")
+
+    btnLogout.addEventListener('click', logout)
 
     btnAdicionarIngrediente.addEventListener('click', async () => {
       const input = document.getElementById('ingrediente')

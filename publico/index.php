@@ -92,9 +92,11 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div>
-          <form action="../../pw3-cardapio_ru-backend/autenticar.php" method="POST">
+          <form method="POST">
             <!--formulario de login-->
             <div class="modal-body">
+    <div id="alert" class="alert alert-danger d-none">Dados inválidos!</div>
+
               <input type="hidden" name="id" id="id" />
               <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
@@ -102,12 +104,12 @@
               </div>
               <div class="mb-3">
                 <label for="senha" class="form-label">Senha</label>
-                <input type="password" class="form-control" name="senha" id="senha" placeholder="Entre com a sua senha">
+                <input type="password" value="grupoajjjj" class="form-control" name="senha" id="senha" placeholder="Entre com a sua senha">
               </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-              <button id="logar" type="submit" class="btn btn-success">Logar</button>
+              <button id="logar" type="button" class="btn btn-success">Logar</button>
             </div>
           </form>
         </div>
@@ -115,11 +117,11 @@
     </div>
   </div>
 
-
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
+    <script src="https://momentjs.com/downloads/moment.min.js"></script>
+    <script src="../logout.js"></script>
   <script src="scripts_1.js"></script>
 </body>
 <!--tentano-->

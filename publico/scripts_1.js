@@ -42,7 +42,20 @@ onload = () => {
       body,
       headers
     })
-    
+    const data = await response.json();
+
+    if (data.error) {
+      document.getElementById('alert').classList.toggle('d-none')
+      setTimeout(() => {
+        document.getElementById('alert').classList.toggle('d-none')
+      }, 2000)
+      logout(false)
+    }else {
+      const {token, usuario} = data
+      localStorage.setItem('token', token)
+      localStorage.setItem('usuario', JSON.stringify(usuario))
+      location.href="//localhost/cardapio_ru/frontend/privado/index.php";
+    }
   })
   
 
