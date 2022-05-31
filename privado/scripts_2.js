@@ -21,6 +21,7 @@ onload = () => {
     btnAdicionarIngrediente.addEventListener('click', async () => {
       const input = document.getElementById('ingrediente')
       
+      if (input.value !== ''){
       arrayIngredientes.push(input.value)
       input.value = ""
       
@@ -30,7 +31,7 @@ onload = () => {
         const li = document.createElement('LI')
         li.innerHTML = v
         ul.appendChild(li)
-      })
+      })}
 
     })
 
