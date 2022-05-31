@@ -1,4 +1,7 @@
 /*paleta: https://coolors.co/050f07-194d23-36a149-85d694-c2ebc9 */
+/* body{
+  background-color: #C2EBC9;
+} */
 
 .navbar{
   background-color: #36A149;
@@ -24,17 +27,12 @@ h2{
 }
 
 #tabelas{
-  margin-top: 5% !important;
+  margin-top: 5%;
   font-family: Verdana;
-}
-
+} 
+ 
 table.table-bordered{
   border:2px solid #194d23;
-}
-
-ver isso para deixar cores diferentes no head e o resto
-th{
-  background-color: #C2EBC9;
 }
 
 .modal-content{

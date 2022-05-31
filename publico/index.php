@@ -25,14 +25,10 @@
       <h2>Cardápio RU</h2>
     </div>
     <div class="d-flex">
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-sm btn-outline-success" type="submit" id="navPesquisa"><img
-            src="https://www.iconpacks.net/icons/2/free-search-icon-2903-thumb.png" width="20" /></button>
-      </form>
-      <button id="navLogin"  type="button"  class="btn" data-bs-toggle="modal" data-bs-target="#loginModal">
+        <button type="button" class="btn" id="navPesquisa" data-bs-toggle="modal" data-bs-target="#pesquisaModal">Pesquisa  <img src="https://www.iconpacks.net/icons/2/free-search-icon-2903-thumb.png" width="20" /></button>
+        <button id="navLogin"  type="button"  class="btn" data-bs-toggle="modal" data-bs-target="#loginModal">
         <img src="https://moodle.bento.ifrs.edu.br/theme/image.php/academi/core/1652445467/u/f1" width="20" />  Login
-      </button>
+        </button>
     </div>
   </nav>
 
@@ -110,6 +106,46 @@
             <div class="modal-footer">
               <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
               <button id="logar" type="button" class="btn btn-success">Logar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="pesquisaModal" tabindex="-1" aria-labelledby="pesquisaModalLabel" aria-hidden="true">
+    <!--Div do formulário de pesquisa-->
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="pesquisaModalLabel">Pesquisa</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div>
+          <form method="POST">
+            <!--formulario de pesquisa-->
+            <div class="modal-body">
+              <div class="mb-3">
+                <label for="data" class="form-label">Pesquise uma data</label>
+                <input type="date" class="form-control" name="data" id="data" placeholder="Pesquise uma data">
+              </div>
+              <div class="mb-3">
+                <label for="refeicao" class="form-label">Pesquise uma refeição</label>
+                <select class="form-select">
+                  <option selected value="0"></option>
+                  <option value="1">Café da manhã</option>
+                  <option value="2">Almoço</option>
+                  <option value="3">Janta</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="item" class="form-label">Pesquise um item</label>
+                <input type="text" class="form-control" name="item" id="item" placeholder="Pesquise um item">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+              <button id="logar" type="button" class="btn btn-success">Pesquisar</button>
             </div>
           </form>
         </div>
