@@ -16,47 +16,62 @@
 
 <body>
 
-    <nav class="navbar fixed-top"> 
+<nav class="navbar fixed-top">
         <div>
-          <h2>Cardápio RU</h2>
+        <h2>Cardápio RU</h2>
         </div>
         <div class="d-flex">
-        <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-sm btn-outline-success" type="submit" id="navPesquisa"><img src="https://www.iconpacks.net/icons/2/free-search-icon-2903-thumb.png" width="20"/></button> 
-        </form>
-        <button type="button" id="navLogout" class="btn"><img src="https://moodle.bento.ifrs.edu.br/theme/image.php/academi/core/1652445467/u/f1" width="20"/>  Logout</button>
+            <button type="button" class="btn" id="navPesquisa" data-bs-toggle="modal" data-bs-target="#pesquisaModal">Pesquisa  <img src="https://www.iconpacks.net/icons/2/free-search-icon-2903-thumb.png" width="20" /></button>
+            <button id="navLogout"  type="button"  class="btn" data-bs-toggle="modal" data-bs-target="#logoutModal">
+            <img src="https://moodle.bento.ifrs.edu.br/theme/image.php/academi/core/1652445467/u/f1" width="20" />  Logout
+            </button>
         </div>
-    </nav>
+  </nav>
     
     
-    <ul class="nav nav-tabs" id="navCardapio">
-        <li class="nav-item">
-          <p class="nav-link active" aria-current="page">Semana x</p>
-        </li>
-    </ul>
-
-    <div class="tabelas"> <!--essa vai ser a div que vai conter as tabelas-->
-        <table>
-            <thead>
-                <tr>
-                    <th>Item</th>
-                    <th>Ingredientes</th>
-                    <th>Data</th>
-                </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <th scope="row">Janta</th>
-                <td>Pratos, pratos, pratos</td>
-                <td>Pratos, pratos, pratos</td>
-                <td>Pratos, pratos, pratos</td>
-                <td>Pratos, pratos, pratos</td>
-                <td>Pratos, pratos, pratos</td>
-             </tr>
-            </tbody>
-        </table>
-    </div>
+    <div id="tabelas">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th colspan="6" class="text-center" id="semana">Semana xxx</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr>
+          <th ></th>
+          <th class="text-center" id="thSegunda">Dia xxxx/xx/xxxx</th>
+          <th class="text-center" id="thTerca">Dia xx/xx/xxxx</th>
+          <th class="text-center" id="thQuarta">Dia xx/xx/xxxx</th>
+          <th class="text-center" id="thQuinta">Dia xx/xx/xxxx</th>
+          <th class="text-center" id="thSexta">Dia xx/xx/xxxx</th>
+        </tr>
+        <tr>
+          <th scope="row" id="thCafe">Café da manhã</th>
+          <td id="cafeSegunda">Pratos, pratos, pratos</td>
+          <td id="cafeTerca">Pratos, pratos, pratos</td>
+          <td id="cafeQuarta">Pratos, pratos, pratos</td>
+          <td id="cafeQuinta">Pratos, pratos, pratos</td>
+          <td id="cafeSexta">Pratos, pratos, pratos</td>
+        </tr>
+        <tr>
+          <th scope="row" id="thAlmoco">Almoço</th>
+          <td id="almocoSegunda">Pratos, pratos, pratos</td>
+          <td id="almocoTerca">Pratos, pratos, pratos</td>
+          <td id="almocoQuarta">Pratos, pratos, pratos</td>
+          <td id="almocoQuinta">Pratos, pratos, pratos</td>
+          <td id="almocoSexta">Pratos, pratos, pratos</td>
+        </tr>
+        <tr>
+          <th scope="row" id="thJanta">Janta</th>
+          <td id="jantaSegunda">Pratos, pratos, pratos</td>
+          <td id="jantaTerca">Pratos, pratos, pratos</td>
+          <td id="jantaQuarta">Pratos, pratos, pratos</td>
+          <td id="jantaQuinta">Pratos, pratos, pratos</td>
+          <td id="jantaSexta">Pratos, pratos, pratos</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
     <div> <!--div para o botao de cadastrar item-->
         <button type="button" id="btnCadastraItem" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#div_item">Cadastrar item</button>
@@ -85,6 +100,7 @@
                     <ul id="ingredientes_adc">
                     </ul>
                 </div>
+                <!-- mudar esse botao feio  -->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
                     <button id="salvar" type="button" class="btn btn-success">Salvar</button>
@@ -97,5 +113,4 @@
     <script src="../logout.js"></script>
     <script src="scripts_2.js"></script>
 </body>
-<!--tentano-->
 </html>
