@@ -36,44 +36,13 @@
 
   <div id="tabelas">
     <table class="table table-bordered table-hover">
-      <thead>
+      <thead id="thead">
         <tr>
           <th colspan="6" class="text-center" id="semana">Semana xxx</th>
         </tr>
       </thead>
-      <tbody>
-      <tr>
-          <th ></th>
-          <th class="text-center" id="thSegunda">Dia xx/xx/xxxx</th>
-          <th class="text-center" id="thTerca">Dia xx/xx/xxxx</th>
-          <th class="text-center" id="thQuarta">Dia xx/xx/xxxx</th>
-          <th class="text-center" id="thQuinta">Dia xx/xx/xxxx</th>
-          <th class="text-center" id="thSexta">Dia xx/xx/xxxx</th>
-        </tr>
-        <tr>
-          <th scope="row" id="thCafe">Café da manhã</th>
-          <td id="cafeSegunda">Pratos, pratos, pratos</td>
-          <td id="cafeTerca">Pratos, pratos, pratos</td>
-          <td id="cafeQuarta">Pratos, pratos, pratos</td>
-          <td id="cafeQuinta">Pratos, pratos, pratos</td>
-          <td id="cafeSexta">Pratos, pratos, pratos</td>
-        </tr>
-        <tr>
-          <th scope="row" id="thAlmoco">Almoço</th>
-          <td id="almocoSegunda">Pratos, pratos, pratos</td>
-          <td id="almocoTerca">Pratos, pratos, pratos</td>
-          <td id="almocoQuarta">Pratos, pratos, pratos</td>
-          <td id="almocoQuinta">Pratos, pratos, pratos</td>
-          <td id="almocoSexta">Pratos, pratos, pratos</td>
-        </tr>
-        <tr>
-          <th scope="row" id="thJanta">Janta</th>
-          <td id="jantaSegunda">Pratos, pratos, pratos</td>
-          <td id="jantaTerca">Pratos, pratos, pratos</td>
-          <td id="jantaQuarta">Pratos, pratos, pratos</td>
-          <td id="jantaQuinta">Pratos, pratos, pratos</td>
-          <td id="jantaSexta">Pratos, pratos, pratos</td>
-        </tr>
+      <tbody id="tbody">
+        
       </tbody>
     </table>
   </div>
