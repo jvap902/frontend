@@ -110,50 +110,52 @@
         </div>
     </div>
 
-    <div class="modal fade" id="refeicaoModal" tabindex="-1" aria-labelledby="refeicaoModalLabel" aria-hidden="true">
-    <!--Div do formulário de refeição-->
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="refeicaoModalLabel">Refeição</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div>
-          <form method="POST">
-            <!--formulario de pesquisa-->
-            <div class="modal-body">
-              <div class="mb-3">
-                <label for="data" class="form-label">Data</label>
-                <input type="date" class="form-control" name="data" id="data" placeholder="Selecione uma data">
-              </div>
-              <div class="mb-3">
-                <label for="refeicao" class="form-label">Selecione uma refeição</label>
-                <select class="form-select">
-                  <option selected value="0"></option>
-                  <option value="1">Café da manhã</option>
-                  <option value="2">Almoço</option>
-                  <option value="3">Janta</option>
-                </select>
-              </div>
-              <div class="mb-3">
-                <label for="item" class="form-label">Adicione pratos</label>
-                <select class="form-select">
-                  <option selected value="0"></option>
-                  <option value="1">Café da manhã</option>
-                  <option value="2">Almoço</option>
-                  <option value="3">Janta</option>
-                </select>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-              <button id="adicionar" type="button" class="btn btn-success">Adicionar</button>
-            </div>
-          </form>
-        </div>
-      </div>
+
+    <div> <!--div para o botao de cadastrar refeção-->
+        <button type="button" id="btnCadastraRefeicao" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#div_refeicao">Cadastrar refeição</button>
     </div>
-  </div>
+    <div class="modal fade" id="div_refeicao" tabindex="-1" aria-labelledby="div_refeicaoLabel" aria-hidden="true"> <!--Div do formulário de refeicao-->
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="div_itemLabel">Cadastrar Refeição</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST">
+                    <!--formulario de refeição-->
+                    <div class="modal-body">
+                      <div class="mb-3">
+                        <label for="data" class="form-label">Data</label>
+                        <input type="date" class="form-control" name="data" id="data" placeholder="Selecione uma data">
+                      </div>
+                      <div class="mb-3">
+                        <label for="refeicao" class="form-label">Selecione uma refeição</label>
+                        <select class="form-select">
+                          <option selected value="0"></option>
+                          <option value="1">Café da manhã</option>
+                          <option value="2">Almoço</option>
+                          <option value="3">Janta</option>
+                        </select>
+                      </div>
+                      <div class="mb-3">
+                        <label for="item" class="form-label">Adicione pratos</label>
+                        <select class="form-select">
+                          <option selected value="0"></option>
+                          <option value="1">Café da manhã</option>
+                          <option value="2">Almoço</option>
+                          <option value="3">Janta</option>
+                        </select>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                    <button id="salvar" type="button" class="btn btn-success">Salvar</button>
+                </div>
+            </div>
+        </div>
 
 
     <div class="modal fade" id="pesquisaModal" tabindex="-1" aria-labelledby="pesquisaModalLabel" aria-hidden="true">
