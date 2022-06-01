@@ -139,16 +139,19 @@
                         </select>
                       </div>
                       <div class="mb-3">
-                        <label for="item" class="form-label">Adicione pratos</label>
+                        <label for="item" class="form-label">Adicione itens</label>
                         <select class="form-select">
                           <option selected value="0"></option>
-                          <option value="1">Café da manhã</option>
-                          <option value="2">Almoço</option>
-                          <option value="3">Janta</option>
+                          <!-- pegar do banco  -->
                         </select>
+                      </div>
+                      <div class="mb-3">
+                          <button type="button" class="btn btn-primary sm" id="adc_item">Adicionar item</button>
                       </div>
                     </div>
                   </form>
+                  <ul id="itens_adc">
+                  </ul>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
@@ -156,6 +159,7 @@
                 </div>
             </div>
         </div>
+    </div>
 
 
     <div class="modal fade" id="pesquisaModal" tabindex="-1" aria-labelledby="pesquisaModalLabel" aria-hidden="true">
@@ -200,7 +204,7 @@
 
 
   <div> <!--div para o botao de cadastrar nutricionista-->
-        <button type="button" id="btnCadastraNutricionista" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#div_nutricionista">Cadastrar Nutricionista</button>
+        <button type="button" id="btnCadastraNutricionista" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#div_nutricionista">Cadastrar nutricionista</button>
     </div>
     <div class="modal fade" id="div_nutricionista" tabindex="-1" aria-labelledby="div_nutricionistaLabel" aria-hidden="true"> <!--Div do formulário de nutricionistas-->
         <div class="modal-dialog modal-dialog-centered">
