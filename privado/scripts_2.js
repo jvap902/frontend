@@ -68,16 +68,13 @@ const cadastra_item = (id_item = "", item = "", arrayIngredientes = ""/*??*/) =>
   id_itemInput.value = id_item
 }
 
-const  criarLinha = ({id, nome, sobrenome, dtnasc}) => {
+const  criarLinha = ({id_item, item, arrayingredientes}) => {
   const tr = document.createElement("TR")
-  tr.setAttribute('id', id)
-  tr.innerHTML = `<td>${nome}</td>
-  <td>${sobrenome}</td>
-  <td>${dtnasc.split("-").reduce((a,b) => `${b}/${a}`, "").slice(0,-1)}</td>`
+  tr.setAttribute('id_item', id_item)
+  tr.innerHTML = `<td>${item}</td>
+  <td>${arrayingredientes}</td>`
   
   const td = document.createElement("TD")
-  td.appendChild(btnEdit)
-  td.appendChild(btnDelete)
   
   tr.appendChild(td)
   return tr;
