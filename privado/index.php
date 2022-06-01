@@ -94,13 +94,14 @@
                             <label for="ingrediente" class="form-label">Ingrediente</label>
                             <input type="text" class="form-control" id="ingrediente" placeholder="Insira um ingrediente">
                             <tr></tr>
-                            <button type="button" class="btn btn-primary sm" id="adc_ingrediente">Adicionar ingrediente</button>
+                        </div>
+                        <div class="mb-3">
+                          <button type="button" class="btn btn-primary sm" id="adc_ingrediente">Adicionar ingrediente</button>
                         </div>
                     </form>
                     <ul id="ingredientes_adc">
                     </ul>
                 </div>
-                <!-- mudar esse botao feio  -->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
                     <button id="salvar" type="button" class="btn btn-success">Salvar</button>
@@ -108,6 +109,46 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="pesquisaModal" tabindex="-1" aria-labelledby="pesquisaModalLabel" aria-hidden="true">
+    <!--Div do formulário de pesquisa-->
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="pesquisaModalLabel">Pesquisa</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div>
+          <form method="POST">
+            <!--formulario de pesquisa-->
+            <div class="modal-body">
+              <div class="mb-3">
+                <label for="data" class="form-label">Pesquise uma data</label>
+                <input type="date" class="form-control" name="data" id="data" placeholder="Pesquise uma data">
+              </div>
+              <div class="mb-3">
+                <label for="refeicao" class="form-label">Pesquise uma refeição</label>
+                <select class="form-select">
+                  <option selected value="0"></option>
+                  <option value="1">Café da manhã</option>
+                  <option value="2">Almoço</option>
+                  <option value="3">Janta</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="item" class="form-label">Pesquise um item</label>
+                <input type="text" class="form-control" name="item" id="item" placeholder="Pesquise um item">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+              <button id="logar" type="button" class="btn btn-success">Pesquisar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="../logout.js"></script>
