@@ -48,10 +48,12 @@ onload = () => {
             body
         })
 
-        const prato = await response.json()
+        
 
         modal_item.hide()
     })
+
+
 }
 
 const cadastra_item = (id_item = "", item = "", arrayIngredientes = ""/*??*/) =>{
