@@ -140,8 +140,10 @@
                       </div>
                       <div class="mb-3">
                         <label for="item" class="form-label">Adicione itens</label>
-                        <select class="form-select">
+                        <select class="form-select" id='item_refeicao'>
                           <option selected value="0"></option>
+                          <option value="1">Café da manhã</option>
+                          <option value="2">Almoço</option>
                           <!-- pegar do banco  -->
                         </select>
                       </div>

@@ -5,6 +5,7 @@ let btnAdicionar = null
 let listaIngrediente = null
 
 const arrayIngredientes = []
+const arrayItens = []
 
 
 onload = () => {
@@ -15,6 +16,7 @@ onload = () => {
     btnSalvarItem = document.getElementById('salvar')
     btnAdicionarIngrediente = document.getElementById("adc_ingrediente")
     btnLogout = document.getElementById("navLogout")
+    btnAdicionarRefeição = document.getElementById("adc_item")
 
     btnLogout.addEventListener('click', logout)
 
@@ -47,12 +49,25 @@ onload = () => {
             method: "POST",
             body
         })
-
-        
-
         modal_item.hide()
     })
 
+    btnAdicionarRefeição.addEventListener('click', async () => {
+      const input = document.getElementById('item_refeicao')
+      
+      if (input.value !== ''){
+      arrayItens.push(input.value)
+      input.value = ""
+      
+      const ul = document.getElementById('itens_adc')
+      ul.innerHTML = ""
+      arrayItens.forEach(v => {
+        const li = document.createElement('LI')
+        li.innerHTML = v
+        ul.appendChild(li)
+      })}
+
+    })
 
 }
 
