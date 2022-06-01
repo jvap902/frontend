@@ -100,7 +100,7 @@
               </div>
               <div class="mb-3">
                 <label for="refeicao" class="form-label">Pesquise uma refeição</label>
-                <select class="form-select">
+                <select class="form-select" id='refeicao'>
                   <option selected value="0"></option>
                   <option value="1">Café da manhã</option>
                   <option value="2">Almoço</option>

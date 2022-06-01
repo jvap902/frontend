@@ -53,7 +53,11 @@ onload = () => {
         modal_item.hide()
     })
 
-    btnSalvarRefeicao.add
+    btnSalvarRefeicao.addEventListener('click', async () => {
+      const data = document.getElementById("data").value
+      const refeicao = document.getElementById("refeicao").value
+      const itens = arrayItens
+    })
 
     btnAdicionarRefeicao.addEventListener('click', async () => {
       const input = document.getElementById('item_refeicao')
