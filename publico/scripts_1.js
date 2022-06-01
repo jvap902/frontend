@@ -85,18 +85,24 @@ const montaCardapio = async () => {
   //const response = await fetch('')
   //const data = await response.json();
 
-  const {DATAS, CAFE, ALMOCO, JANTA } = {
-    DATAS: ['2022-05-30','2022-05-31','2022-06-01','2022-06-02','2022-06-03'],
-    CAFE: [{data: '2022-06-01', ingredientes: [{nome: 'Feijão'},{nome: 'Farinha'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}],
-    ALMOCO: [{data: '2022-06-01', ingredientes: [{nome: 'Feijão'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}],
-    JANTA: [{data: '2022-06-01', ingredientes: [{nome: 'Feijão'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}],
+  const datas = []
+  const ini = moment().subtract(moment().day()-1, 'days')
+  for(let i = 0; i < 5; i++){
+    datas.push(ini.format('YYYY-MM-DD'))
+    ini.add(1, 'day')
   }
 
-  montaCabecalho(DATAS)
+  const {CAFE, ALMOCO, JANTA } = {
+    CAFE: [{data: '2022-05-30', ingredientes: [{nome: 'Feijão'},{nome: 'Farinha'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}],
+    ALMOCO: [{data: '2022-05-30', ingredientes: [{nome: 'Feijão'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}],
+    JANTA: [{data: '2022-05-30', ingredientes: [{nome: 'Feijão'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}],
+  }
 
-  montaLinha('Café da manhã', CAFE) 
-  montaLinha('Almoço', ALMOCO) 
-  montaLinha('Jantar', JANTA) 
+  montaCabecalho(datas)
+
+  montaLinha('Café da manhã', CAFE, datas) 
+  montaLinha('Almoço', ALMOCO, datas) 
+  montaLinha('Jantar', JANTA, datas) 
 
 } 
 
@@ -108,24 +114,32 @@ const montaCabecalho = (datas) => {
   tr.appendChild(th)
   datas.forEach(data => {
     const th = document.createElement('TH')
+    if (data === moment().format('YYYY-MM-DD'))
+      th.style.backgroundColor = '#dedede'
     th.innerHTML = `<button>${moment(data).format('DD/MM/YYYY')}</button>`
     tr.appendChild(th)
   })
   thead.appendChild(tr)
 }
 
-const montaLinha = (label, linha) => {
+const montaLinha = (label, linha, datas) => {
   const tbody = document.getElementById('tbody')
   const tr = document.createElement('TR')
   const td = document.createElement('TD')
   td.innerHTML = label
   tr.appendChild(td)
-  linha.forEach(({ingredientes}) => {
+  datas.forEach(d => {
     const td = document.createElement('TD')
+    if (d === moment().format('YYYY-MM-DD'))
+      td.style.backgroundColor = '#dedede'
+    const hoje = linha.find(l => l.data === d)
+    let ingredientes = []
+    if (hoje) ingredientes = hoje.ingredientes
     td.innerHTML = `<ul>${ingredientes.reduce((prev, {nome}) => {
       return `${prev}<li>${nome}</li>`
     }, "")}</ul>`
     tr.appendChild(td)
   })
+  
   tbody.appendChild(tr)
 }
