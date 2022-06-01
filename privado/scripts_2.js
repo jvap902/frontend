@@ -50,10 +50,6 @@ onload = () => {
 
         const prato = await response.json()
 
-        const [tbody] = document.getElementsByTagName('tbody')
-        const td = criarLinha(prato)
-        tbody.appendChild(td)
-
         modal_item.hide()
     })
 }
@@ -66,16 +62,4 @@ const cadastra_item = (id_item = "", item = "", arrayIngredientes = ""/*??*/) =>
   itemInput.value = item
   ingredientesInput.value = arrayIngredientes //?
   id_itemInput.value = id_item
-}
-
-const  criarLinha = ({id_item, item, arrayingredientes}) => {
-  const tr = document.createElement("TR")
-  tr.setAttribute('id_item', id_item)
-  tr.innerHTML = `<td>${item}</td>
-  <td>${arrayingredientes}</td>`
-  
-  const td = document.createElement("TD")
-  
-  tr.appendChild(td)
-  return tr;
 }
