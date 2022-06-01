@@ -48,14 +48,12 @@ onload = () => {
             body
         })
 
-        const prato = await response.json()
-
-        const [tbody] = document.getElementsByTagName('tbody')
-        const td = criarLinha(prato)
-        tbody.appendChild(td)
+        
 
         modal_item.hide()
     })
+
+
 }
 
 const cadastra_item = (id_item = "", item = "", arrayIngredientes = ""/*??*/) =>{
@@ -66,19 +64,4 @@ const cadastra_item = (id_item = "", item = "", arrayIngredientes = ""/*??*/) =>
   itemInput.value = item
   ingredientesInput.value = arrayIngredientes //?
   id_itemInput.value = id_item
-}
-
-const  criarLinha = ({id, nome, sobrenome, dtnasc}) => {
-  const tr = document.createElement("TR")
-  tr.setAttribute('id', id)
-  tr.innerHTML = `<td>${nome}</td>
-  <td>${sobrenome}</td>
-  <td>${dtnasc.split("-").reduce((a,b) => `${b}/${a}`, "").slice(0,-1)}</td>`
-  
-  const td = document.createElement("TD")
-  td.appendChild(btnEdit)
-  td.appendChild(btnDelete)
-  
-  tr.appendChild(td)
-  return tr;
 }
