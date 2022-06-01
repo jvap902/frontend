@@ -7,9 +7,11 @@ let listaIngrediente = null
 
 const arrayIngredientes = []
 
-onload = () => {
+onload = async () => {
     modal = new bootstrap.Modal(document.getElementById('loginModal'))
     btnLogar = document.getElementById("logar")
+
+    
 
 /*
     const login = document.getElementById("login")
@@ -59,6 +61,7 @@ onload = () => {
   })
   
 
+  await montaCardapio()
 }
 
 //cardapio.filter('janta').forEach(<td></td>)
@@ -73,4 +76,56 @@ const item = (id_item = "", item = "", ingredientes = "") =>{
   id_itemInput.value = id_item
 
   //segue a mesma logica de antes
+}
+
+
+
+
+const montaCardapio = async () => {
+  //const response = await fetch('')
+  //const data = await response.json();
+
+  const {DATAS, CAFE, ALMOCO, JANTA } = {
+    DATAS: ['2022-05-30','2022-05-31','2022-06-01','2022-06-02','2022-06-03'],
+    CAFE: [{data: '2022-06-01', ingredientes: [{nome: 'Feijão'},{nome: 'Farinha'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}],
+    ALMOCO: [{data: '2022-06-01', ingredientes: [{nome: 'Feijão'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}],
+    JANTA: [{data: '2022-06-01', ingredientes: [{nome: 'Feijão'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}],
+  }
+
+  montaCabecalho(DATAS)
+
+  montaLinha('Café da manhã', CAFE) 
+  montaLinha('Almoço', ALMOCO) 
+  montaLinha('Jantar', JANTA) 
+
+} 
+
+const montaCabecalho = (datas) => {
+  const thead = document.getElementById('thead')
+  const tr = document.createElement('TR')
+  const th = document.createElement('TH')
+  th.innerHTML = "Tipo de refeição"
+  tr.appendChild(th)
+  datas.forEach(data => {
+    const th = document.createElement('TH')
+    th.innerHTML = `<button>${moment(data).format('DD/MM/YYYY')}</button>`
+    tr.appendChild(th)
+  })
+  thead.appendChild(tr)
+}
+
+const montaLinha = (label, linha) => {
+  const tbody = document.getElementById('tbody')
+  const tr = document.createElement('TR')
+  const td = document.createElement('TD')
+  td.innerHTML = label
+  tr.appendChild(td)
+  linha.forEach(({ingredientes}) => {
+    const td = document.createElement('TD')
+    td.innerHTML = `<ul>${ingredientes.reduce((prev, {nome}) => {
+      return `${prev}<li>${nome}</li>`
+    }, "")}</ul>`
+    tr.appendChild(td)
+  })
+  tbody.appendChild(tr)
 }
