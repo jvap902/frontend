@@ -16,7 +16,8 @@ onload = () => {
     btnSalvarItem = document.getElementById('salvar')
     btnAdicionarIngrediente = document.getElementById("adc_ingrediente")
     btnLogout = document.getElementById("navLogout")
-    btnAdicionarRefeição = document.getElementById("adc_item")
+    btnAdicionarRefeicao = document.getElementById("adc_item")
+    btnSalvarRefeicao = document.getElementById("salvar_refeicao")
 
     btnLogout.addEventListener('click', logout)
 
@@ -52,7 +53,9 @@ onload = () => {
         modal_item.hide()
     })
 
-    btnAdicionarRefeição.addEventListener('click', async () => {
+    btnSalvarRefeicao.add
+
+    btnAdicionarRefeicao.addEventListener('click', async () => {
       const input = document.getElementById('item_refeicao')
       
       if (input.value !== ''){

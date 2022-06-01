@@ -157,7 +157,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                    <button id="salvar" type="button" class="btn btn-success">Salvar</button>
+                    <button id="salvar_refeicao" type="button" class="btn btn-success">Salvar</button>
                 </div>
             </div>
         </div>
