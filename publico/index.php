@@ -38,7 +38,8 @@
     <table class="table table-bordered table-hover">
       <thead id="thead">
         <tr>
-          <th colspan="6" class="text-center" id="semana">Semana xxx</th>
+          
+          <th colspan="6" class="text-center" id="semana"><button id="prevSemana"><-</button>Semana xxx</th>
         </tr>
       </thead>
       <tbody id="tbody">
