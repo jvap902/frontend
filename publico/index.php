@@ -114,7 +114,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-              <button id="logar" type="button" class="btn btn-success">Pesquisar</button>
+              <button id="search" type="button" class="btn btn-success">Pesquisar</button>
             </div>
           </form>
         </div>
