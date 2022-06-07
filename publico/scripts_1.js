@@ -167,7 +167,7 @@ const montaCabecalho = (datas) => {
   datas.forEach(data => {
     const th = document.createElement('TH')
     if (data === moment().format('YYYY-MM-DD'))
-      th.style.backgroundColor = '#dedede'
+      th.style.backgroundColor = '#C2EBC9'
     th.innerHTML = `${moment(data).format('DD/MM/YYYY')}`
     tr.appendChild(th)
   })
@@ -183,7 +183,7 @@ const montaLinha = (label, linha, datas) => {
   datas.forEach(d => {
     const td = document.createElement('TD')
     if (d === moment().format('YYYY-MM-DD'))
-      td.style.backgroundColor = '#dedede'
+      td.style.backgroundColor = '#C2EBC9'
     const hoje = linha.find(l => l.data === d)
     let ingredientes = []
     if (hoje) ingredientes = hoje.ingredientes

@@ -36,7 +36,7 @@
   <div id="tabelas">
     <table class="table table-bordered table-hover">
       <thead id="thead"><tr id="fixo">
-          <th colspan="6" class="text-center" id="semana"><button id="prevSemana"><-</button>Semana xxx<button id="nextSemana">-></button></th>
+          <th colspan="6" class="text-center" id="semana"><button id="prevSemana" class="btn btn-outline-success"><img src="http://cdn.onlinewebfonts.com/svg/img_72245.png" width="23"></button>Semana xxx<button id="nextSemana" class="btn btn-outline-success"><img src="https://cdn0.iconfinder.com/data/icons/arrows-volume-6/48/322-512.png" width="25"></button></th>
         </tr></thead>
       <tbody id="tbody">
         

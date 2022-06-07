@@ -18,6 +18,12 @@
   background-color: white;
 }
 
+#prevSemana, #nextSemana{
+  margin-left: 10px ;
+  margin-right: 10px ;
+
+}
+
 h2{
   font-family: Verdana;
   color: white;
