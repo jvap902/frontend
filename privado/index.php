@@ -1,5 +1,14 @@
 <?php
  //require "../../pw3-cardapio_ru-backend/permissao.php"
+ $database =new PDO("mysql:host=localhost;dbname=ru", "aluno", "aluno");
+
+ foreach($database->query("SELECT * FROM ingredientes") as $ingrediente){
+  $ingredientes[] = [
+      "id" => $ingrediente["id"],
+      "descricao" => $ingrediente["descricao"],
+      "calorias" => $ingrediente["calorias"]
+  ];
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -96,8 +105,13 @@
                         <div class="mb-3">
                             <label for="ingrediente" class="form-label">Ingrediente</label>
                             <select class="form-select" id="ingrediente_item">
-                          <option selected value="0"></option>
-                          <option></option>
+                            <?php
+                            
+                              foreach ($ingredientes as $ing){
+                                echo "<option> {$ing['descricao']} - {$ing['calorias']} calorias por 100g</option>}";
+                              }
+                            
+                            ?>
                         </select>
                             <tr></tr>
                         </div>
