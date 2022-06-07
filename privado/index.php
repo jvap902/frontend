@@ -162,8 +162,6 @@
                         <label for="item" class="form-label">Adicione itens</label>
                         <select class="form-select" id='item_refeicao'>
                           <option selected value="0"></option>
-                          <option value="1">Café da manhã</option>
-                          <option value="2">Almoço</option>
                           <!-- pegar do banco  -->
                         </select>
                       </div>
@@ -174,7 +172,6 @@
                         <label for="nutricionista" class="form-label">Selecione uma nutricionista</label>
                         <select class="form-select" id="nutricionista_refeicao">
                           <option selected value="0"></option>
-                          <option value="1">Nutri</option>
                         </select>
                       </div>
                     </div>
@@ -190,7 +187,7 @@
         </div>
     </div>
 
-    <div> <!--div para o botao de clonar refeição-->
+    <div> <!--div para o botao de clonar cardápio-->
       <button type="button" id="btnClonaCardapio" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_clonaCardapio">Clonar cardápio</button>
     </div>
     <div class="modal fade" id="div_clonaCardapio" tabindex="-1" aria-labelledby="div_clonaCardapioLabel" aria-hidden="true"> <!--Div do formulário de clonar cardápio-->
@@ -204,8 +201,8 @@
                     <form method="POST">
                         <input type="hidden" id="id_clonaCardapio"/>
                         <div class="mb-3">
-                          <label for="cardapioClona" class="form-label">Data do cardápio a ser clonado</label>
-                          <input type="date" class="form-control" name="cardapioClona" id="cardapioClona" placeholder="Selecione uma data para clonar">
+                          <label for="cardapioClonado" class="form-label">Data do cardápio a ser clonado</label>
+                          <input type="date" class="form-control" name="cardapioClonado" id="cardapioClonado" placeholder="Selecione uma data para clonar">
                         </div>
                         <div class="mb-3">
                           <label for="cardapioNovo" class="form-label">Data do cardápio novo</label>
