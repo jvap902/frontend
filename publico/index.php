@@ -37,7 +37,8 @@
     <table class="table table-bordered table-hover">
       <thead id="thead">
         <tr>
-          <th colspan="6" class="text-center" id="semana">Semana xxx</th>
+          
+          <th colspan="6" class="text-center" id="semana"><button id="prevSemana"><-</button>Semana xxx</th>
         </tr>
       </thead>
       <tbody id="tbody">
@@ -99,7 +100,7 @@
               </div>
               <div class="mb-3">
                 <label for="refeicao" class="form-label">Pesquise uma refeição</label>
-                <select class="form-select">
+                <select class="form-select" id='refeicao'>
                   <option selected value="0"></option>
                   <option value="1">Café da manhã</option>
                   <option value="2">Almoço</option>
@@ -113,7 +114,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-              <button id="logar" type="button" class="btn btn-success">Pesquisar</button>
+              <button id="search" type="button" class="btn btn-success">Pesquisar</button>
             </div>
           </form>
         </div>
