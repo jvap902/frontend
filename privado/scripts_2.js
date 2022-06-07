@@ -4,6 +4,7 @@ let modal_item = null
 let btnAdicionar = null
 let listaIngrediente = null
 let modal_ingrediente = null
+let modal_nutricionista = null
 
 
 const arrayIngredientes = []
@@ -16,6 +17,7 @@ onload = () => {
 
     modal_item = new bootstrap.Modal(document.getElementById('div_item'))
     modal_ingrediente = new bootstrap.Modal(document.getElementById('div_ingrediente'))
+    modal_nutricionista = new bootstrap.Modal(document.getElementById('div_nutricionista'))
     btnSalvarItem = document.getElementById('salvar_item')
     btnAdicionarIngrediente = document.getElementById("adc_ingrediente")
     btnLogout = document.getElementById("navLogout")
@@ -100,13 +102,13 @@ onload = () => {
     })
 
     btnSalvarNutricionista.addEventListener('click', async ()=> {
-      const nome_nutricionista = document.getElementById("nome_nutricionista").value
+      const nome = document.getElementById("nome_nutricionista").value
       const crn = document.getElementById("crn").value
 
       console.log(nome_nutricionista, crn)
 
       const body = new FormData()
-        body.append('nome_nutricionista', nome_nutricionista)
+        body.append('nome', nome)
         body.append('crn', crn)
 
         const response = await fetch(`${baseUrl}salvarNutricionista.php`, {
@@ -114,7 +116,7 @@ onload = () => {
             body
         })
 
-        modal_item.hide()
+        modal_nutricionista.hide()
     })
 
     //await montaCardapio()
