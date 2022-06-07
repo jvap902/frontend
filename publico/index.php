@@ -35,12 +35,9 @@
 
   <div id="tabelas">
     <table class="table table-bordered table-hover">
-      <thead id="thead">
-        <tr>
-          
-          <th colspan="6" class="text-center" id="semana"><button id="prevSemana"><-</button>Semana xxx</th>
-        </tr>
-      </thead>
+      <thead id="thead"><tr id="fixo">
+          <th colspan="6" class="text-center" id="semana"><button id="prevSemana"><-</button>Semana xxx<button id="nextSemana">-></button></th>
+        </tr></thead>
       <tbody id="tbody">
         
       </tbody>
