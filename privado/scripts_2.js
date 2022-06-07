@@ -5,6 +5,7 @@ let btnAdicionar = null
 let listaIngrediente = null
 let modal_ingrediente = null
 let modal_nutricionista = null
+let modal_refeicao = null
 
 
 const arrayIngredientes = []
@@ -12,16 +13,17 @@ const arrayItens = []
 
 
 onload = () => {
-    const token = localStorage.getItem('token')
-    if (token === null) location.href = "../publico/index.php"
+    // const token = localStorage.getItem('token')
+    // if (token === null) location.href = "../publico/index.php"
 
     modal_item = new bootstrap.Modal(document.getElementById('div_item'))
     modal_ingrediente = new bootstrap.Modal(document.getElementById('div_ingrediente'))
     modal_nutricionista = new bootstrap.Modal(document.getElementById('div_nutricionista'))
+    modal_refeicao = new bootstrap.Modal(document.getElementById('div_refeicao'))
     btnSalvarItem = document.getElementById('salvar_item')
     btnAdicionarIngrediente = document.getElementById("adc_ingrediente")
     btnLogout = document.getElementById("navLogout")
-    btnAdicionarRefeicao = document.getElementById("adc_item")
+    btnAdicionarItem = document.getElementById("adc_item")
     btnSalvarRefeicao = document.getElementById("salvar_refeicao")
     btnSalvarIngediente = document.getElementById("salvar_ingrediente")
     btnSalvarNutricionista = document.getElementById("salvar_nutricionista")
@@ -78,7 +80,7 @@ onload = () => {
 
     })
 
-    btnAdicionarRefeicao.addEventListener('click', async () => {
+    btnAdicionarItem.addEventListener('click', async () => {
       const input = document.getElementById('item_refeicao')
       
       if (input.value !== ''){
@@ -93,19 +95,32 @@ onload = () => {
         ul.appendChild(li)
       })}
 
-    })
+    }) 
     
     btnSalvarRefeicao.addEventListener('click', async () => {
       const data = document.getElementById("data").value
       const refeicao = document.getElementById("refeicao").value
-      const itens = arrayItens
+      const itens_refeicao = arrayItens
+
+      const body = new FormData()
+        body.append('data', data)
+        body.append('refeicao', refeicao)
+        body.append('itens_refeicao[]', itens_refeicao)
+        //body.append('quantidade', gramas) - colocar campo para quantidade de cada ingrediente
+
+        const response = await fetch(`${baseUrl}salvarRefeicao.php`, {
+            method: "POST",
+            body
+        })
+
+        modal_refeicao.hide()
     })
 
     btnSalvarNutricionista.addEventListener('click', async ()=> {
       const nome = document.getElementById("nome_nutricionista").value
       const crn = document.getElementById("crn").value
 
-      console.log(nome_nutricionista, crn)
+      console.log(nome, crn)
 
       const body = new FormData()
         body.append('nome', nome)
