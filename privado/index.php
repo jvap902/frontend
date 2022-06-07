@@ -29,49 +29,50 @@
   </nav>
     
     
-    <div id="tabelas">
+  <div id="tabelas">
     <table class="table table-bordered table-hover">
-      <thead>
+      <thead id="thead">
         <tr>
-          <th colspan="6" class="text-center" id="semana">Semana xxx</th>
+          
+          <th colspan="6" class="text-center" id="semana"><button id="prevSemana"><-</button>Semana xxx</th>
         </tr>
       </thead>
-      <tbody>
-      <tr>
-          <th ></th>
-          <th class="text-center" id="thSegunda">Dia xxxx/xx/xxxx</th>
-          <th class="text-center" id="thTerca">Dia xx/xx/xxxx</th>
-          <th class="text-center" id="thQuarta">Dia xx/xx/xxxx</th>
-          <th class="text-center" id="thQuinta">Dia xx/xx/xxxx</th>
-          <th class="text-center" id="thSexta">Dia xx/xx/xxxx</th>
-        </tr>
-        <tr>
-          <th scope="row" id="thCafe">Café da manhã</th>
-          <td id="cafeSegunda">Pratos, pratos, pratos</td>
-          <td id="cafeTerca">Pratos, pratos, pratos</td>
-          <td id="cafeQuarta">Pratos, pratos, pratos</td>
-          <td id="cafeQuinta">Pratos, pratos, pratos</td>
-          <td id="cafeSexta">Pratos, pratos, pratos</td>
-        </tr>
-        <tr>
-          <th scope="row" id="thAlmoco">Almoço</th>
-          <td id="almocoSegunda">Pratos, pratos, pratos</td>
-          <td id="almocoTerca">Pratos, pratos, pratos</td>
-          <td id="almocoQuarta">Pratos, pratos, pratos</td>
-          <td id="almocoQuinta">Pratos, pratos, pratos</td>
-          <td id="almocoSexta">Pratos, pratos, pratos</td>
-        </tr>
-        <tr>
-          <th scope="row" id="thJanta">Janta</th>
-          <td id="jantaSegunda">Pratos, pratos, pratos</td>
-          <td id="jantaTerca">Pratos, pratos, pratos</td>
-          <td id="jantaQuarta">Pratos, pratos, pratos</td>
-          <td id="jantaQuinta">Pratos, pratos, pratos</td>
-          <td id="jantaSexta">Pratos, pratos, pratos</td>
-        </tr>
+      <tbody id="tbody">
+        
       </tbody>
     </table>
   </div>
+
+  <div> <!--div para o botao de cadastrar ingrediente-->
+        <button type="button" id="btnCadastraIngrediente" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#div_ingrediente">Cadastrar ingrediente</button>
+    </div>
+    <div class="modal fade" id="div_ingrediente" tabindex="-1" aria-labelledby="div_ingredienteLabel" aria-hidden="true"> <!--Div do fomrulário de ingrediente-->
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="div_ingredienteLabel">Cadastrar Ingrediente</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST">
+                        <input type="hidden" id="id_ingrediente"/>
+                        <div class="mb-3">
+                            <label for="ingrediente" class="form-label">Ingerdiente</label>
+                            <input type="text" class="form-control" id="ingrediente" placeholder="Insira o nome do Ingrediente" name="ingrediente">
+                        </div>
+                        <div class="mb-3">
+                            <label for="calorias" class="form-label">Quantidade de calorias em 100g do ingrediente</label>
+                            <input type="number" class="form-control" id="calorias" placeholder="Insira a quantidade de calorias" name="calorias">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                    <button id="salvar_ingrediente" type="button" class="btn btn-success">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div> <!--div para o botao de cadastrar item-->
         <button type="button" id="btnCadastraItem" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#div_item">Cadastrar item</button>
@@ -84,15 +85,18 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="../../pw3-cardapio_ru-backend/salvarItens.php">
-                        <input type="hidden" id="id"/>
+                    <form method="POST">
+                        <input type="hidden" id="id_item"/>
                         <div class="mb-3">
                             <label for="item" class="form-label">Item</label>
                             <input type="text" class="form-control" id="item" placeholder="Insira o nome do item" name="item">
                         </div>
                         <div class="mb-3">
                             <label for="ingrediente" class="form-label">Ingrediente</label>
-                            <input type="text" class="form-control" id="ingrediente" placeholder="Insira um ingrediente">
+                            <select class="form-select" id="ingrediente_item">
+                          <option selected value="0"></option>
+                          <option></option>
+                        </select>
                             <tr></tr>
                         </div>
                         <div class="mb-3">
@@ -104,14 +108,14 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                    <button id="salvar" type="button" class="btn btn-success">Salvar</button>
+                    <button id="salvar_item" type="button" class="btn btn-success">Salvar</button>
                 </div>
             </div>
         </div>
     </div>
 
 
-    <div> <!--div para o botao de cadastrar refeção-->
+    <div> <!--div para o botao de cadastrar refeição-->
         <button type="button" id="btnCadastraRefeicao" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#div_refeicao">Cadastrar refeição</button>
     </div>
     <div class="modal fade" id="div_refeicao" tabindex="-1" aria-labelledby="div_refeicaoLabel" aria-hidden="true"> <!--Div do formulário de refeicao-->
@@ -216,11 +220,11 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="../../pw3-cardapio_ru-backend/salvarNutricionista.php">
-                        <input type="hidden" id="id"/>
+                    <form method="POST">
+                        <input type="hidden" id="id_nutricionista"/>
                         <div class="mb-3">
                             <label for="nome" class="form-label">Nome</label>
-                            <input type="text" class="form-control" id="nome" placeholder="Insira o nome da nutricionista" name="nome">
+                            <input type="text" class="form-control" id="nome_nutricionista" placeholder="Insira o nome da nutricionista" name="nome">
                         </div>
                         <div class="mb-3">
                             <label for="crn" class="form-label">CRN</label>
@@ -231,7 +235,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                    <button id="salvar" type="button" class="btn btn-success">Salvar</button>
+                    <button id="salvar_nutricionista" type="button" class="btn btn-success">Salvar</button>
                 </div>
             </div>
         </div>
