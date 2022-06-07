@@ -43,8 +43,10 @@
     </table>
   </div>
 
+
+  <div class="btn-group" role="group" aria-label="Administre o cardápio">
   <div> <!--div para o botao de cadastrar ingrediente-->
-        <button type="button" id="btnCadastraIngrediente" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#div_ingrediente">Cadastrar ingrediente</button>
+        <button type="button" id="btnCadastraIngrediente" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_ingrediente">Cadastrar ingrediente</button>
     </div>
     <div class="modal fade" id="div_ingrediente" tabindex="-1" aria-labelledby="div_ingredienteLabel" aria-hidden="true"> <!--Div do fomrulário de ingrediente-->
         <div class="modal-dialog modal-dialog-centered">
@@ -57,7 +59,7 @@
                     <form method="POST">
                         <input type="hidden" id="id_ingrediente"/>
                         <div class="mb-3">
-                            <label for="ingrediente" class="form-label">Ingerdiente</label>
+                            <label for="ingrediente" class="form-label">Ingrediente</label>
                             <input type="text" class="form-control" id="ingrediente" placeholder="Insira o nome do Ingrediente" name="ingrediente">
                         </div>
                         <div class="mb-3">
@@ -75,7 +77,7 @@
     </div>
 
     <div> <!--div para o botao de cadastrar item-->
-        <button type="button" id="btnCadastraItem" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#div_item">Cadastrar item</button>
+        <button type="button" id="btnCadastraItem" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_item">Cadastrar item</button>
     </div>
     <div class="modal fade" id="div_item" tabindex="-1" aria-labelledby="div_itemLabel" aria-hidden="true"> <!--Div do fomrulário de item-->
         <div class="modal-dialog modal-dialog-centered">
@@ -116,7 +118,7 @@
 
 
     <div> <!--div para o botao de cadastrar refeição-->
-        <button type="button" id="btnCadastraRefeicao" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#div_refeicao">Cadastrar refeição</button>
+        <button type="button" id="btnCadastraRefeicao" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_refeicao">Cadastrar refeição</button>
     </div>
     <div class="modal fade" id="div_refeicao" tabindex="-1" aria-labelledby="div_refeicaoLabel" aria-hidden="true"> <!--Div do formulário de refeicao-->
         <div class="modal-dialog modal-dialog-centered">
@@ -174,7 +176,38 @@
         </div>
     </div>
 
-
+    <div> <!--div para o botao de cadastrar nutricionista-->
+        <button type="button" id="btnCadastraNutricionista" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_nutricionista">Cadastrar nutricionista</button>
+    </div>
+    <div class="modal fade" id="div_nutricionista" tabindex="-1" aria-labelledby="div_nutricionistaLabel" aria-hidden="true"> <!--Div do formulário de nutricionistas-->
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="div_nutricionistaLabel">Cadastrar nutricionista</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST">
+                        <input type="hidden" id="id_nutricionista"/>
+                        <div class="mb-3">
+                            <label for="nome" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="nome_nutricionista" placeholder="Insira o nome da nutricionista" name="nome">
+                        </div>
+                        <div class="mb-3">
+                            <label for="crn" class="form-label">CRN</label>
+                            <input type="number" class="form-control" id="crn" placeholder="Insira o CRN da nutricionista">
+                            <tr></tr>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                    <button id="salvar_nutricionista" type="button" class="btn btn-success">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
     <div class="modal fade" id="pesquisaModal" tabindex="-1" aria-labelledby="pesquisaModalLabel" aria-hidden="true">
     <!--Div do formulário de pesquisa-->
     <div class="modal-dialog modal-dialog-centered">
@@ -215,39 +248,6 @@
     </div>
   </div>
 
-
-  
-  <div> <!--div para o botao de cadastrar nutricionista-->
-        <button type="button" id="btnCadastraNutricionista" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#div_nutricionista">Cadastrar nutricionista</button>
-    </div>
-    <div class="modal fade" id="div_nutricionista" tabindex="-1" aria-labelledby="div_nutricionistaLabel" aria-hidden="true"> <!--Div do formulário de nutricionistas-->
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="div_nutricionistaLabel">Cadastrar nutricionista</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form method="POST">
-                        <input type="hidden" id="id_nutricionista"/>
-                        <div class="mb-3">
-                            <label for="nome" class="form-label">Nome</label>
-                            <input type="text" class="form-control" id="nome_nutricionista" placeholder="Insira o nome da nutricionista" name="nome">
-                        </div>
-                        <div class="mb-3">
-                            <label for="crn" class="form-label">CRN</label>
-                            <input type="number" class="form-control" id="crn" placeholder="Insira o CRN da nutricionista">
-                            <tr></tr>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                    <button id="salvar_nutricionista" type="button" class="btn btn-success">Salvar</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="../logout.js"></script>

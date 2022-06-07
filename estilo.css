@@ -23,6 +23,10 @@ h2{
   color: white;
 }
 
+#btnCadastraRefeicao, #btnCadastraItem, #btnCadastraNutricionista{
+  margin-top: 50px;
+}
+
 #tabelas{
   margin-top: 5%;
   font-family: Verdana;
@@ -39,7 +43,3 @@ table.table-bordered{
   color:  #050F07;
 }
 
-#btnCadastraRefeicao, #btnCadastraItem, #btnCadastraNutricionista{
-  margin-top: 50px;
-  color: #194d23;
-}
