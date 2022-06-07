@@ -150,10 +150,49 @@
                       <div class="mb-3">
                           <button type="button" class="btn btn-primary sm" id="adc_item">Adicionar item</button>
                       </div>
+                      <div class="mb-3">
+                        <label for="nutricionista" class="form-label">Selecione uma nutricionista</label>
+                        <select class="form-select" id="nutricionista_refeicao">
+                          <option selected value="0"></option>
+                          <option value="1">Nutri</option>
+                        </select>
+                      </div>
                     </div>
                   </form>
                   <ul id="itens_adc">
                   </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                    <button id="salvar" type="button" class="btn btn-success">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div> <!--div para o botao de cadastrar nutricionista-->
+        <button type="button" id="btnCadastraNutricionista" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#div_nutricionista">Cadastrar nutricionista</button>
+    </div>
+    <div class="modal fade" id="div_nutricionista" tabindex="-1" aria-labelledby="div_nutricionistaLabel" aria-hidden="true"> <!--Div do formulário de nutricionistas-->
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="div_nutricionistaLabel">Cadastrar nutricionista</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="../../pw3-cardapio_ru-backend/salvarNutricionista.php">
+                        <input type="hidden" id="id"/>
+                        <div class="mb-3">
+                            <label for="nome" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="nome" placeholder="Insira o nome da nutricionista" name="nome">
+                        </div>
+                        <div class="mb-3">
+                            <label for="crn" class="form-label">CRN</label>
+                            <input type="number" class="form-control" id="crn" placeholder="Insira o CRN da nutricionista">
+                            <tr></tr>
+                        </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
@@ -205,37 +244,7 @@
   </div>
 
 
-  <div> <!--div para o botao de cadastrar nutricionista-->
-        <button type="button" id="btnCadastraNutricionista" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#div_nutricionista">Cadastrar nutricionista</button>
-    </div>
-    <div class="modal fade" id="div_nutricionista" tabindex="-1" aria-labelledby="div_nutricionistaLabel" aria-hidden="true"> <!--Div do formulário de nutricionistas-->
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="div_nutricionistaLabel">Cadastrar nutricionista</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="../../pw3-cardapio_ru-backend/salvarNutricionista.php">
-                        <input type="hidden" id="id"/>
-                        <div class="mb-3">
-                            <label for="nome" class="form-label">Nome</label>
-                            <input type="text" class="form-control" id="nome" placeholder="Insira o nome da nutricionista" name="nome">
-                        </div>
-                        <div class="mb-3">
-                            <label for="crn" class="form-label">CRN</label>
-                            <input type="number" class="form-control" id="crn" placeholder="Insira o CRN da nutricionista">
-                            <tr></tr>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                    <button id="salvar" type="button" class="btn btn-success">Salvar</button>
-                </div>
-            </div>
-        </div>
-    </div>
+  
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="../logout.js"></script>

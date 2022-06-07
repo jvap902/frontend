@@ -1,7 +1,4 @@
 /*paleta: https://coolors.co/050f07-194d23-36a149-85d694-c2ebc9 */
-/* body{
-  background-color: #C2EBC9;
-} */
 
 .navbar{
   background-color: #36A149;
@@ -40,4 +37,9 @@ table.table-bordered{
   border-width: 2px;
   font-family: Verdana;
   color:  #050F07;
+}
+
+#btnCadastraRefeicao, #btnCadastraItem, #btnCadastraNutricionista{
+  margin-top: 50px;
+  color: #194d23;
 }

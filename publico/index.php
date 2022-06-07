@@ -33,7 +33,6 @@
   </nav>
 
 
-
   <div id="tabelas">
     <table class="table table-bordered table-hover">
       <thead id="thead">
@@ -129,6 +128,4 @@
     <script src="../logout.js"></script>
   <script src="scripts_1.js"></script>
 </body>
-<!--tentano-->
-
 </html>
