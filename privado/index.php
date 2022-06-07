@@ -20,14 +20,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link type="text/css" href="../estilo.css" rel="stylesheet"/>
-    <title>Cardápio RU</title>
+    <title>Cardápio RU | Administração</title>
 </head>
 
 <body>
 
 <nav class="navbar fixed-top">
         <div>
-        <h2>Cardápio RU</h2>
+        <h2>Cardápio RU | Administração</h2>
         </div>
         <div class="d-flex">
             <button type="button" class="btn" id="navPesquisa" data-bs-toggle="modal" data-bs-target="#pesquisaModal">Pesquisa  <img src="https://www.iconpacks.net/icons/2/free-search-icon-2903-thumb.png" width="20" /></button>
@@ -162,8 +162,6 @@
                         <label for="item" class="form-label">Adicione itens</label>
                         <select class="form-select" id='item_refeicao'>
                           <option selected value="0"></option>
-                          <option value="1">Café da manhã</option>
-                          <option value="2">Almoço</option>
                           <!-- pegar do banco  -->
                         </select>
                       </div>
@@ -174,7 +172,6 @@
                         <label for="nutricionista" class="form-label">Selecione uma nutricionista</label>
                         <select class="form-select" id="nutricionista_refeicao">
                           <option selected value="0"></option>
-                          <option value="1">Nutri</option>
                         </select>
                       </div>
                     </div>
@@ -190,7 +187,7 @@
         </div>
     </div>
 
-    <div> <!--div para o botao de clonar refeição-->
+    <div> <!--div para o botao de clonar cardápio-->
       <button type="button" id="btnClonaCardapio" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_clonaCardapio">Clonar cardápio</button>
     </div>
     <div class="modal fade" id="div_clonaCardapio" tabindex="-1" aria-labelledby="div_clonaCardapioLabel" aria-hidden="true"> <!--Div do formulário de clonar cardápio-->
@@ -204,8 +201,8 @@
                     <form method="POST">
                         <input type="hidden" id="id_clonaCardapio"/>
                         <div class="mb-3">
-                          <label for="cardapioClona" class="form-label">Data do cardápio a ser clonado</label>
-                          <input type="date" class="form-control" name="cardapioClona" id="cardapioClona" placeholder="Selecione uma data para clonar">
+                          <label for="cardapioClonado" class="form-label">Data do cardápio a ser clonado</label>
+                          <input type="date" class="form-control" name="cardapioClonado" id="cardapioClonado" placeholder="Selecione uma data para clonar">
                         </div>
                         <div class="mb-3">
                           <label for="cardapioNovo" class="form-label">Data do cardápio novo</label>
