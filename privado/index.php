@@ -44,7 +44,7 @@
   </div>
 
 
-  <div class="btn-group" role="group" aria-label="Administre o cardápio">
+  <div class="btn-group " role="group" aria-label="Administre o cardápio">
   <div> <!--div para o botao de cadastrar ingrediente-->
         <button type="button" id="btnCadastraIngrediente" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_ingrediente">Cadastrar ingrediente</button>
     </div>
@@ -201,7 +201,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                    <button id="salvar_nutricionista" type="button" class="btn btn-success">Salvar</button>
+                    <button id="salvar_clonaCardapio" type="button" class="btn btn-success">Salvar</button>
                 </div>
             </div>
         </div>
