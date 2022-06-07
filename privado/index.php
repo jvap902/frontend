@@ -176,6 +176,37 @@
         </div>
     </div>
 
+    <div> <!--div para o botao de clonar refeição-->
+      <button type="button" id="btnClonaCardapio" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_clonaCardapio">Clonar cardápio</button>
+    </div>
+    <div class="modal fade" id="div_clonaCardapio" tabindex="-1" aria-labelledby="div_clonaCardapioLabel" aria-hidden="true"> <!--Div do formulário de clonar cardápio-->
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="div_clonaCardapioLabel">Clonar cardápio</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST">
+                        <input type="hidden" id="id_clonaCardapio"/>
+                        <div class="mb-3">
+                          <label for="cardapioClona" class="form-label">Data do cardápio a ser clonado</label>
+                          <input type="date" class="form-control" name="cardapioClona" id="cardapioClona" placeholder="Selecione uma data para clonar">
+                        </div>
+                        <div class="mb-3">
+                          <label for="cardapioNovo" class="form-label">Data do cardápio novo</label>
+                          <input type="date" class="form-control" name="cardapioNovo" id="cardapioNovo" placeholder="Selecione a data do novo cardápio">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                    <button id="salvar_nutricionista" type="button" class="btn btn-success">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div> <!--div para o botao de cadastrar nutricionista-->
         <button type="button" id="btnCadastraNutricionista" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_nutricionista">Cadastrar nutricionista</button>
     </div>
