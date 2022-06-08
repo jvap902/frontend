@@ -119,7 +119,7 @@ foreach($database->query("SELECT * FROM itens") as $item){
                             <?php
                             
                               foreach ($ingredientes as $ing){
-                                echo "<option value='{$ing['id']}'> {$ing['descricao']} - {$ing['calorias']} calorias por 100g</option>}";
+                                echo "<option value='{$ing['id']}'>ID: {$ing['id']} - {$ing['descricao']} - {$ing['calorias']} calorias por 100g</option>}";
                               }
                             
                             ?>
