@@ -63,7 +63,6 @@ foreach($database->query("SELECT * FROM itens") as $item){
   </div>
   
 
-
   <div class="btn-group " role="group" aria-label="Administre o cardápio">
   <div> <!--div para o botao de cadastrar ingrediente-->
         <button type="button" id="btnCadastraIngrediente" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_ingrediente">Cadastrar ingrediente</button>
