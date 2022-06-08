@@ -1,27 +1,26 @@
 <?php
- //require "../../pw3-cardapio_ru-backend/permissao.php"
- $database =new PDO("mysql:host=localhost;dbname=ru", "root", "");
+//require "../../pw3-cardapio_ru-backend/permissao.php"
+$database = new PDO('mysql:host=localhost;dbname=ru', 'root', '');
 
- foreach($database->query("SELECT * FROM ingredientes") as $ingrediente){
-  $ingredientes[] = [
-      "id" => $ingrediente["id"],
-      "descricao" => $ingrediente["descricao"],
-      "calorias" => $ingrediente["calorias"]
-  ];
+foreach ($database->query('SELECT * FROM ingredientes') as $ingrediente) {
+    $ingredientes[] = [
+        'id' => $ingrediente['id'],
+        'descricao' => $ingrediente['descricao'],
+        'calorias' => $ingrediente['calorias'],
+    ];
 }
-foreach($database->query("SELECT * FROM nutricionistas") as $nutricionista){
-  $nutricionistas[] = [
-      "crn" => $nutricionista["crn"],
-      "nome" => $nutricionista["nome"],
-  ];
+foreach ($database->query('SELECT * FROM nutricionistas') as $nutricionista) {
+    $nutricionistas[] = [
+        'crn' => $nutricionista['crn'],
+        'nome' => $nutricionista['nome'],
+    ];
 }
-foreach($database->query("SELECT * FROM itens") as $item){
-  $itens[] = [
-      "id" => $item["id"],
-      "descricao" => $item["descricao"],
-  ];
+foreach ($database->query('SELECT * FROM itens') as $item) {
+    $itens[] = [
+        'id' => $item['id'],
+        'descricao' => $item['descricao'],
+    ];
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -64,36 +63,66 @@ foreach($database->query("SELECT * FROM itens") as $item){
   
 
   <div class="btn-group " role="group" aria-label="Administre o cardápio">
-  <div> <!--div para o botao de cadastrar ingrediente-->
-        <button type="button" id="btnCadastraIngrediente" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_ingrediente">Cadastrar ingrediente</button>
-    </div>
-    <div class="modal fade" id="div_ingrediente" tabindex="-1" aria-labelledby="div_ingredienteLabel" aria-hidden="true"> <!--Div do fomrulário de ingrediente-->
-        <div class="modal-dialog modal-dialog-centered">
+
+  <!-- INGREDIENTES  -->
+  <div><!--div para o botao de ingredientes-->
+    <button type="button" id="btnModalGerenciarIngrediente" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_gerenciarIngrediente">Gerenciar ingredientes</button>
+  </div>
+  <div class="modal fade" id="div_gerenciarIngrediente" tabindex="-1" aria-labelledby="div_gerenciaringredienteLabel" aria-hidden="true"> <!--Div de gerenciar ingredientes-->
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="div_gerenciarIngredienteLabel">Gerenciar Ingrediente</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- listar ingredientes  -->
+
+
+          <!-- cadastrar ingrediente  -->
+            <div> <!--div para o botao de cadastrar ingrediente-->
+              <button type="button" id="btnCadastraIngrediente" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_cadastraIngrediente">Cadastrar ingrediente</button>
+            </div>
+          <div class="modal fade" id="div_cadastraIngrediente" tabindex="-1" aria-labelledby="div_cadastraIngredienteLabel" aria-hidden="true"> <!--Div do formulário de cadastrar ingrediente-->
+          <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="div_ingredienteLabel">Cadastrar Ingrediente</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form method="POST">
-                        <input type="hidden" id="id_ingrediente"/>
-                        <div class="mb-3">
-                            <label for="ingrediente" class="form-label">Ingrediente</label>
-                            <input type="text" class="form-control" id="ingrediente" placeholder="Insira o nome do Ingrediente" name="ingrediente">
-                        </div>
-                        <div class="mb-3">
-                            <label for="calorias" class="form-label">Quantidade de calorias em 100g do ingrediente</label>
-                            <input type="number" class="form-control" id="calorias" placeholder="Insira a quantidade de calorias" name="calorias">
-                        </div>
-                    </form>
-                </div>
+              <div class="modal-header">
+                  <h5 class="modal-title" id="div_cadastraIngredienteLabel">Cadastrar Ingrediente</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form method="POST">
+                  <input type="hidden" id="id_cadastraIngrediente"/>
+                    <div class="mb-3">
+                        <label for="ingrediente" class="form-label">Ingrediente</label>
+                        <input type="text" class="form-control" id="ingrediente" placeholder="Insira o nome do Ingrediente" name="ingrediente">
+                    </div>
+                    <div class="mb-3">
+                        <label for="calorias" class="form-label">Quantidade de calorias em 100g do ingrediente</label>
+                        <input type="number" class="form-control" id="calorias" placeholder="Insira a quantidade de calorias" name="calorias">
+                    </div>
+                  </form>
+              </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                    <button id="salvar_ingrediente" type="button" class="btn btn-success">Salvar</button>
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                  <button id="salvar_novoIngrediente" type="button" class="btn btn-success">Salvar</button>
                 </div>
             </div>
         </div>
+      </div>
     </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+      <button id="salvar_gerenciarIngrediente" type="button" class="btn btn-success">Salvar</button>
+    </div>
+    </div>
+    </div>
+  </div>
+
+
+  <!-- ITENS  -->
+
+  
 
     <div> <!--div para o botao de cadastrar item-->
         <button type="button" id="btnCadastraItem" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_item">Cadastrar item</button>
@@ -115,13 +144,9 @@ foreach($database->query("SELECT * FROM itens") as $item){
                         <div class="mb-3">
                             <label for="ingrediente" class="form-label">Ingrediente</label>
                             <select class="form-select" id="ingrediente_item" name="ingrediente_item">
-                            <?php
-                            
-                              foreach ($ingredientes as $ing){
+                            <?php foreach ($ingredientes as $ing) {
                                 echo "<option value='{$ing['id']}'>ID: {$ing['id']} - {$ing['descricao']} - {$ing['calorias']} calorias por 100g</option>}";
-                              }
-                            
-                            ?>
+                            } ?>
                         </select>
                             <tr></tr>
                         </div>
@@ -171,13 +196,9 @@ foreach($database->query("SELECT * FROM itens") as $item){
                       <div class="mb-3">
                         <label for="item" class="form-label">Adicione itens</label>
                         <select class="form-select" id='item_refeicao' name="item_refeicao">
-                        <?php
-                            
-                            foreach ($itens as $itn){
-                              echo "<option value='{$itn['id']}'> {$itn['id']} - {$itn['descricao']}</option>}";
-                            }
-                          
-                          ?>
+                        <?php foreach ($itens as $itn) {
+                            echo "<option value='{$itn['id']}'> {$itn['id']} - {$itn['descricao']}</option>}";
+                        } ?>
                           <!-- pegar do banco  -->
                         </select>
                       </div>
@@ -187,13 +208,9 @@ foreach($database->query("SELECT * FROM itens") as $item){
                       <div class="mb-3">
                         <label for="nutricionista" class="form-label">Selecione uma nutricionista</label>
                         <select class="form-select" id="nutricionista_refeicao">
-                        <?php
-                            
-                            foreach ($nutricionistas as $nutri){
-                              echo "<option value='{$nutri['crn']}'> {$nutri['nome']} - CRN Nº {$nutri['crn']}</option>}";
-                            }
-                          
-                          ?>
+                        <?php foreach ($nutricionistas as $nutri) {
+                            echo "<option value='{$nutri['crn']}'> {$nutri['nome']} - CRN Nº {$nutri['crn']}</option>}";
+                        } ?>
                         </select>
                       </div>
                     </div>
