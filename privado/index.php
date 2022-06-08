@@ -1,6 +1,6 @@
 <?php
  //require "../../pw3-cardapio_ru-backend/permissao.php"
- $database =new PDO("mysql:host=localhost;dbname=ru", "aluno", "aluno");
+ $database =new PDO("mysql:host=localhost;dbname=ru", "root", "");
 
  foreach($database->query("SELECT * FROM ingredientes") as $ingrediente){
   $ingredientes[] = [
@@ -9,6 +9,13 @@
       "calorias" => $ingrediente["calorias"]
   ];
 }
+foreach($database->query("SELECT * FROM nutricionistas") as $nutricionista){
+  $nutricionistas[] = [
+      "crn" => $nutricionista["crn"],
+      "nome" => $nutricionista["nome"],
+  ];
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -171,7 +178,13 @@
                       <div class="mb-3">
                         <label for="nutricionista" class="form-label">Selecione uma nutricionista</label>
                         <select class="form-select" id="nutricionista_refeicao">
-                          <option selected value="0"></option>
+                        <?php
+                            
+                            foreach ($nutricionistas as $nutri){
+                              echo "<option> {$nutri['nome']} - CRN Nº {$nutri['crn']}</option>}";
+                            }
+                          
+                          ?>
                         </select>
                       </div>
                     </div>
