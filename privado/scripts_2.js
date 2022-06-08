@@ -27,20 +27,20 @@ onload = async () => {
  
     //modais de listagem
     modal_ingrediente = new bootstrap.Modal(document.getElementById('div_gerenciarIngrediente'))
-    // modal_item = new bootstrap.Modal(document.getElementById('div_gerenciarItem'))
-    // modal_nutricionista = new bootstrap.Modal(document.getElementById('div_gerenciarNutricionista'))
-    // modal_refeicao = new bootstrap.Modal(document.getElementById('div_gerenciarRefeicao'))
+    modal_item = new bootstrap.Modal(document.getElementById('div_gerenciarItem'))
+    modal_nutricionista = new bootstrap.Modal(document.getElementById('div_gerenciarNutricionista'))
+    modal_refeicao = new bootstrap.Modal(document.getElementById('div_gerenciarRefeicao'))
     //modais de cadastro
     modal_cadastra_ingrediente = new bootstrap.Modal(document.getElementById('div_cadastraIngrediente'))
-    // modal_cadastra_item = new bootstrap.Modal(document.getElementById('div_cadastraItem'))
-    // modal_cadastra_nutricionista = new bootstrap.Modal(document.getElementById('div_cadastraNutricionista'))
-    // modal_cadastra_refeicao = new bootstrap.Modal(document.getElementById('div_cadastraRefeicao'))
+    modal_cadastra_item = new bootstrap.Modal(document.getElementById('div_cadastraItem'))
+    modal_cadastra_nutricionista = new bootstrap.Modal(document.getElementById('div_cadastraNutricionista'))
+    modal_cadastra_refeicao = new bootstrap.Modal(document.getElementById('div_cadastraRefeicao'))
     //modais de alteração
-    //modal_altera_ingerdiente = new bootstrap.Modal(document.getElementById('div_alteraIngrediente'))
-    // modal_altera_item = new bootstrap.Modal(document.getElementById('div_alteraItem'))
-    // modal_altera_refeicao = new bootstrap.Modal(document.getElementById('div_alteraRefeicao'))
-    // modal_altera_nutricionista = new bootstrap.Modal(document.getElementById('div_alteraNutricionista'))
-    // //botoes
+    modal_altera_ingerdiente = new bootstrap.Modal(document.getElementById('div_alteraIngrediente'))
+    modal_altera_item = new bootstrap.Modal(document.getElementById('div_alteraItem'))
+    modal_altera_refeicao = new bootstrap.Modal(document.getElementById('div_alteraRefeicao'))
+    modal_altera_nutricionista = new bootstrap.Modal(document.getElementById('div_alteraNutricionista'))
+    //botoes
     btnAdicionarIngrediente = document.getElementById("adc_ingrediente")
     btnLogout = document.getElementById("navLogout")
     btnAdicionarItemRefeicao = document.getElementById("adc_item")
@@ -59,9 +59,9 @@ onload = async () => {
     btnLogout.addEventListener('click', logout)
  
     //ingrediente
-    // btnSalvarAlteracaoIngrediente.addEventListener('click', async () => {
+    btnSalvarAlteracaoIngrediente.addEventListener('click', async () => {
 
-    // })
+    })
 
     btnSalvarNovoIngediente.addEventListener('click', async () => {
       const ingrediente = document.getElementById("ingrediente").value
