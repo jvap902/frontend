@@ -97,7 +97,7 @@ onload = () => {
    
     btnSalvarRefeicao.addEventListener('click', async () => {
       const data = document.getElementById("data").value
-      const refeicao = document.getElementById("refeicao").value
+      const refeicao = document.getElementById("tipoRefeicao").value
       const itens = arrayItens
     })
  

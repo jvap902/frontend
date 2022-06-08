@@ -161,8 +161,8 @@ foreach($database->query("SELECT * FROM itens") as $item){
                         <input type="date" class="form-control" name="data" id="data" placeholder="Selecione uma data">
                       </div>
                       <div class="mb-3">
-                        <label for="refeicao" class="form-label">Selecione uma refeição</label>
-                        <select class="form-select">
+                        <label for="tipoRefeicao" class="form-label">Selecione uma refeição</label>
+                        <select class="form-select" id="tipoRefeicao">
                           <option selected value="0"></option>
                           <option value="1">Café da manhã</option>
                           <option value="2">Almoço</option>
