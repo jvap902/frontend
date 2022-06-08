@@ -8,6 +8,7 @@ let listaIngrediente = null
 const arrayIngredientes = []
 let semanaAtual = null
 let cardapio
+let teste
 
 onload = async () => {
     modal = new bootstrap.Modal(document.getElementById('loginModal'))
@@ -43,6 +44,19 @@ onload = async () => {
 
     console.log(cardapio)
 
+    /* const formatado {
+      CAFE: [],
+      ALMOCO: [],
+      JANTA: []
+    }
+    cardapioFormado.forEach(({tipo, data, nutricionista, itens}) => {
+      switch(tipo){
+        case "CAFE":    formatado.CAFE.push({data, itens, nutricionista}); break;
+        case "ALMOCO":    formatado.ALMOCO.push(c); break;
+        case "JANTA":    formatado.JANTA.push(c); break;
+      }
+    }) */
+
     cardapioFormado = {
       CAFE: [{data: cardapio.cardapios, ingredientes: [cardapio.ingredientes]}],
       ALMOCO: [{data: '2022-05-30', ingredientes: [{nome: 'Feijão'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}],
@@ -50,6 +64,11 @@ onload = async () => {
     }
 
     console.log(cardapioFormado)
+/* [x][y]
+y++
+    for(i = 0; i < cardapio.cardapios; i ++){
+      
+    } */
 
   btnLogar.addEventListener('click', async () => {
     const inputEmail = document.getElementById('email').value
@@ -152,3 +171,70 @@ const montaLinha = (label, linha, datas) => {
   
   tbody.appendChild(tr)
 }
+
+
+
+/* {
+  ALMOCO: [
+    {
+      data: '2022-06-08', 
+      itens: [
+        {
+          descricao: 'Risoto', 
+          ingredientes: [
+            {
+              descricao: 'Arroz', 
+              calorias: '100'
+            }
+          ]
+        }
+      ]
+    },
+    {
+      data: '2022-06-09', 
+      itens: [
+        {
+          descricao: 'Bolo', 
+          ingredientes: [
+            {
+              descricao: 'Farinha', 
+              calorias: '98'
+            },
+            {
+              descricao: 'Leite', 
+              calorias: '98'
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+[
+  {
+    data: '2022-06-08',
+    tipo: 'ALMOÇO',
+    nutricionista: 'Maiara',
+    itens: [
+      {
+        descricao: 'Bolo', 
+        ingredientes: [
+          {
+            descricao: 'Farinha', 
+            calorias: '98'
+          },
+          {
+            descricao: 'Leite', 
+            calorias: '98'
+          }
+        ]
+      }
+    ]
+  }
+]
+
+$vetor[$d['tipo']][] = [
+  'data' => $d['data'],
+  'itens' => []
+] */
