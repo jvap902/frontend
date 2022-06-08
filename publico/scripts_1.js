@@ -38,27 +38,15 @@ onload = async () => {
     })
 
 
-    const response = await fetch('http://localhost/cardapio_ru/pw3-cardapio_ru-backend/')
-    console.log(response)
-  //const cardapio = await response.json();
+    //const response = await fetch('http://localhost/cardapio_ru/pw3-cardapio_ru-backend/')
+    //console.log(response)
+    //const cardapio = await response.json();
 
     cardapio = {
       CAFE: [{data: '2022-06-06', ingredientes: [{nome: 'Feijão'},{nome: 'Farinha'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}],
       ALMOCO: [{data: '2022-05-30', ingredientes: [{nome: 'Feijão'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}],
       JANTA: [{data: '2022-05-30', ingredientes: [{nome: 'Feijão'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}],
     }
-
-/*
-    const login = document.getElementById("login")
-    login.addEventListener('click', () => {
-        Formulario() 
-      })
-
-    const item = document.getElementById("item")
-    item.addEventListener('click', () => {
-        item()
-      })
-*/
 
   btnLogar.addEventListener('click', async () => {
     const inputEmail = document.getElementById('email').value
@@ -68,16 +56,9 @@ onload = async () => {
     body.append('email', inputEmail)
     body.append('senha', inputSenha)
 
-
-    //localStorage.setItem('credentials', token); Isso seta as credenciais
-
-    //const credentials = localStorage.getItem('credentials');
-    //var headers = { "Authorization" : `Bearer ${credentials}` }; //localstorage js (google)
-
     const response = await fetch(/*baseurl*/`../../pw3-cardapio_ru-backend/autenticar.php`, {
       method: "POST",
       body
-      //headers
     })
     const data = await response.json();
 
@@ -100,35 +81,9 @@ onload = async () => {
   await montaCardapio(hoje)
 }
 
-//cardapio.filter('janta').forEach(<td></td>)
-
-const item = (id_item = "", item = "", ingredientes = "") =>{
-  const itemInput = document.getElementById('item')
-  const ingredientesInput = document.getElementById('ingrediente')
-  const id_itemInput = document.getElementById('id_item')
-
-  itemInput.value = item
-  ingredientesInput.value = ingredientes
-  id_itemInput.value = id_item
-
-  //segue a mesma logica de antes
-}
-
-
-
 
 const montaCardapio = async ($segunda) => {
-  //const credentials = localStorage.getItem('credentials');
-  //var headers = { "Authorization" : `Bearer ${credentials}` };
-  
-
-  //console.log(data)
-
-  
-
   const datas = []
-  
-
   
   const ini = $segunda.clone()
   for(let i = 0; i < 5; i++){
@@ -136,9 +91,6 @@ const montaCardapio = async ($segunda) => {
     ini.add(1, 'day')
   }
 
-  
-
-  
 
   const {CAFE, ALMOCO, JANTA } = cardapio
 
