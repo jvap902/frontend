@@ -115,7 +115,7 @@ foreach($database->query("SELECT * FROM itens") as $item){
                         </div>
                         <div class="mb-3">
                             <label for="ingrediente" class="form-label">Ingrediente</label>
-                            <select class="form-select" id="ingrediente_item">
+                            <select class="form-select" id="ingrediente_item" name="ingrediente_item">
                             <?php
                             
                               foreach ($ingredientes as $ing){
@@ -171,7 +171,7 @@ foreach($database->query("SELECT * FROM itens") as $item){
                       </div>
                       <div class="mb-3">
                         <label for="item" class="form-label">Adicione itens</label>
-                        <select class="form-select" id='item_refeicao'>
+                        <select class="form-select" id='item_refeicao' name="item_refeicao">
                         <?php
                             
                             foreach ($itens as $itn){
