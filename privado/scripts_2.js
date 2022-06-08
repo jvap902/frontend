@@ -12,8 +12,8 @@ const arrayItens = []
  
  
 onload = () => {
-    // const token = localStorage.getItem('token')
-    // if (token === null) location.href = "../publico/index.php"
+    const token = localStorage.getItem('token')
+    if (token === null) location.href = "../publico/index.php"
  
     modal_item = new bootstrap.Modal(document.getElementById('div_item'))
     modal_ingrediente = new bootstrap.Modal(document.getElementById('div_ingrediente'))
