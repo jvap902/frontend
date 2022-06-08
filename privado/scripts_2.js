@@ -9,9 +9,11 @@ let modal_nutricionista = null
  
 const arrayIngredientes = []
 const arrayItens = []
+let semanaAtual = null
+let cardapio
  
  
-onload = () => {
+onload = async () => {
     const token = localStorage.getItem('token')
     if (token === null) location.href = "../publico/index.php"
  
@@ -141,47 +143,77 @@ onload = () => {
     })
  
     //await montaCardapio()
+
+    const semanaPassada = document.getElementById('prevSemana')
+    semanaPassada.addEventListener('click', async () =>{ 
+      if (!semanaAtual){
+        semanaAtual = moment().subtract(moment().day()-1, 'days') 
+      }
+      
+      
+      semanaAtual.subtract('1', 'week')
+      
+      await montaCardapio(semanaAtual)
+    })
+
+    const proximaSemana = document.getElementById('nextSemana')
+    proximaSemana.addEventListener('click', async () =>{ 
+      if (!semanaAtual){
+        semanaAtual = moment().subtract(moment().day()-1, 'days') 
+      }
+      
+      
+      semanaAtual.add('1', 'week')
+      
+      await montaCardapio(semanaAtual)
+    })
+
+
+    //const response = await fetch('http://localhost/cardapio_ru/pw3-cardapio_ru-backend/')
+    //console.log(response)
+    //const cardapio = await response.json();
+
+    cardapio = {
+      CAFE: [{data: '2022-06-06', ingredientes: [{nome: 'Feijão'},{nome: 'Farinha'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}],
+      ALMOCO: [{data: '2022-05-30', ingredientes: [{nome: 'Feijão'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}],
+      JANTA: [{data: '2022-05-30', ingredientes: [{nome: 'Feijão'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}],
+    }
+    
+  const hoje = moment().subtract(moment().day()-1, 'days') 
+  await montaCardapio(hoje)
 }
  
-const montaCardapio =   () => {
-  //const response = await fetch('')
-  //const data = await response.json();
- 
- 
- 
+const montaCardapio = async ($segunda) => {
   const datas = []
-  /*const semanaPassada = moment().subtract(1, 'week')
- 
-  const prevSemana = document.getElementById('prevSemana')
-  prevSemana.addEventListener('click', () => {
-    console.log(semanaPassada.week())
- 
-  })*/
- 
-  const ini = moment().subtract(moment().day()-1, 'days')
+  
+  const ini = $segunda.clone()
   for(let i = 0; i < 5; i++){
     datas.push(ini.format('YYYY-MM-DD'))
     ini.add(1, 'day')
   }
- 
- 
- 
-  const {CAFE, ALMOCO, JANTA } = {
-    CAFE: [{data: '2022-06-06', ingredientes: [{nome: 'Feijão'},{nome: 'Farinha'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}],
-    ALMOCO: [{data: '2022-05-30', ingredientes: [{nome: 'Feijão'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}],
-    JANTA: [{data: '2022-05-30', ingredientes: [{nome: 'Feijão'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}],
-  }
- 
+
+
+  const {CAFE, ALMOCO, JANTA } = cardapio
+
   montaCabecalho(datas)
- 
-  montaLinha('Café da manhã', CAFE, datas)
-  montaLinha('Almoço', ALMOCO, datas)
-  montaLinha('Jantar', JANTA, datas)
- 
-}
- 
+  const tbody = document.getElementById('tbody')
+  tbody.innerHTML = ""
+
+  montaLinha('Café da manhã', CAFE, datas) 
+  montaLinha('Almoço', ALMOCO, datas) 
+  montaLinha('Jantar', JANTA, datas) 
+
+} 
+
 const montaCabecalho = (datas) => {
   const thead = document.getElementById('thead')
+  const filhos = thead.childNodes;
+  
+  filhos.forEach(f => {
+    if (f.getAttribute('id') !== "fixo"){
+      thead.removeChild(f)
+    }
+  })
   const tr = document.createElement('TR')
   const th = document.createElement('TH')
   th.innerHTML = "Tipo de refeição"
@@ -189,13 +221,13 @@ const montaCabecalho = (datas) => {
   datas.forEach(data => {
     const th = document.createElement('TH')
     if (data === moment().format('YYYY-MM-DD'))
-      th.style.backgroundColor = '#dedede'
+      th.style.backgroundColor = '#C2EBC9'
     th.innerHTML = `${moment(data).format('DD/MM/YYYY')}`
     tr.appendChild(th)
   })
   thead.appendChild(tr)
 }
- 
+
 const montaLinha = (label, linha, datas) => {
   const tbody = document.getElementById('tbody')
   const tr = document.createElement('TR')
@@ -205,7 +237,7 @@ const montaLinha = (label, linha, datas) => {
   datas.forEach(d => {
     const td = document.createElement('TD')
     if (d === moment().format('YYYY-MM-DD'))
-      td.style.backgroundColor = '#dedede'
+      td.style.backgroundColor = '#C2EBC9'
     const hoje = linha.find(l => l.data === d)
     let ingredientes = []
     if (hoje) ingredientes = hoje.ingredientes
@@ -214,7 +246,7 @@ const montaLinha = (label, linha, datas) => {
     }, "")}</ul>`
     tr.appendChild(td)
   })
- 
+  
   tbody.appendChild(tr)
 }
  
