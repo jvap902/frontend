@@ -15,6 +15,12 @@ foreach($database->query("SELECT * FROM nutricionistas") as $nutricionista){
       "nome" => $nutricionista["nome"],
   ];
 }
+foreach($database->query("SELECT * FROM itens") as $item){
+  $itens[] = [
+      "id" => $item["id"],
+      "descricao" => $item["descricao"],
+  ];
+}
 
 ?>
 <!DOCTYPE html>
@@ -115,7 +121,7 @@ foreach($database->query("SELECT * FROM nutricionistas") as $nutricionista){
                             <?php
                             
                               foreach ($ingredientes as $ing){
-                                echo "<option> {$ing['descricao']} - {$ing['calorias']} calorias por 100g</option>}";
+                                echo "<option value='{$ing['id']}'> {$ing['descricao']} - {$ing['calorias']} calorias por 100g</option>}";
                               }
                             
                             ?>
@@ -168,7 +174,13 @@ foreach($database->query("SELECT * FROM nutricionistas") as $nutricionista){
                       <div class="mb-3">
                         <label for="item" class="form-label">Adicione itens</label>
                         <select class="form-select" id='item_refeicao'>
-                          <option selected value="0"></option>
+                        <?php
+                            
+                            foreach ($itens as $itn){
+                              echo "<option value='{$itn['id']}'> {$itn['id']} - {$itn['descricao']}</option>}";
+                            }
+                          
+                          ?>
                           <!-- pegar do banco  -->
                         </select>
                       </div>
@@ -181,7 +193,7 @@ foreach($database->query("SELECT * FROM nutricionistas") as $nutricionista){
                         <?php
                             
                             foreach ($nutricionistas as $nutri){
-                              echo "<option> {$nutri['nome']} - CRN Nº {$nutri['crn']}</option>}";
+                              echo "<option value='{$nutri['crn']}'> {$nutri['nome']} - CRN Nº {$nutri['crn']}</option>}";
                             }
                           
                           ?>
