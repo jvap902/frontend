@@ -63,7 +63,6 @@ foreach($database->query("SELECT * FROM itens") as $item){
   </div>
   
 
-
   <div class="btn-group " role="group" aria-label="Administre o cardápio">
   <div> <!--div para o botao de cadastrar ingrediente-->
         <button type="button" id="btnCadastraIngrediente" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_ingrediente">Cadastrar ingrediente</button>
@@ -161,8 +160,8 @@ foreach($database->query("SELECT * FROM itens") as $item){
                         <input type="date" class="form-control" name="data" id="data" placeholder="Selecione uma data">
                       </div>
                       <div class="mb-3">
-                        <label for="refeicao" class="form-label">Selecione uma refeição</label>
-                        <select class="form-select">
+                        <label for="tipoRefeicao" class="form-label">Selecione uma refeição</label>
+                        <select class="form-select" id="tipoRefeicao">
                           <option selected value="0"></option>
                           <option value="1">Café da manhã</option>
                           <option value="2">Almoço</option>
