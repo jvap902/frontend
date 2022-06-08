@@ -159,7 +159,7 @@ foreach ($database->query('SELECT * FROM itens') as $item) {
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                    <button id="salvar_item" type="button" class="btn btn-success">Salvar</button>
+                    <button id="salvar_novoItem" type="button" class="btn btn-success">Salvar</button>
                 </div>
             </div>
         </div>
