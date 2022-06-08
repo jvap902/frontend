@@ -38,15 +38,18 @@ onload = async () => {
     })
 
 
-    //const response = await fetch('http://localhost/cardapio_ru/pw3-cardapio_ru-backend/')
-    //console.log(response)
-    //const cardapio = await response.json();
+    const response = await fetch('http://localhost/cardapio_ru/pw3-cardapio_ru-backend/')
+    const cardapio = await response.json();
 
-    cardapio = {
-      CAFE: [{data: '2022-06-06', ingredientes: [{nome: 'Feijão'},{nome: 'Farinha'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}],
+    console.log(cardapio)
+
+    cardapioFormado = {
+      CAFE: [{data: cardapio.cardapios, ingredientes: [cardapio.ingredientes]}],
       ALMOCO: [{data: '2022-05-30', ingredientes: [{nome: 'Feijão'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}],
       JANTA: [{data: '2022-05-30', ingredientes: [{nome: 'Feijão'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}],
     }
+
+    console.log(cardapioFormado)
 
   btnLogar.addEventListener('click', async () => {
     const inputEmail = document.getElementById('email').value
@@ -56,7 +59,7 @@ onload = async () => {
     body.append('email', inputEmail)
     body.append('senha', inputSenha)
 
-    const response = await fetch(/*baseurl*/`../../pw3-cardapio_ru-backend/autenticar.php`, {
+    const response = await fetch(`../../pw3-cardapio_ru-backend/autenticar.php`, {
       method: "POST",
       body
     })
@@ -92,13 +95,14 @@ const montaCardapio = async ($segunda) => {
   }
 
 
-  const {CAFE, ALMOCO, JANTA } = cardapio
+  const {CAFE, NUTRICIONISTACAFE, ALMOCO, JANTA} = cardapioFormado
 
   montaCabecalho(datas)
   const tbody = document.getElementById('tbody')
   tbody.innerHTML = ""
 
   montaLinha('Café da manhã', CAFE, datas) 
+  /* montaLinha('Nutricionista', NUTRICIONISTACAFE, datas) */ 
   montaLinha('Almoço', ALMOCO, datas) 
   montaLinha('Jantar', JANTA, datas) 
 
