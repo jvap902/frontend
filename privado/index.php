@@ -158,7 +158,7 @@ foreach($database->query("SELECT * FROM itens") as $item){
                     <div class="modal-body">
                       <div class="mb-3">
                         <label for="data" class="form-label">Data</label>
-                        <input type="date" class="form-control" name="data" id="data" placeholder="Selecione uma data">
+                        <input type="date" class="form-control" name="data_refeicao" id="data_refeicao" placeholder="Selecione uma data">
                       </div>
                       <div class="mb-3">
                         <label for="tipoRefeicao" class="form-label">Selecione uma refeição</label>

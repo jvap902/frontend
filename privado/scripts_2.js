@@ -12,8 +12,8 @@ const arrayItens = []
  
  
 onload = () => {
-    const token = localStorage.getItem('token')
-    if (token === null) location.href = "../publico/index.php"
+    // const token = localStorage.getItem('token')
+    // if (token === null) location.href = "../publico/index.php"
  
     modal_item = new bootstrap.Modal(document.getElementById('div_item'))
     modal_ingrediente = new bootstrap.Modal(document.getElementById('div_ingrediente'))
@@ -79,11 +79,11 @@ onload = () => {
     })
  
     btnAdicionarRefeicao.addEventListener('click', async () => {
-      const input = document.getElementById('item_refeicao')
+      const input_item_refeicao = document.getElementById('item_refeicao')
      
-      if (input.value !== ''){
-      arrayItens.push(input.value)
-      input.value = ""
+      if (input_item_refeicao.value !== ''){
+      arrayItens.push(input_item_refeicao.value)
+      input_item_refeicao.value = ""
      
       const ul = document.getElementById('itens_adc')
       ul.innerHTML = ""
@@ -96,9 +96,28 @@ onload = () => {
     })
    
     btnSalvarRefeicao.addEventListener('click', async () => {
-      const data = document.getElementById("data").value
-      const refeicao = document.getElementById("tipoRefeicao").value
+      const data = document.getElementById("data_refeicao").value
+      const tipo = document.getElementById("tipoRefeicao").value
       const itens = arrayItens
+      const nutricionista = document.getElementById('nutricionista_refeicao').value
+
+      console.log(data, tipo, itens, nutricionista)
+      
+      const body = new FormData()
+        body.append('data', data)
+        body.append('itens[]', itens)
+        body.append('tipo', tipo)
+        body.append('nutricionista', nutricionista)
+        //body.append('quantidade', gramas) - colocar campo para quantidade de cada ingrediente
+ 
+        const response = await fetch(`${baseUrl}salvarCardapio.php`, {
+            method: "POST",
+            body
+        })
+
+        console.log(response)
+ 
+        modal_item.hide()
     })
  
     btnSalvarNutricionista.addEventListener('click', async ()=> {
