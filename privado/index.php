@@ -70,14 +70,12 @@ foreach ($database->query('SELECT * FROM itens') as $item) {
     <!-- botoes para administrar cardapio  -->
     <div class="btn-group " role="group" aria-label="Administre o cardápio">
 
-    <!-- cadastrar nutricionista  -->
+    <!-- NUTRICIONISTA -->
     <div>
-        <!--div para o botao de cadastrar nutricionista-->
         <button type="button" id="btnCadastraNutricionista" class="btn btn-outline-success" data-bs-toggle="modal"
             data-bs-target="#div_cadastraNutricionista">Cadastrar nutricionista</button>
     </div>
     <div class="modal fade" id="div_cadastraNutricionista" tabindex="-1" aria-labelledby="div_cadastraNutricionistaLabel" aria-hidden="true">
-        <!--Div do formulário de nutricionistas-->
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -108,15 +106,13 @@ foreach ($database->query('SELECT * FROM itens') as $item) {
         </div>
       </div>
 
-        <!-- cadastrar ingrediente  -->
+        <!-- INGREDIENTE -->
         <div>
-            <!--div para o botao de cadastrar ingrediente-->
             <button type="button" id="btnCadastraIngrediente" class="btn btn-outline-success" data-bs-toggle="modal"
                 data-bs-target="#div_cadastraIngrediente">Cadastrar ingrediente
             </button>
         </div>
         <div class="modal fade" id="div_cadastraIngrediente" tabindex="-1" aria-labelledby="div_cadastraIngredienteLabel" aria-hidden="true">
-            <!--Div do formulário de cadastrar ingrediente-->
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -148,14 +144,12 @@ foreach ($database->query('SELECT * FROM itens') as $item) {
         </div>
 
 
-    <!-- cadastrar item  -->
+    <!-- ITEM -->
     <div>
-        <!--div para o botao de cadastrar item-->
         <button type="button" id="btnCadastraItem" class="btn btn-outline-success" data-bs-toggle="modal"
             data-bs-target="#div_cadastraItem">Cadastrar item</button>
     </div>
     <div class="modal fade" id="div_cadastraItem" tabindex="-1" aria-labelledby="div_cadastraItemLabel" aria-hidden="true">
-        <!--Div do fomrulário de item-->
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -195,23 +189,21 @@ foreach ($database->query('SELECT * FROM itens') as $item) {
         </div>
     </div>
 
-    <!-- cadastrar refeição  -->
+    <!-- REFEIÇÃO  -->
     <div>
-        <!--div para o botao de cadastrar refeição-->
         <button type="button" id="btnCadastraRefeicao" class="btn btn-outline-success" data-bs-toggle="modal"
             data-bs-target="#div_cadastraRefeicao">Cadastrar refeição</button>
     </div>
     <div class="modal fade" id="div_cadastraRefeicao" tabindex="-1" aria-labelledby="div_cadastraRefeicaoLabel" aria-hidden="true">
-        <!--Div do formulário de refeicao-->
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="div_itemLabel">Cadastrar Refeição</h5>
+                    <h5 class="modal-title" id="div_cadastraRefeicaoLabel">Cadastrar Refeição</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form method="POST">
-                        <!--formulario de refeição-->
+                        <input type="hidden" id="id_refeicao" />
                         <div class="modal-body">
                             <div class="mb-3">
                                 <label for="data" class="form-label">Data</label>
@@ -367,10 +359,109 @@ foreach ($database->query('SELECT * FROM itens') as $item) {
   </div>
 
   <!-- ITEM  -->
-  <!-- <div>
+  <div>
     <button type="button" id="btnAlteraItem" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_alteraItem">Alterar item</button>
-  </div> -->
+  </div>
+  <div class="modal fade" id="div_alteraItem" tabindex="-1" aria-labelledby="div_alteraItemLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="div_alteraItemLabel">Cadastrar Item</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST">
+                        <input type="hidden" id="id_item" />
+                        <div class="mb-3">
+                            <label for="item" class="form-label">Item</label>
+                            <input type="text" class="form-control" id="item" placeholder="Insira o nome do item"
+                                name="item">
+                        </div>
+                        <div class="mb-3">
+                            <label for="ingrediente" class="form-label">Ingrediente</label>
+                            <select class="form-select" id="ingrediente_item" name="ingrediente_item">
+                                <?php foreach ($ingredientes as $ing) {
+                                echo "<option value='{$ing['id']}'>ID: {$ing['id']} - {$ing['descricao']} - {$ing['calorias']} calorias por 100g</option>}";
+                            } ?>
+                            </select>
+                            <tr></tr>
+                        </div>
+                        <div class="mb-3">
+                            <button type="button" class="btn btn-primary sm" id="adc_ingrediente">Adicionar
+                                ingrediente</button>
+                        </div>
+                    </form>
+                    <ul id="ingredientes_adc">
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                    <button id="alterar_item" type="button" class="btn btn-success">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
+  <!-- REFEIÇÃO  -->
+  <div>
+    <button type="button" id="btnAlteraRefeicao" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_alteraRefeicao">Alterar refeição</button>
+  </div>
+  <div class="modal fade" id="div_alteraRefeicao" tabindex="-1" aria-labelledby="div_alteraRefeicaoLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="div_alteraRefeicaoLabel">Alterar Refeição</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST">
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="data" class="form-label">Data</label>
+                                <input type="date" class="form-control" name="data_refeicao" id="data_refeicao"
+                                    placeholder="Selecione uma data">
+                            </div>
+                            <div class="mb-3">
+                                <label for="tipoRefeicao" class="form-label">Selecione uma refeição</label>
+                                <select class="form-select" id="tipoRefeicao">
+                                    <option selected value="0"></option>
+                                    <option value="1">Café da manhã</option>
+                                    <option value="2">Almoço</option>
+                                    <option value="3">Janta</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="item" class="form-label">Adicione itens</label>
+                                <select class="form-select" id='item_refeicao' name="item_refeicao">
+                                    <?php foreach ($itens as $itn) {
+                            echo "<option value='{$itn['id']}'> {$itn['id']} - {$itn['descricao']}</option>}";
+                        } ?>
+                                    <!-- pegar do banco  -->
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <button type="button" class="btn btn-primary sm" id="adc_item">Adicionar item</button>
+                            </div>
+                            <div class="mb-3">
+                                <label for="nutricionista" class="form-label">Selecione uma nutricionista</label>
+                                <select class="form-select" id="nutricionista_refeicao">
+                                    <?php foreach ($nutricionistas as $nutri) {
+                            echo "<option value='{$nutri['crn']}'> {$nutri['nome']} - CRN Nº {$nutri['crn']}</option>}";
+                        } ?>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                    <ul id="itens_adc">
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                    <button id="alterar_refeicao" type="button" class="btn btn-success">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
   <!-- Pesquisar  -->
