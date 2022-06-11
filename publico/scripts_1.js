@@ -14,7 +14,7 @@ onload = async () => {
     modal = new bootstrap.Modal(document.getElementById('loginModal'))
     btnLogar = document.getElementById("logar")
 
-    const semanaPassada = document.getElementById('prevSemana')
+    /* const semanaPassada = document.getElementById('prevSemana')
     semanaPassada.addEventListener('click', async () =>{ 
       if (!semanaAtual){
         semanaAtual = moment().subtract(moment().day()-1, 'days') 
@@ -23,7 +23,7 @@ onload = async () => {
       
       semanaAtual.subtract('1', 'week')
       
-      await montaCardapio(semanaAtual)
+      //await montaCardapio(semanaAtual)
     })
 
     const proximaSemana = document.getElementById('nextSemana')
@@ -37,12 +37,12 @@ onload = async () => {
       
       await montaCardapio(semanaAtual)
     })
+  */
 
+    //const response = await fetch('http://localhost/cardapio_ru/pw3-cardapio_ru-backend/')
+    //const cardapio = await response.json();
 
-    const response = await fetch('http://localhost/cardapio_ru/pw3-cardapio_ru-backend/')
-    const cardapio = await response.json();
-
-    console.log(cardapio)
+    //console.log(cardapio)
 
     /* const formatado {
       CAFE: [],
@@ -57,13 +57,13 @@ onload = async () => {
       }
     }) */
 
-    cardapioFormado = {
+    /* cardapioFormado = {
       CAFE: [{data: cardapio.cardapios, ingredientes: [cardapio.ingredientes]}],
       ALMOCO: [{data: '2022-05-30', ingredientes: [{nome: 'Feijão'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}],
       JANTA: [{data: '2022-05-30', ingredientes: [{nome: 'Feijão'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}],
-    }
+    } */
 
-    console.log(cardapioFormado)
+    /* console.log(cardapioFormado) */
 /* [x][y]
 y++
     for(i = 0; i < cardapio.cardapios; i ++){
@@ -100,11 +100,11 @@ y++
   
 
   const hoje = moment().subtract(moment().day()-1, 'days') 
-  await montaCardapio(hoje)
+  /*await montaCardapio(hoje)*/
 }
 
 
-const montaCardapio = async ($segunda) => {
+/* const montaCardapio = async ($segunda) => {
   const datas = []
   
   const ini = $segunda.clone()
@@ -171,7 +171,7 @@ const montaLinha = (label, linha, datas) => {
   
   tbody.appendChild(tr)
 }
-
+ */
 
 
 /* {
