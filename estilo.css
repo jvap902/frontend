@@ -45,7 +45,3 @@ table.table-bordered{
   font-family: Verdana;
   color:  #050F07;
 }
-
-#btnCadastraIngrediente, #btnCadastraItem, #btnCadastraRefeicao, #btnClonaCardapio, #btnCadastraNutricionista{
-  margin-right: 10px;
-}

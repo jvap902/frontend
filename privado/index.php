@@ -77,6 +77,48 @@ foreach ($database->query('SELECT * FROM cardapios') as $refeicao) {
       </tbody>
     </table>
     
+<!-- GERENCIAR REFEIÇÕES  -->
+<table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th colspan="6" class="text-center">Gerenciar refeições</th>
+          </tr>
+          <tr>
+            <th scope="col">Dia</th>
+            <th scope="col">Tipo de refeição</th>
+            <th scope="col">CRN nutricionista</th>
+            <th scope="col">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php 
+          if(isset($refeicoes)){
+            foreach ($refeicoes as $refeicao) { ?>
+              <tr>
+                <td><?php echo $refeicao['dia']; ?></td>
+                <td>
+                  <?php if($refeicao['tipo'] == 1){
+                  echo "Café da manhã";
+                  }elseif($refeicao['tipo'] == 2){
+                  echo "Almoço";
+                  }else{
+                  echo "Jantar";} ?>
+                </td>
+                <td><?php echo $refeicao['crn_nutricionista']; ?></td>
+                <td>
+                  <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_alteraRefeicao" data-refeicao="<?php echo $refeicao['id']; ?>">Alterar</button>
+                  <a href="../../pw3-cardapio_ru-backend/removerCardapio.php?id=<?php echo $refeicao['id']; ?>" class="btn btn-outline-danger">Excluir</a>
+                </td>
+              </tr>
+            <?php }
+          } ?>
+          <td colspan="6">
+            <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_cadastraRefeicao">Cadastrar refeição</button>
+            <button type="button" id="btnClonaCardapio" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_clonaCardapio">Clonar refeição</button>
+          </td>
+        </tbody>
+    </table>
+
     <!-- GERENCIAR NUTRICIONISTAS  -->
     <table class="table table-bordered table-hover">
       <thead>
@@ -90,16 +132,20 @@ foreach ($database->query('SELECT * FROM cardapios') as $refeicao) {
         </tr>
       </thead>
       <tbody>
-        <?php foreach ($nutricionistas as $nutricionista) { ?>
-        <tr>
-          <td><?php echo $nutricionista['nome']; ?></td>
-          <td><?php echo $nutricionista['crn']; ?></td>
-          <td>
-            <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_alteraNutricionista" data-nutricionista="<?php echo $nutricionista['crn']; ?>">Alterar</button>
-            <a href="../../pw3-cardapio_ru-backend/removerNutricionista.php?crn=<?php echo $nutricionista['crn']; ?>" class="btn btn-outline-danger">Excluir</a>
-          </td>
-        </tr>
-        <?php } ?>
+        <?php 
+        if(isset($nutricionistas)){
+          foreach ($nutricionistas as $nutricionista) { ?>
+            <tr>
+              <td><?php echo $nutricionista['nome']; ?></td>
+              <td><?php echo $nutricionista['crn']; ?></td>
+              <td>
+                <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_alteraNutricionista" data-nutricionista="<?php echo $nutricionista['crn']; ?>">Alterar</button>
+                <a href="../../pw3-cardapio_ru-backend/removerNutricionista.php?crn=<?php echo $nutricionista['crn']; ?>" class="btn btn-outline-danger">Excluir</a>
+              </td>
+            </tr>
+          <?php
+          }
+         } ?>
         <td colspan="6">
           <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_cadastraNutricionista">Cadastrar nutricionista</button>
         </td>
@@ -118,16 +164,19 @@ foreach ($database->query('SELECT * FROM cardapios') as $refeicao) {
         </tr>
       </thead>
       <tbody>
-        <?php foreach ($ingredientes as $ingrediente) { ?>
-        <tr>
-          <td><?php echo $ingrediente['descricao']; ?></td>
-          <td><?php echo $ingrediente['calorias']; ?></td>
-          <td>
-            <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_alteraIngrediente" data-item="<?php echo $ingrediente['id']; ?>">Alterar</button>
-            <a href="../../pw3-cardapio_ru-backend/removerIngrediente.php?id=<?php echo $ingrediente['id']; ?>" class="btn btn-outline-danger">Excluir</a>
-          </td>
-        </tr>
-        <?php } ?>
+        <?php 
+        if(isset($ingredientes)){
+          foreach ($ingredientes as $ingrediente) { ?>
+            <tr>
+              <td><?php echo $ingrediente['descricao']; ?></td>
+              <td><?php echo $ingrediente['calorias']; ?></td>
+              <td>
+                <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_alteraIngrediente" data-item="<?php echo $ingrediente['id']; ?>">Alterar</button>
+                <a href="../../pw3-cardapio_ru-backend/removerIngrediente.php?id=<?php echo $ingrediente['id']; ?>" class="btn btn-outline-danger">Excluir</a>
+              </td>
+            </tr>
+          <?php }
+         } ?>
         <td colspan="6">
           <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_cadastraIngrediente">Cadastrar ingrediente</button>
         </td>
@@ -147,50 +196,22 @@ foreach ($database->query('SELECT * FROM cardapios') as $refeicao) {
         </tr>
       </thead>
       <tbody>
-        <?php foreach ($itens as $item) { ?>
-        <tr>
-          <td><?php echo $item['descricao']; ?></td>
-          <td><?php echo $item['calorias']; ?></td>
-          <td>
-            <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_alteraItem" data-item="<?php echo $item['id']; ?>">Alterar</button>
-            <a href="../../pw3-cardapio_ru-backend/removerItem.php?id=<?php echo $item['id']; ?>" class="btn btn-outline-danger">Excluir</a>
-          </td>
-        </tr>
-        <?php } ?>
+        <?php 
+        if(isset($itens)){
+          foreach ($itens as $item) { ?>
+            <tr>
+              <td><?php echo $item['descricao']; ?></td>
+              <td><?php echo $item['calorias']; ?></td>
+              <td>
+                <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_alteraItem" data-item="<?php echo $item['id']; ?>">Alterar</button>
+                <a href="../../pw3-cardapio_ru-backend/removerItem.php?id=<?php echo $item['id']; ?>" class="btn btn-outline-danger">Excluir</a>
+              </td>
+            </tr>
+            <?php }
+         } ?>
         <td colspan="6">
           <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_cadastraItem">Cadastrar item</button>
         </td>
-    </table>
-
-    <!-- GERENCIAR REFEIÇÕES  -->
-    <table class="table table-bordered table-hover">
-        <thead>
-          <tr>
-            <th colspan="6" class="text-center">Gerenciar refeições</th>
-          </tr>
-          <tr>
-            <th scope="col">Dia</th>
-            <th scope="col">Tipo de refeição</th>
-            <th scope="col">CRN nutricionista</th>
-            <th scope="col">Ações</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php foreach ($refeicoes as $refeicao) { ?>
-          <tr>
-            <td><?php echo $refeicao['dia']; ?></td>
-            <td><?php echo $refeicao['tipo']; ?></td>
-            <td><?php echo $refeicao['crn_nutricionista']; ?></td>
-            <td>
-              <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_alteraRefeicao" data-refeicao="<?php echo $refeicao['id']; ?>">Alterar</button>
-              <a href="../../pw3-cardapio_ru-backend/removerRefeicao.php?id=<?php echo $refeicao['id']; ?>" class="btn btn-outline-danger">Excluir</a>
-            </td>
-          </tr>
-          <?php } ?>
-          <td colspan="6">
-            <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_cadastraRefeicao">Cadastrar refeição</button>
-          </td>
-        </tbody>
     </table>
 
   </div>
@@ -305,10 +326,6 @@ foreach ($database->query('SELECT * FROM cardapios') as $refeicao) {
     </div>
 
     <!-- CADASTRAR REFEIÇÃO  -->
-    <div>
-        <button type="button" id="btnCadastraRefeicao" class="btn btn-outline-success" data-bs-toggle="modal"
-            data-bs-target="#div_cadastraRefeicao">Cadastrar refeição</button>
-    </div>
     <div class="modal fade" id="div_cadastraRefeicao" tabindex="-1" aria-labelledby="div_cadastraRefeicaoLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -368,10 +385,6 @@ foreach ($database->query('SELECT * FROM cardapios') as $refeicao) {
     </div>
     
     <!-- CLONAR CARDÁPIO  -->
-    <div>
-        <!--div para o botao de clonar cardápio-->
-        <button type="button" id="btnClonaCardapio" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_clonaCardapio">Clonar cardápio</button>
-    </div>
     <div class="modal fade" id="div_clonaCardapio" tabindex="-1" aria-labelledby="div_clonaCardapioLabel"
         aria-hidden="true">
         <!--Div do formulário de clonar cardápio-->
@@ -507,9 +520,6 @@ foreach ($database->query('SELECT * FROM cardapios') as $refeicao) {
     </div>
 
   <!-- ALTERAR REFEIÇÃO  -->
-  <div>
-    <button type="button" id="btnAlteraRefeicao" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_alteraRefeicao">Alterar refeição</button>
-  </div>
   <div class="modal fade" id="div_alteraRefeicao" tabindex="-1" aria-labelledby="div_alteraRefeicaoLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
