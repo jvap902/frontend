@@ -32,8 +32,8 @@ onload = async () => {
     modal_cadastra_refeicao = new bootstrap.Modal(document.getElementById('div_cadastraRefeicao'))
     //modais de alteração
     modal_altera_ingerdiente = new bootstrap.Modal(document.getElementById('div_alteraIngrediente'))
-    modal_altera_item = new bootstrap.Modal(document.getElementById('div_alteraItem'))
-    modal_altera_refeicao = new bootstrap.Modal(document.getElementById('div_alteraRefeicao'))
+    // modal_altera_item = new bootstrap.Modal(document.getElementById('div_alteraItem'))
+    // modal_altera_refeicao = new bootstrap.Modal(document.getElementById('div_alteraRefeicao'))
     modal_altera_nutricionista = new bootstrap.Modal(document.getElementById('div_alteraNutricionista'))
     //botoes
     btnAdicionarIngrediente = document.getElementById("adc_ingrediente")
@@ -42,10 +42,10 @@ onload = async () => {
     //botoes cadastro    
     btnSalvarNovoIngediente = document.getElementById("salvar_novoIngrediente")
     btnSalvarNovoItem = document.getElementById('salvar_novoItem')
-    btnSalvarNovoRefeicao = document.getElementById("salvar_novaRefeicao")
+    btnSalvarNovaRefeicao = document.getElementById("salvar_novaRefeicao")
     btnSalvarNovoNutricionista = document.getElementById("salvar_novoNutricionista")
     //botoes alteracao
-    btnSalvarAlteracaoIngrediente = document.getElementById('')
+    btnSalvarAlteracaoIngrediente = document.getElementById('alterar_ingrediente')
     btnSalvarAlteracaoItem = document.getElementById('')
     btnSalvarAlteracaoRefeicao = document.getElementById('')
     btnSalvarAlteracaoNutricionista = document.getElementById('')
@@ -53,28 +53,29 @@ onload = async () => {
     //logout
     btnLogout.addEventListener('click', logout)
  
-    //ingrediente
+    ingrediente
 
-  //   btnAlterarIngrediente.addEventListener('click', async () => {
-  //     toggleButton(btnAlterar)
-  //     const ingrediente = document.getElementById("nome").value
-  //     const calorias = document.getElementById("sobrenome").value
-  //     const id = document.getElementById('id').value
+    btnSalvarAlteracaoIngrediente.addEventListener('click', async () => {
+      toggleButton(btnAlterar)
+      const ingrediente_lista = document.getElementById("ingrediente_lista").value
+      const calorias_lista = document.getElementById("calorias_lista").value
+      const id_ingrediente_lista = document.getElementById('id_ingrediente_lista').value
 
-  //     const body = new FormData()
-  //     body.append('ingrediente', ingrediente)
-  //     body.append('calorias', calorias)
+      const body = new FormData()
+      body.append('ingrediente_lista', ingrediente_lista)
+      body.append('calorias_lista', calorias_lista)
+      body.append('id_ingrediente_lista', id_ingrediente_lista)
 
-  //     const response = await fetch(`${baseUrl}alterarIngrediente.php?id=${id}`, {
-  //         method: "POST",
-  //         body
-  //     })
-  //     const ingrediente_linha = await response.json()
-  //     atualizarLinha(ingrediente_linha)
+      const response = await fetch(`${baseUrl}alterarIngrediente.php?id=${id}`, {
+          method: "POST",
+          body
+      })
+      const ingrediente_linha = await response.json()
+      atualizarLinha(ingrediente_linha)
 
-  //     modal.hide();
-  //     toggleButton(btnAlterarIngrediente)
-  // })
+      modal.hide();
+      toggleButton(btnAlterarIngrediente)
+  })
 
 
     btnSalvarNovoIngediente.addEventListener('click', async () => {
@@ -96,13 +97,19 @@ onload = async () => {
     
  
     //item
-    btnSalvarItem.addEventListener('click', async () => {
+    btnSalvarNovoItem.addEventListener('click', async () => {
       const item = document.getElementById("item").value
       const ingrediente_item = arrayIngredientes
+
+      const ingrediente_item_num = ingrediente_item.map(function (x) {
+        return parseInt(x, 10)
+      })
  
+      console.log(item, ingrediente_item_num)
+
       const body = new FormData()
         body.append('item', item)
-        body.append('ingrediente_item[]', ingrediente_item)
+        body.append('ingrediente_item_num[]', ingrediente_item_num)
         //body.append('quantidade', gramas) - colocar campo para quantidade de cada ingrediente
  
         const response = await fetch(`${baseUrl}salvarItens.php`, {
@@ -148,7 +155,7 @@ onload = async () => {
  
     })
    
-    btnSalvarRefeicao.addEventListener('click', async () => {
+    btnSalvarNovaRefeicao.addEventListener('click', async () => {
       const data = document.getElementById("data_refeicao").value
       const tipo = document.getElementById("tipoRefeicao").value
       const itens = arrayItens
@@ -172,7 +179,7 @@ onload = async () => {
     })
  
     //nutricionista
-    btnSalvarNutricionista.addEventListener('click', async ()=> {
+    btnSalvarNovoNutricionista.addEventListener('click', async ()=> {
       const nome = document.getElementById("nome_nutricionista").value
       const crn = document.getElementById("crn").value
  
@@ -317,7 +324,7 @@ const  criarLinha = ({id, ingrediente, calorias}) => {
   <td>${calorias}</td>`
 
   const AlteraIngrediente = novoBotao('warning', 'pencil', () => {
-      preencheFormulario(id, ingrediente, calorias)
+      preencheFormularioIngrediente(id, ingrediente, calorias)
       btnAlterarIngrediente.style.display = 'inline'
       btnSalvarAlteracaoIngrediente.style.display = 'none'
       modal.show()
@@ -354,3 +361,13 @@ const novoBotao = (color, icon, cb, label = "") => {
   btn.addEventListener('click', cb)
   return btn
 }
+
+// const preencheFormularioIngrediente = (id_ingrediente_alterar = "", ingrediente_alterar = "", calorias_alterar = "") => {
+//   const id_ingrediente_alterar = document.getElementById('id_ingrediente_lista')
+//   const ingrediente_alterar = document.getElementById('ingrediente_lista')
+//   const calorias_alterar = document.getElementById('calorias_lista')
+
+//   id_ingrediente_alterar.value = id
+//   ingrediente_alterar.value = ingrediente
+//   calorias_alterar.value = calorias
+// }
