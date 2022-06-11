@@ -299,8 +299,8 @@ foreach ($database->query('SELECT * FROM itens') as $item) {
     </div>
     
   <!-- Modals de alteração  -->
-
-  <div> <!--div para o botao de alterar nutricionista-->
+  <!-- NUTRICIONISTA  -->
+  <div> 
     <button type="button" id="btnAlteraNutricionista" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_alteraNutricionista">Alterar nutricionoista</button>
   </div>
   <div class="modal fade" id="div_alteraNutricionista" tabindex="-1" aria-labelledby="div_cadastraNutricionistaLabel" aria-hidden="true">
@@ -328,13 +328,14 @@ foreach ($database->query('SELECT * FROM itens') as $item) {
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                    <button id="salvar_novoNutricionista" type="button" class="btn btn-success">Salvar</button>
+                    <button id="alterar_nutricionista" type="button" class="btn btn-success">Salvar</button>
                 </div>
             </div>
       </div>
   </div>
 
-  <div> <!--div para o botao de alterar ingrediente-->
+  <!-- INGREDIENTE  -->
+  <div>
     <button type="button" id="btnAlteraIngrediente" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_alteraIngrediente">Alterar ingrediente</button>
   </div>
   <div class="modal fade" id="div_alteraIngrediente" tabindex="-1" aria-labelledby="div_alteraIngredienteLabel" aria-hidden="true">
@@ -359,11 +360,18 @@ foreach ($database->query('SELECT * FROM itens') as $item) {
      </div>
      <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-        <button id="salvar_novoIngrediente" type="button" class="btn btn-success">Salvar</button>
+        <button id="alterar_ingrediente" type="button" class="btn btn-success">Salvar</button>
       </div>
       </div>
      </div>
   </div>
+
+  <!-- ITEM  -->
+  <!-- <div>
+    <button type="button" id="btnAlteraItem" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_alteraItem">Alterar item</button>
+  </div> -->
+
+
 
   <!-- Pesquisar  -->
     <div class="modal fade" id="pesquisaModal" tabindex="-1" aria-labelledby="pesquisaModalLabel" aria-hidden="true">
