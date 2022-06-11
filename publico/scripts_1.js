@@ -114,14 +114,14 @@ const montaCardapio = async ($segunda) => {
   }
 
 
-  const {CAFE, NUTRICIONISTACAFE, ALMOCO, JANTA} = cardapioFormado
+  const {CAFE, NUTRICIONISTA, CAFE, ALMOCO, JANTA} = cardapioFormado
 
   montaCabecalho(datas)
   const tbody = document.getElementById('tbody')
   tbody.innerHTML = ""
 
   montaLinha('Café da manhã', CAFE, datas) 
-  /* montaLinha('Nutricionista', NUTRICIONISTACAFE, datas) */ 
+  // montaLinha('Nutricionista', NUTRICIONISTACAFE, datas)
   montaLinha('Almoço', ALMOCO, datas) 
   montaLinha('Jantar', JANTA, datas) 
 

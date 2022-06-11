@@ -22,14 +22,9 @@ let cardapio
  
  
 onload = async () => {
-    const token = localStorage.getItem('token')
-    if (token === null) location.href = "../publico/index.php"
- 
-    //modais de listagem
-    modal_ingrediente = new bootstrap.Modal(document.getElementById('div_gerenciarIngrediente'))
-    modal_item = new bootstrap.Modal(document.getElementById('div_gerenciarItem'))
-    modal_nutricionista = new bootstrap.Modal(document.getElementById('div_gerenciarNutricionista'))
-    modal_refeicao = new bootstrap.Modal(document.getElementById('div_gerenciarRefeicao'))
+    // const token = localStorage.getItem('token')
+    // if (token === null) location.href = "../publico/index.php"
+
     //modais de cadastro
     modal_cadastra_ingrediente = new bootstrap.Modal(document.getElementById('div_cadastraIngrediente'))
     modal_cadastra_item = new bootstrap.Modal(document.getElementById('div_cadastraItem'))
@@ -44,10 +39,10 @@ onload = async () => {
     btnAdicionarIngrediente = document.getElementById("adc_ingrediente")
     btnLogout = document.getElementById("navLogout")
     btnAdicionarItemRefeicao = document.getElementById("adc_item")
-    //botoes cadastro
+    //botoes cadastro    
+    btnSalvarNovoIngediente = document.getElementById("salvar_novoIngrediente")
     btnSalvarNovoItem = document.getElementById('salvar_novoItem')
     btnSalvarNovoRefeicao = document.getElementById("salvar_novaRefeicao")
-    btnSalvarNovoIngediente = document.getElementById("salvar_novoIngrediente")
     btnSalvarNovoNutricionista = document.getElementById("salvar_novoNutricionista")
     //botoes alteracao
     btnSalvarAlteracaoIngrediente = document.getElementById('')
@@ -59,9 +54,28 @@ onload = async () => {
     btnLogout.addEventListener('click', logout)
  
     //ingrediente
-    btnSalvarAlteracaoIngrediente.addEventListener('click', async () => {
 
-    })
+  //   btnAlterarIngrediente.addEventListener('click', async () => {
+  //     toggleButton(btnAlterar)
+  //     const ingrediente = document.getElementById("nome").value
+  //     const calorias = document.getElementById("sobrenome").value
+  //     const id = document.getElementById('id').value
+
+  //     const body = new FormData()
+  //     body.append('ingrediente', ingrediente)
+  //     body.append('calorias', calorias)
+
+  //     const response = await fetch(`${baseUrl}alterarIngrediente.php?id=${id}`, {
+  //         method: "POST",
+  //         body
+  //     })
+  //     const ingrediente_linha = await response.json()
+  //     atualizarLinha(ingrediente_linha)
+
+  //     modal.hide();
+  //     toggleButton(btnAlterarIngrediente)
+  // })
+
 
     btnSalvarNovoIngediente.addEventListener('click', async () => {
       const ingrediente = document.getElementById("ingrediente").value
@@ -285,7 +299,7 @@ const montaLinha = (label, linha, datas) => {
   
   tbody.appendChild(tr)
 }
- 
+
 // const cadastra_item = (id_item = "", item = "", arrayIngredientes = ""/*??*/) =>{
 //   const itemInput = document.getElementById('item')
 //   const ingredientesInput = document.getElementById('ingrediente_item')
@@ -295,3 +309,48 @@ const montaLinha = (label, linha, datas) => {
 //   ingredientesInput.value = arrayIngredientes //?
 //   id_itemInput.value = id_item
 // }
+
+const  criarLinha = ({id, ingrediente, calorias}) => {
+  const tr = document.createElement("TR")
+  tr.setAttribute('id', id)
+  tr.innerHTML = `<td>${ingrediente}</td>
+  <td>${calorias}</td>`
+
+  const AlteraIngrediente = novoBotao('warning', 'pencil', () => {
+      preencheFormulario(id, ingrediente, calorias)
+      btnAlterarIngrediente.style.display = 'inline'
+      btnSalvarAlteracaoIngrediente.style.display = 'none'
+      modal.show()
+  })
+  
+  const DeletaIngrediente = novoBotao('danger', 'trash', async () => {
+      toggleLoading()
+      const response = await fetch(`${baseUrl}removerIngrediente.php?id=${id}`,{
+          method: "DELETE"
+      })
+      await response.json()
+      
+      // await carregaPessoas()
+      const [tbody] = document.getElementsByTagName('tbody')
+      tbody.childNodes.forEach(tr=> {
+          if (tr.getAttribute('id') == id) 
+              tbody.removeChild(tr)
+      })
+      toggleLoading()
+  })
+
+  const td = document.createElement("TD")
+  td.appendChild(AlteraIngrediente)
+  td.appendChild(DeletaIngrediente)
+  tr.appendChild(td)
+  return tr;
+}
+
+const novoBotao = (color, icon, cb, label = "") => {
+  const btn = document.createElement("BUTTON")
+  btn.setAttribute('type','button')
+  btn.setAttribute('class', `btn btn-${color} btn-sm`)
+  btn.innerHTML = `<i class='fa-solid fa-${icon}'></i> ${label}`
+  btn.addEventListener('click', cb)
+  return btn
+}
