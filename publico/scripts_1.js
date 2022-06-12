@@ -39,12 +39,12 @@ onload = async () => {
     })
   
 
-    const response = await fetch('http://localhost/cardapio_ru/pw3-cardapio_ru-backend/')
+    const response = await fetch('//localhost/arquivosphp/cardapio_ru/pw3-cardapio_ru-backend/')
     const cardapio = await response.json();
 
-    console.log(cardapio)
+    console.log(cardapio) 
 
-    /*  const formatado {
+       const formatado = {
       CAFE: [],
       ALMOCO: [],
       JANTA: []
@@ -55,7 +55,7 @@ onload = async () => {
         case "ALMOCO":    formatado.ALMOCO.push(c); break;
         case "JANTA":    formatado.JANTA.push(c); break;
       }
-    }) */
+    }) 
 
      cardapioFormado = {
       CAFE: [{data: cardapio.cardapios, ingredientes: [cardapio.ingredientes]}],
@@ -109,7 +109,7 @@ onload = async () => {
   }
 
 
-  const {CAFE, NUTRICIONISTA, ALMOCO, JANTA} = cardapioFormado
+  const {CAFE, /* NUTRICIONISTA, */ ALMOCO, JANTA} = cardapioFormado
 
   montaCabecalho(datas)
   const tbody = document.getElementById('tbody')
