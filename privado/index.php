@@ -430,15 +430,15 @@ foreach ($database->query('SELECT * FROM cardapios') as $refeicao) {
                 </div>
                 <div class="modal-body">
                     <form method="POST">
-                        <input type="hidden" id="id_nutricionista" />
+                        <input type="hidden" id="id_nutricionista_lista" />
                         <div class="mb-3">
-                            <label for="nome" class="form-label">Nome</label>
-                            <input type="text" class="form-control" id="nome_nutricionista" placeholder="Insira o nome da nutricionista" name="nome"
+                            <label for="nome_nutricionista_lista" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="nome_nutricionista_lista" placeholder="Insira o nome da nutricionista" name="nome_nutricionista_lista"
                             value="<?php echo $nutricionista['nome']; ?>">
                         </div>
                         <div class="mb-3">
-                            <label for="crn" class="form-label">CRN</label>
-                            <input type="number" class="form-control" id="crn" name="crn" placeholder="Insira o CRN"  value="<?php echo $nutricionista['crn']; ?>">
+                            <label for="crn_lista" class="form-label">CRN</label>
+                            <input type="number" class="form-control" id="crn_lista" name="crn_lista" placeholder="Insira o CRN"  value="<?php echo $nutricionista['crn']; ?>">
                             <tr></tr>
                         </div>
                     </form>
@@ -463,12 +463,12 @@ foreach ($database->query('SELECT * FROM cardapios') as $refeicao) {
       <form method="POST">
       <input type="hidden" id="id_ingrediente_lista" />
       <div class="mb-3">
-        <label for="ingrediente" class="form-label">Ingrediente</label>
+        <label for="ingrediente_lista" class="form-label">Ingrediente</label>
         <input type="text" class="form-control" id="ingrediente_lista" placeholder="Insira o nome do Ingrediente" name="ingrediente" value="<?php echo $ingrediente['descricao'] ?>">
       </div>
       <div class="mb-3">
-        <label for="calorias" class="form-label">Quantidade de calorias em 100g do ingrediente</label>
-        <input type="number" class="form-control" id="calorias_lista" placeholder="Insira a quantidade de calorias" name="calorias" value="<?php echo $ingrediente['calorias'] ?>">
+        <label for="calorias_lista" class="form-label">Quantidade de calorias em 100g do ingrediente</label>
+        <input type="number" class="form-control" id="calorias_lista" placeholder="Insira a quantidade de calorias" name="calorias_lista" value="<?php echo $ingrediente['calorias'] ?>">
       </div>
      </form>
      </div>
@@ -490,15 +490,15 @@ foreach ($database->query('SELECT * FROM cardapios') as $refeicao) {
                 </div>
                 <div class="modal-body">
                     <form method="POST">
-                        <input type="hidden" id="id_item" />
+                        <input type="hidden" id="id_item_lista" />
                         <div class="mb-3">
-                            <label for="item" class="form-label">Item</label>
-                            <input type="text" class="form-control" id="item" placeholder="Insira o nome do item"name="item" 
+                            <label for="item_lista" class="form-label">Item</label>
+                            <input type="text" class="form-control" id="item_lista" placeholder="Insira o nome do item"name="item_lista" 
                             value="<?php echo $item['descricao'] ?>">
                         </div>
                         <div class="mb-3">
-                            <label for="ingrediente" class="form-label">Ingrediente</label>
-                            <select class="form-select" id="ingrediente_item" name="ingrediente_item">
+                            <label for="ingrediente_item_lista" class="form-label">Ingrediente</label>
+                            <select class="form-select" id="ingrediente_item_lista" name="ingrediente_item_lista">
                                 <?php foreach ($ingredientes as $ing) {
                                 echo "<option value='{$ing['id']}'>ID: {$ing['id']} - {$ing['descricao']} - {$ing['calorias']} calorias por 100g</option>}";
                             } ?>
@@ -533,12 +533,12 @@ foreach ($database->query('SELECT * FROM cardapios') as $refeicao) {
                     <form method="POST">
                         <div class="modal-body">
                             <div class="mb-3">
-                                <label for="data" class="form-label">Data</label>
-                                <input type="date" class="form-control" name="data_refeicao" id="data_refeicao" placeholder="Selecione uma data" value="<?php echo $refeicao['dia'] ?>">
+                                <label for="data_refeicao_lista" class="form-label">Data</label>
+                                <input type="date" class="form-control" name="data_refeicao_lista" id="data_refeicao_lista" placeholder="Selecione uma data" value="<?php echo $refeicao['dia'] ?>">
                             </div>
                             <div class="mb-3">
-                                <label for="tipoRefeicao" class="form-label">Selecione uma refeição</label>
-                                <select class="form-select" id="tipoRefeicao">
+                                <label for="tipoRefeicao_lista" class="form-label">Selecione uma refeição</label>
+                                <select class="form-select" id="tipoRefeicao_lista">
                                     <option selected value="<?php echo $refeicao['tipo']?>">
                                     <?php if($refeicao['tipo'] == 1){
                                             echo "Café da manhã";
@@ -553,8 +553,8 @@ foreach ($database->query('SELECT * FROM cardapios') as $refeicao) {
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label for="item" class="form-label">Adicione itens</label>
-                                <select class="form-select" id='item_refeicao' name="item_refeicao">
+                                <label for="item_lista" class="form-label">Adicione itens</label>
+                                <select class="form-select" id='item_refeicao_lista' name="item_refeicao_lista">
                                     <?php foreach ($itens as $itn) {
                                         echo "<option value='{$itn['id']}'> {$itn['id']} - {$itn['descricao']}</option>}";
                                     } ?>
@@ -564,8 +564,8 @@ foreach ($database->query('SELECT * FROM cardapios') as $refeicao) {
                                 <button type="button" class="btn btn-primary sm" id="adc_item">Adicionar item</button>
                             </div>
                             <div class="mb-3">
-                                <label for="nutricionista" class="form-label">Selecione uma nutricionista</label>
-                                <select class="form-select" id="nutricionista_refeicao">
+                                <label for="nutricionista_refeicao_lista" class="form-label">Selecione uma nutricionista</label>
+                                <select class="form-select" id="nutricionista_refeicao_lista">
                                     <option selected value="<?php echo $refeicao['id_nutricionista']?>"><?php echo $refeicao['id_nutricionista']?></option>
                                     <?php foreach ($nutricionistas as $nutricionista) {
                                     echo "<option value='{$nutricionista['id']}'> {$nutricionista['nome']} - CRN Nº {$nutricionista['crn']} - ID {$nutricionista['id']}</option>}";
