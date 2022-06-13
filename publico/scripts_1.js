@@ -39,7 +39,7 @@ onload = async () => {
     })
   
 
-    const response = await fetch('//localhost/arquivosphp/cardapio_ru/pw3-cardapio_ru-backend/')
+    const response = await fetch('//localhost/cardapio_ru/pw3-cardapio_ru-backend/')
     const cardapio = await response.json();
 
     console.log(cardapio) 
