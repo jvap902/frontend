@@ -26,7 +26,7 @@ foreach ($database->query('SELECT * FROM cardapios') as $refeicao) {
     $refeicoes[] = [
       'id' => $refeicao['id'],
       'dia' => $refeicao['dia'],
-      'crn_nutricionista' => $refeicao['crn_nutricionista'],
+      'id_nutricionista' => $refeicao['id_nutricionista'],
       'tipo' => $refeicao['tipo']
     ];
 }
@@ -70,7 +70,7 @@ foreach ($database->query('SELECT * FROM cardapios') as $refeicao) {
     <!-- CARDAPIO  -->
     <table class="table table-bordered table-hover" id="cardapio">
       <thead id="thead"><tr id="fixo">
-          <th colspan="6" class="text-center" id="semana"><button id="prevSemana" class="btn btn-outline-success"><img src="http://cdn.onlinewebfonts.com/svg/img_72245.png" width="23"></button>Semana<button id="nextSemana" class="btn btn-outline-success"><img src="https://cdn0.iconfinder.com/data/icons/arrows-volume-6/48/322-512.png" width="25"></button></th>
+          <th colspan="6" class="text-center" id="semana"><button id="prevSemana" class="btn btn-outline-success"><img src="http://cdn.onlinewebfonts.com/svg/img_72245.png" width="23"></button>Cardápio da semana<button id="nextSemana" class="btn btn-outline-success"><img src="https://cdn0.iconfinder.com/data/icons/arrows-volume-6/48/322-512.png" width="25"></button></th>
         </tr></thead>
       <tbody id="tbody">
         
@@ -81,12 +81,12 @@ foreach ($database->query('SELECT * FROM cardapios') as $refeicao) {
 <table class="table table-bordered table-hover">
         <thead>
           <tr>
-            <th colspan="6" class="text-center">Gerenciar refeições</th>
+            <th colspan="6" class="text-center" id="thRefeicoes">Gerenciar refeições</th>
           </tr>
           <tr>
             <th scope="col">Dia</th>
             <th scope="col">Tipo de refeição</th>
-            <th scope="col">CRN nutricionista</th>
+            <th scope="col">ID nutricionista</th>
             <th scope="col">Ações</th>
           </tr>
         </thead>
@@ -104,17 +104,18 @@ foreach ($database->query('SELECT * FROM cardapios') as $refeicao) {
                   }else{
                   echo "Jantar";} ?>
                 </td>
-                <td><?php echo $refeicao['crn_nutricionista']; ?></td>
+                <td><?php echo $refeicao['id_nutricionista']; ?></td>
                 <td>
                   <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_alteraRefeicao" data-refeicao="<?php echo $refeicao['id']; ?>">Alterar</button>
                   <a href="../../pw3-cardapio_ru-backend/removerCardapio.php?id=<?php echo $refeicao['id']; ?>" class="btn btn-outline-danger">Excluir</a>
+                  <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#div_clonaCardapio" data-refeicao="<?php echo $refeicao['id']; ?>">Clonar</button>
                 </td>
               </tr>
             <?php }
           } ?>
           <td colspan="6">
             <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_cadastraRefeicao">Cadastrar refeição</button>
-            <button type="button" id="btnClonaCardapio" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_clonaCardapio">Clonar refeição</button>
+            <!-- <button type="button" id="btnClonaCardapio" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_clonaCardapio">Clonar refeição</button> -->
           </td>
         </tbody>
     </table>
@@ -123,11 +124,11 @@ foreach ($database->query('SELECT * FROM cardapios') as $refeicao) {
     <table class="table table-bordered table-hover">
       <thead>
         <tr>
-        <th colspan="6" class="text-center">Gerenciar nutricionistas</th>
+        <th colspan="6" class="text-center" id="thNutricionistas">Gerenciar nutricionistas</th>
         </tr>
         <tr>
           <th scope="col">Nome</th>
-          <th scope="col">CNPJ</th>
+          <th scope="col">CRN</th>
           <th scope="col">Ações</th>
         </tr>
       </thead>
@@ -155,7 +156,7 @@ foreach ($database->query('SELECT * FROM cardapios') as $refeicao) {
     <table class="table table-bordered table-hover">
       <thead>
         <tr>
-        <th colspan="6" class="text-center">Gerenciar ingredientes</th>
+        <th colspan="6" class="text-center" id="thIngredientes">Gerenciar ingredientes</th>
         </tr>
         <tr>
           <th scope="col">Descrição</th>
@@ -187,7 +188,7 @@ foreach ($database->query('SELECT * FROM cardapios') as $refeicao) {
     <table class="table table-bordered table-hover">
       <thead>
         <tr>
-          <th colspan="6" class="text-center">Gerenciar itens</th>
+          <th colspan="6" class="text-center" id="thItens">Gerenciar itens</th>
         </tr>
         <tr>
           <th scope="col">Descrição</th>
@@ -397,11 +398,11 @@ foreach ($database->query('SELECT * FROM cardapios') as $refeicao) {
                 <div class="modal-body">
                     <form method="POST">
                         <input type="hidden" id="id_clonaCardapio" />
-                        <div class="mb-3">
+                        <!-- <div class="mb-3">
                             <label for="cardapioClonado" class="form-label">Data do cardápio a ser clonado</label>
                             <input type="date" class="form-control" name="cardapioClonado" id="cardapioClonado"
                                 placeholder="Selecione uma data para clonar">
-                        </div>
+                        </div> -->
                         <div class="mb-3">
                             <label for="cardapioNovo" class="form-label">Data do cardápio novo</label>
                             <input type="date" class="form-control" name="cardapioNovo" id="cardapioNovo"
@@ -431,12 +432,12 @@ foreach ($database->query('SELECT * FROM cardapios') as $refeicao) {
                         <input type="hidden" id="id_nutricionista" />
                         <div class="mb-3">
                             <label for="nome" class="form-label">Nome</label>
-                            <input type="text" class="form-control" id="nome_nutricionista"
-                                placeholder="Insira o nome da nutricionista" name="nome">
+                            <input type="text" class="form-control" id="nome_nutricionista" placeholder="Insira o nome da nutricionista" name="nome"
+                            value="<?php echo $nutricionista['nome']; ?>">
                         </div>
                         <div class="mb-3">
                             <label for="crn" class="form-label">CRN</label>
-                            <input type="number" class="form-control" id="crn" name="crn" placeholder="Insira o CRN">
+                            <input type="number" class="form-control" id="crn" name="crn" placeholder="Insira o CRN"  value="<?php echo $nutricionista['crn']; ?>">
                             <tr></tr>
                         </div>
                     </form>

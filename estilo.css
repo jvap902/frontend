@@ -33,6 +33,8 @@ h2{
 #tabelas{
   margin-top: 5%;
   font-family: Verdana;
+  margin-right: 1%;
+  margin-left: 1%;
 } 
  
 table.table-bordered{
@@ -44,4 +46,8 @@ table.table-bordered{
   border-width: 2px;
   font-family: Verdana;
   color:  #050F07;
+}
+
+#thRefeicoes, #thNutricionistas, #thIngredientes, #thItens{
+ background-color: #C2EBC9 ;
 }
