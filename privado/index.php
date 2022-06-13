@@ -60,7 +60,7 @@ foreach ($database->query('SELECT * FROM cardapios') as $refeicao) {
                 data-bs-target="#pesquisaModal">Pesquisa <img
                     src="https://www.iconpacks.net/icons/2/free-search-icon-2903-thumb.png" width="20" /></button>
             <button id="navLogout" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#logoutModal">
-                <img src="https://moodle.bento.ifrs.edu.br/theme/image.php/academi/core/1652445467/u/f1" width="20" />
+                <!-- <img src="https://moodle.bento.ifrs.edu.br/theme/image.php/academi/core/1652445467/u/f1" width="20" /> -->
                 Logout
             </button>
         </div>
@@ -461,14 +461,14 @@ foreach ($database->query('SELECT * FROM cardapios') as $refeicao) {
       </div>
       <div class="modal-body">
       <form method="POST">
-      <input type="hidden" id="id_cadastraIngrediente" />
+      <input type="hidden" id="id_ingrediente_lista" />
       <div class="mb-3">
         <label for="ingrediente" class="form-label">Ingrediente</label>
-        <input type="text" class="form-control" id="ingrediente" placeholder="Insira o nome do Ingrediente" name="ingrediente" value="<?php echo $ingrediente['descricao'] ?>">
+        <input type="text" class="form-control" id="ingrediente_lista" placeholder="Insira o nome do Ingrediente" name="ingrediente" value="<?php echo $ingrediente['descricao'] ?>">
       </div>
       <div class="mb-3">
         <label for="calorias" class="form-label">Quantidade de calorias em 100g do ingrediente</label>
-        <input type="number" class="form-control" id="calorias" placeholder="Insira a quantidade de calorias" name="calorias" value="<?php echo $ingrediente['calorias'] ?>">
+        <input type="number" class="form-control" id="calorias_lista" placeholder="Insira a quantidade de calorias" name="calorias" value="<?php echo $ingrediente['calorias'] ?>">
       </div>
      </form>
      </div>

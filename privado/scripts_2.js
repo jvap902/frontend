@@ -31,7 +31,7 @@ onload = async () => {
     modal_cadastra_nutricionista = new bootstrap.Modal(document.getElementById('div_cadastraNutricionista'))
     modal_cadastra_refeicao = new bootstrap.Modal(document.getElementById('div_cadastraRefeicao'))
     //modais de alteração
-    modal_altera_ingerdiente = new bootstrap.Modal(document.getElementById('div_alteraIngrediente'))
+    modal_altera_ingrediente = new bootstrap.Modal(document.getElementById('div_alteraIngrediente'))
     // modal_altera_item = new bootstrap.Modal(document.getElementById('div_alteraItem'))
     // modal_altera_refeicao = new bootstrap.Modal(document.getElementById('div_alteraRefeicao'))
     modal_altera_nutricionista = new bootstrap.Modal(document.getElementById('div_alteraNutricionista'))
@@ -56,25 +56,27 @@ onload = async () => {
     ingrediente
 
     btnSalvarAlteracaoIngrediente.addEventListener('click', async () => {
-      toggleButton(btnAlterar)
       const ingrediente_lista = document.getElementById("ingrediente_lista").value
       const calorias_lista = document.getElementById("calorias_lista").value
-      const id_ingrediente_lista = document.getElementById('id_ingrediente_lista').value
+      const id_ingrediente_lista = document.getElementById("id_ingrediente_lista").value
+
+      console.log(ingrediente_lista, calorias_lista)
+      console.log(id_ingrediente_lista)
 
       const body = new FormData()
       body.append('ingrediente_lista', ingrediente_lista)
       body.append('calorias_lista', calorias_lista)
       body.append('id_ingrediente_lista', id_ingrediente_lista)
 
-      const response = await fetch(`${baseUrl}alterarIngrediente.php?id=${id}`, {
+      const response = await fetch(`${baseUrl}alterarIngrediente.php?id=${id_ingrediente_lista}`, {
           method: "POST",
           body
       })
-      const ingrediente_linha = await response.json()
-      atualizarLinha(ingrediente_linha)
+      // const ingrediente_linha = await response.json()
+      // atualizarLinha(ingrediente_linha)
 
-      modal.hide();
-      toggleButton(btnAlterarIngrediente)
+      modal_altera_ingrediente.hide();
+      // toggleButton(btnAlterarIngrediente)
   })
 
 
