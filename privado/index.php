@@ -32,6 +32,7 @@ foreach ($database->query('SELECT * FROM cardapios') as $refeicao) {
     ];
 }
 
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -141,8 +142,8 @@ foreach ($database->query('SELECT * FROM cardapios') as $refeicao) {
               <td><?php echo $nutricionista['nome']; ?></td>
               <td><?php echo $nutricionista['crn']; ?></td>
               <td>
-                <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_alteraNutricionista" data-nutricionista="<?php echo $nutricionista['crn']; ?>">Alterar</button>
-                <a href="../../pw3-cardapio_ru-backend/removerNutricionista.php?crn=<?php echo $nutricionista['crn']; ?>" class="btn btn-outline-danger">Excluir</a>
+                <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_alteraNutricionista" id="<?php echo $nutricionista['id']; ?>">Alterar</button>
+                <a href="../../pw3-cardapio_ru-backend/removerNutricionista.php?id=<?php echo $nutricionista['id']; ?>" class="btn btn-outline-danger">Excluir</a>
               </td>
             </tr>
           <?php
@@ -421,6 +422,7 @@ foreach ($database->query('SELECT * FROM cardapios') as $refeicao) {
     
   <!-- Modals de alteração  -->
   <!-- ALTERAR NUTRICIONISTA  -->
+    
   <div class="modal fade" id="div_alteraNutricionista" tabindex="-1" aria-labelledby="div_cadastraNutricionistaLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
