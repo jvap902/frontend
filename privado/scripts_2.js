@@ -32,8 +32,8 @@ onload = async () => {
     modal_cadastra_refeicao = new bootstrap.Modal(document.getElementById('div_cadastraRefeicao'))
     //modais de alteração
     modal_altera_ingrediente = new bootstrap.Modal(document.getElementById('div_alteraIngrediente'))
-    // modal_altera_item = new bootstrap.Modal(document.getElementById('div_alteraItem'))
-    // modal_altera_refeicao = new bootstrap.Modal(document.getElementById('div_alteraRefeicao'))
+    modal_altera_item = new bootstrap.Modal(document.getElementById('div_alteraItem'))
+    modal_altera_refeicao = new bootstrap.Modal(document.getElementById('div_alteraRefeicao'))
     modal_altera_nutricionista = new bootstrap.Modal(document.getElementById('div_alteraNutricionista'))
     //botoes
     btnAdicionarIngrediente = document.getElementById("adc_ingrediente")
@@ -77,7 +77,7 @@ onload = async () => {
 
       modal_altera_ingrediente.hide();
       // toggleButton(btnAlterarIngrediente)
-  })
+    })
 
 
     btnSalvarNovoIngediente.addEventListener('click', async () => {
@@ -99,6 +99,27 @@ onload = async () => {
     
  
     //item
+    btnSalvarAlteracaoItem.addEventListener('click', async () => {
+      const item_lista = document.getElementById("item_lista").value
+      const ingrediente_item_lista = document.getElementById("ingrediente_item_lista").value
+      const id_item_lista = document.getElementById("id_item_lista").value
+
+      console.log(item_lista, ingrediente_item_lista)
+      console.log(id_item_lista)
+
+      const body = new FormData()
+      body.append('item_lista', item_lista)
+      body.append('ingrediente_item_lista', ingrediente_item_lista)
+      body.append('id_item_lista', id_item_lista)
+
+      const response = await fetch(`${baseUrl}alterarItem.php?id=${id_item_lista}`, {
+          method: "POST",
+          body
+      })
+
+      modal_altera_item.hide();
+    })
+
     btnSalvarNovoItem.addEventListener('click', async () => {
       const item = document.getElementById("item").value
       const ingrediente_item = arrayIngredientes
@@ -140,6 +161,27 @@ onload = async () => {
     })
 
     //refeição
+    btnSalvarAlteracaoRefeicao.addEventListener('click', async () => {
+      const refeicao_lista = document.getElementById("refeicao_lista").value
+      const item_refeicao_lista = document.getElementById("item_refeicao_lista").value
+      const id_refeicao_lista = document.getElementById("id_refeicao_lista").value
+
+      console.log(refeicao_lista, item_refeicao_lista)
+      console.log(id_refeicao_lista)
+
+      const body = new FormData()
+      body.append('refeicao_lista', refeicao_lista)
+      body.append('item_refeicao_lista', item_refeicao_lista)
+      body.append('id_refeicao_lista', id_refeicao_lista)
+
+      const response = await fetch(`${baseUrl}alterarRefeicao.php?id=${id_refeicao_lista}`, {
+          method: "POST",
+          body
+      })
+
+      modal_altera_refeicao.hide();
+    })
+
     btnAdicionarItemRefeicao.addEventListener('click', async () => {
       const input_item_refeicao = document.getElementById('item_refeicao')
      
@@ -181,6 +223,27 @@ onload = async () => {
     })
  
     //nutricionista
+    btnSalvarAlteracaoNutricionista.addEventListener('click', async () => {
+      const nome_nutricionista_lista = document.getElementById("nome_nutricionista_lista").value
+      const crn_nutricionista_lista = document.getElementById("crn_nutricionista_lista").value
+      const id_nutricionista_lista = document.getElementById("id_nutricionista_lista").value
+
+      console.log(nome_nutricionista, email_nutricionista)
+      console.log(id_nutricionista)
+
+      const body = new FormData()
+      body.append('nome_nutricionista_lista', nome_nutricionista_lista)
+      body.append('crn_nutricionista_lista', crn_nutricionista_lista)
+      body.append('id_nutricionista_lista', id_nutricionista_lista)
+
+      const response = await fetch(`${baseUrl}alterarNutricionista.php?id=${id_nutricionista_lista}`, {
+          method: "POST",
+          body
+      })
+
+      modal_altera_nutricionista.hide();
+    })
+
     btnSalvarNovoNutricionista.addEventListener('click', async ()=> {
       const nome = document.getElementById("nome_nutricionista").value
       const crn = document.getElementById("crn").value
