@@ -61,7 +61,7 @@ foreach ($database->query('SELECT * FROM cardapios') as $refeicao) {
                 data-bs-target="#pesquisaModal">Pesquisa <img
                     src="https://www.iconpacks.net/icons/2/free-search-icon-2903-thumb.png" width="20" /></button>
             <button id="navLogout" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#logoutModal">
-                <!-- <img src="https://moodle.bento.ifrs.edu.br/theme/image.php/academi/core/1652445467/u/f1" width="20" /> -->
+                <img src="https://moodle.bento.ifrs.edu.br/theme/image.php/academi/core/1652445467/u/f1" width="20" />
                 Logout
             </button>
         </div>
