@@ -43,8 +43,6 @@ foreach ($data as $refeicao) {
       'itens' => $itens
     ];
 }
-var_dump($refeicoes);
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -476,7 +474,7 @@ var_dump($refeicoes);
       <input type="hidden" id="id_ingrediente_lista" />
       <div class="mb-3">
         <label for="ingrediente_lista" class="form-label">Ingrediente</label>
-        <input type="text" class="form-control" id="ingrediente_lista" placeholder="Insira o nome do Ingrediente" name="ingrediente" value="<?php echo $ingrediente['descricao'] ?>">
+        <input type="text" class="form-control" id="ingrediente_lista" name="ingrediente_lista  " placeholder="Insira o nome do Ingrediente" name="ingrediente" value="<?php echo $ingrediente['descricao'] ?>">
       </div>
       <div class="mb-3">
         <label for="calorias_lista" class="form-label">Quantidade de calorias em 100g do ingrediente</label>
@@ -549,8 +547,8 @@ var_dump($refeicoes);
                                 <input type="date" class="form-control" name="data_refeicao_lista" id="data_refeicao_lista" placeholder="Selecione uma data" value="<?php echo $refeicao['data'] ?>">
                             </div>
                             <div class="mb-3">
-                                <label for="tipoRefeicao_lista" class="form-label">Selecione uma refeição</label>
-                                <select class="form-select" id="tipoRefeicao_lista">
+                                <label for="tipo_refeicao_lista" class="form-label">Selecione uma refeição</label>
+                                <select class="form-select" id="tipo_refeicao_lista" name="tipo_refeicao_lista">
                                     <option selected value="<?php echo $refeicao['tipo']?>">
                                     <?php if($refeicao['tipo'] == 1){
                                             echo "Café da manhã";
@@ -565,7 +563,7 @@ var_dump($refeicoes);
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label for="item_lista" class="form-label">Adicione itens</label>
+                                <label for="item_refeicao_lista" class="form-label">Adicione itens</label>
                                 <select class="form-select" id='item_refeicao_lista' name="item_refeicao_lista">
                                     <?php foreach ($itens as $itn) {
                                         echo "<option value='{$itn['id']}'> {$itn['id']} - {$itn['descricao']}</option>}";
@@ -652,8 +650,29 @@ var_dump($refeicoes);
         const alterarNutricionista = (data) => {
             
             document.getElementById('nome_nutricionista_lista').value = data;
+            document.getElementById('crn_lista').value = data;
+            document.getElementById('id_nutricionista_lista').value = data;
             modal_altera_nutricionista.show()
+        }
 
+        const alterarRefeicao = (data) => {
+            document.getElementById('data_refeicao_lista').value = data;
+            document.getElementById('tipo_refeicao_lista').value = data;
+            document.getElementById('item_refeicao_lista').value = data;
+            modal_altera_refeicao.show()
+        }
+
+        const alterarItem = (data) => {
+            document.getElementById('item_lista').value = data;
+            document.getElementById('ingrediente_item_lista').value = data;
+            document.getElementById('id_item_lista').value = data;
+            modal_altera_item.show()
+        }
+
+        const alterarIngrediente = (data) => {
+            document.getElementById('ingrediente_lista').value = data;
+            document.getElementById('id_ingrediente_lista').value = data;
+            modal_altera_ingrediente.show()
         }
         </script>
 </body>

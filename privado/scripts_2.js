@@ -188,10 +188,7 @@ onload = async () => {
       const refeicao_lista = document.getElementById("refeicao_lista").value
       const item_refeicao_lista = document.getElementById("item_refeicao_lista").value
       const id_refeicao_lista = document.getElementById("id_refeicao_lista").value
-
-      console.log(refeicao_lista, item_refeicao_lista)
-      console.log(id_refeicao_lista)
-
+      
       const body = new FormData()
       body.append('refeicao_lista', refeicao_lista)
       body.append('item_refeicao_lista', item_refeicao_lista)
@@ -250,9 +247,6 @@ onload = async () => {
       const nome_nutricionista_lista = document.getElementById("nome_nutricionista_lista").value
       const crn_nutricionista_lista = document.getElementById("crn_nutricionista_lista").value
       const id_nutricionista_lista = document.getElementById("id_nutricionista_lista").value
-
-      console.log(nome_nutricionista, email_nutricionista)
-      console.log(id_nutricionista)
 
       const body = new FormData()
       body.append('nome_nutricionista_lista', nome_nutricionista_lista)
