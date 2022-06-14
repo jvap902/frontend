@@ -39,10 +39,16 @@ onload = async () => {
     })
   
 
-    /* const response = await fetch('//localhost/cardapio_ru/pw3-cardapio_ru-backend/')
+    const response = await fetch('//localhost/cardapio_ru/pw3-cardapio_ru-backend/')
     const cardapio = await response.json();
 
     console.log(cardapio) 
+
+    /* const formatado = {
+      CAFE: [cardapio.CAFE],
+      ALMOCO:[cardapio.ALMOCO],
+      JANTA:[cardapio.JANTA]
+    } */
 
        const formatado = {
       CAFE: [],
@@ -52,16 +58,16 @@ onload = async () => {
     cardapioFormado.forEach(({tipo, data, nutricionista, itens}) => {
       switch(tipo){
         case "CAFE":    formatado.CAFE.push({data, itens, nutricionista}); break;
-        case "ALMOCO":    formatado.ALMOCO.push(c); break;
-        case "JANTA":    formatado.JANTA.push(c); break;
+        case "ALMOCO":    formatado.ALMOCO.push({data, itens, nutricionista}); break;
+        case "JANTA":    formatado.JANTA.push({data, itens, nutricionista}); break;
       }
-    })  */
+    })  
 
-     cardapioFormado = {
+     /* cardapioFormado = {
       CAFE: [],
       ALMOCO: [{data: '2022-05-30', ingredientes: [{nome: 'Feijão'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}],
       JANTA: [{data: '2022-05-30', ingredientes: [{nome: 'Feijão'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}],
-    } 
+    }  */
 
      console.log(cardapioFormado) 
 
