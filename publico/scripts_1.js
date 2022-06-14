@@ -39,7 +39,7 @@ onload = async () => {
     })
   
 
-    const response = await fetch('//localhost/cardapio_ru/pw3-cardapio_ru-backend/')
+    /* const response = await fetch('//localhost/cardapio_ru/pw3-cardapio_ru-backend/')
     const cardapio = await response.json();
 
     console.log(cardapio) 
@@ -55,10 +55,10 @@ onload = async () => {
         case "ALMOCO":    formatado.ALMOCO.push(c); break;
         case "JANTA":    formatado.JANTA.push(c); break;
       }
-    }) 
+    })  */
 
      cardapioFormado = {
-      CAFE: [{data: cardapio.cardapios, ingredientes: [cardapio.ingredientes]}],
+      CAFE: [],
       ALMOCO: [{data: '2022-05-30', ingredientes: [{nome: 'Feijão'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}],
       JANTA: [{data: '2022-05-30', ingredientes: [{nome: 'Feijão'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}],
     } 
