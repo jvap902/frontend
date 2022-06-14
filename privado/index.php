@@ -135,20 +135,18 @@ foreach ($database->query('SELECT * FROM cardapios') as $refeicao) {
         </tr>
       </thead>
       <tbody>
-        <?php 
-        if(isset($nutricionistas)){
-          foreach ($nutricionistas as $nutricionista) { ?>
-            <tr>
-              <td><?php echo $nutricionista['nome']; ?></td>
-              <td><?php echo $nutricionista['crn']; ?></td>
-              <td>
-                <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_alteraNutricionista" id="<?php echo $nutricionista['id']; ?>">Alterar</button>
+              <?php  if(isset($nutricionistas)){
+                  foreach($nutricionistas as $nutricionista){ ?>
+                    <tr>
+                    <td><?php echo $nutricionista['nome']; ?></td>
+                    <td><?php echo $nutricionista['crn']; ?></td>
+                    <td>
+                <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_alteraNutricionista" data-id="<?php echo $nutricionista['id']; ?>">Alterar</button>
                 <a href="../../pw3-cardapio_ru-backend/removerNutricionista.php?id=<?php echo $nutricionista['id']; ?>" class="btn btn-outline-danger">Excluir</a>
               </td>
             </tr>
-          <?php
-          }
-         } ?>
+                  <?php }
+              } ?>
         <td colspan="6">
           <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_cadastraNutricionista">Cadastrar nutricionista</button>
         </td>
@@ -194,7 +192,7 @@ foreach ($database->query('SELECT * FROM cardapios') as $refeicao) {
         </tr>
         <tr>
           <th scope="col">Descrição</th>
-          <th scope="col">Calorias</th> <!-- aqui vai a soma. ver com back -->
+          <th scope="col">Calorias</th>
           <th scope="col">Ações</th>
         </tr>
       </thead>
@@ -204,10 +202,10 @@ foreach ($database->query('SELECT * FROM cardapios') as $refeicao) {
           foreach ($itens as $item) { ?>
             <tr>
               <td><?php echo $item['descricao']; ?></td>
-              <td><?php echo $item['calorias']; ?></td>
+              <td><?php echo $item['calorias_totais']; ?></td>
               <td>
                 <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_alteraItem" data-item="<?php echo $item['id']; ?>">Alterar</button>
-                <a href="../../pw3-cardapio_ru-backend/removerItem.php?id=<?php echo $item['id']; ?>" class="btn btn-outline-danger">Excluir</a>
+                <a href="../../pw3-cardapio_ru-backend/removerItens.php?id=<?php echo $item['id']; ?>" class="btn btn-outline-danger">Excluir</a>
               </td>
             </tr>
             <?php }
@@ -499,7 +497,7 @@ foreach ($database->query('SELECT * FROM cardapios') as $refeicao) {
                             value="<?php echo $item['descricao'] ?>">
                         </div>
                         <div class="mb-3">
-                            <label for="ingrediente_item_lista" class="form-label">Ingrediente</label>
+                            <label for="ingrediente_item_lista" class="form-label">Adicionar ingrediente</label>
                             <select class="form-select" id="ingrediente_item_lista" name="ingrediente_item_lista">
                                 <?php foreach ($ingredientes as $ing) {
                                 echo "<option value='{$ing['id']}'>ID: {$ing['id']} - {$ing['descricao']} - {$ing['calorias']} calorias por 100g</option>}";
