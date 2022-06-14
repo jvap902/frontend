@@ -20,7 +20,7 @@ foreach ($database->query('SELECT * FROM itens') as $item) {
     $itens[] = [
         'id' => $item['id'],
         'descricao' => $item['descricao'],
-        'calorias' => $item['calorias']
+        'calorias_totais' => $item['calorias_totais']
     ];
 }
 foreach ($database->query('SELECT * FROM cardapios') as $refeicao) {

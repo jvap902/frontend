@@ -25,6 +25,11 @@ onload = async () => {
     // const token = localStorage.getItem('token')
     // if (token === null) location.href = "../publico/index.php"
 
+    //modal clonar cardápio
+    modal_clona_cardapio = new bootstrap.Modal(document.getElementById('div_clonaCardapio'))
+    //botao clonar cardápio
+    btnClonarCardapio = document.getElementById('salvar_clonaCardapio')
+
     //modais de cadastro
     modal_cadastra_ingrediente = new bootstrap.Modal(document.getElementById('div_cadastraIngrediente'))
     modal_cadastra_item = new bootstrap.Modal(document.getElementById('div_cadastraItem'))
@@ -46,10 +51,28 @@ onload = async () => {
     btnSalvarNovoNutricionista = document.getElementById("salvar_novoNutricionista")
     //botoes alteracao
     btnSalvarAlteracaoIngrediente = document.getElementById('alterar_ingrediente')
-    btnSalvarAlteracaoItem = document.getElementById('')
-    btnSalvarAlteracaoRefeicao = document.getElementById('')
-    btnSalvarAlteracaoNutricionista = document.getElementById('')
- 
+    btnSalvarAlteracaoItem = document.getElementById('alterar_item')
+    btnSalvarAlteracaoRefeicao = document.getElementById('alterar_refeicao')
+    btnSalvarAlteracaoNutricionista = document.getElementById('alterar_nutricionista')
+
+    //clona cardápio
+    btnClonarCardapio.addEventListener('click', async () => {
+      const id_cardapio = document.getElementById('id_clonaCardapio').value
+      const data_clonagem = document.getElementById('cardapioNovo').value
+
+      console.log(id_cardapio, data_clonagem)
+
+      const body = new FormData()
+      body.append('id_cardapio', id_cardapio)
+      body.append('data_clonagem', data_clonagem)
+
+      const response = await fetch(`${baseUrl}clonarCardapio.php?id=${id_cardapio}&cardapioNovo=${data_clonagem}`, {
+        method: 'GET',
+      })
+
+      modal_clona_cardapio.hide()
+    })
+    
     //logout
     btnLogout.addEventListener('click', logout)
  
