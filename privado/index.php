@@ -141,7 +141,7 @@ foreach ($database->query('SELECT * FROM cardapios') as $refeicao) {
                     <td><?php echo $nutricionista['nome']; ?></td>
                     <td><?php echo $nutricionista['crn']; ?></td>
                     <td>
-                <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_alteraNutricionista" data-id="<?php echo $nutricionista['id']; ?>">Alterar</button>
+                <button type="button" class="btn btn-outline-success"  onClick="alterarNutricionista('<?php echo $nutricionista['nome'] ?>')">Alterar</button>
                 <a href="../../pw3-cardapio_ru-backend/removerNutricionista.php?id=<?php echo $nutricionista['id']; ?>" class="btn btn-outline-danger">Excluir</a>
               </td>
             </tr>
@@ -636,6 +636,14 @@ foreach ($database->query('SELECT * FROM cardapios') as $refeicao) {
     <script src="../logout.js"></script>
     <script src="https://momentjs.com/downloads/moment.min.js"></script>
     <script src="scripts_2.js"></script>
+    <script>
+        const alterarNutricionista = (data) => {
+            
+            document.getElementById('nome_nutricionista_lista').value = data;
+            modal_altera_nutricionista.show()
+
+        }
+        </script>
 </body>
 
 </html>
