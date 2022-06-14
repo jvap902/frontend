@@ -1,6 +1,7 @@
 <?php
 //require "../../pw3-cardapio_ru-backend/permissao.php"
 $database = new PDO('mysql:host=localhost;dbname=ru', 'root', '');
+//$database2 = new PDO('mysql:host=localhost;dbname=ru', 'root', '');
 
 foreach ($database->query('SELECT * FROM ingredientes') as $ingrediente) {
     $ingredientes[] = [
@@ -23,15 +24,26 @@ foreach ($database->query('SELECT * FROM itens') as $item) {
         'calorias_totais' => $item['calorias_totais']
     ];
 }
-foreach ($database->query('SELECT * FROM cardapios') as $refeicao) {
+
+$consulta = $database->prepare('SELECT * FROM cardapios');
+$consulta->execute();
+$data = $consulta->fetchAll();
+
+foreach ($data as $refeicao) {
+    $itens = [];
+    foreach($database->query('select i.id, i.descricao from itens_cardapios ic inner join itens i on ic.id_item = i.id where id_cardapio = '.$refeicao['id']) as $item){
+        
+        $itens[] = $item;
+    }
     $refeicoes[] = [
       'id' => $refeicao['id'],
-      'dia' => $refeicao['dia'],
+      'data' => $refeicao['data'],
       'id_nutricionista' => $refeicao['id_nutricionista'],
-      'tipo' => $refeicao['tipo']
+      'tipo' => $refeicao['tipo'],
+      'itens' => $itens
     ];
 }
-
+var_dump($refeicoes);
 
 ?>
 <!DOCTYPE html>
@@ -97,7 +109,7 @@ foreach ($database->query('SELECT * FROM cardapios') as $refeicao) {
           if(isset($refeicoes)){
             foreach ($refeicoes as $refeicao) { ?>
               <tr>
-                <td><?php echo $refeicao['dia']; ?></td>
+                <td><?php echo $refeicao['data']; ?></td>
                 <td>
                   <?php if($refeicao['tipo'] == 1){
                   echo "Café da manhã";
@@ -233,7 +245,7 @@ foreach ($database->query('SELECT * FROM cardapios') as $refeicao) {
                         <div class="mb-3">
                             <label for="nome" class="form-label">Nome</label>
                             <input type="text" class="form-control" id="nome_nutricionista"
-                                placeholder="Insira o nome da nutricionista" name="nome">
+                                placeholder="Insira o nome da nutricionista" name="nome_nutricionista">
                         </div>
                         <div class="mb-3">
                             <label for="crn" class="form-label">CRN</label>
@@ -534,7 +546,7 @@ foreach ($database->query('SELECT * FROM cardapios') as $refeicao) {
                         <div class="modal-body">
                             <div class="mb-3">
                                 <label for="data_refeicao_lista" class="form-label">Data</label>
-                                <input type="date" class="form-control" name="data_refeicao_lista" id="data_refeicao_lista" placeholder="Selecione uma data" value="<?php echo $refeicao['dia'] ?>">
+                                <input type="date" class="form-control" name="data_refeicao_lista" id="data_refeicao_lista" placeholder="Selecione uma data" value="<?php echo $refeicao['data'] ?>">
                             </div>
                             <div class="mb-3">
                                 <label for="tipoRefeicao_lista" class="form-label">Selecione uma refeição</label>
