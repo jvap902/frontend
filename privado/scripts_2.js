@@ -274,7 +274,7 @@ onload = async () => {
       console.log(nome, crn)
  
       const body = new FormData()
-        body.append('nome', nome)
+        body.append('nome_nutricionista', nome)
         body.append('crn', crn)
  
         const response = await fetch(`${baseUrl}salvarNutricionista.php`, {
