@@ -39,37 +39,35 @@ onload = async () => {
     })
   
 
-    const response = await fetch('//localhost/cardapio_ru/pw3-cardapio_ru-backend/')
+    const response = await fetch('//localhost/arquivosphp/cardapio_ru/pw3-cardapio_ru-backend/cardapios/')
     const cardapio = await response.json();
+    
+    console.log(cardapio)
 
-    console.log(cardapio) 
-
-    /* const formatado = {
-      CAFE: [cardapio.CAFE],
-      ALMOCO:[cardapio.ALMOCO],
-      JANTA:[cardapio.JANTA]
-    } */
-
-       const formatado = {
+      /* const formatado = {
       CAFE: [],
       ALMOCO: [],
       JANTA: []
-    } 
-    cardapioFormado.forEach(({tipo, data, nutricionista, itens}) => {
-      switch(tipo){
-        case "CAFE":    formatado.CAFE.push({data, itens, nutricionista}); break;
-        case "ALMOCO":    formatado.ALMOCO.push({data, itens, nutricionista}); break;
-        case "JANTA":    formatado.JANTA.push({data, itens, nutricionista}); break;
-      }
-    })  
-
-     /* cardapioFormado = {
-      CAFE: [],
-      ALMOCO: [{data: '2022-05-30', ingredientes: [{nome: 'Feijão'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}],
-      JANTA: [{data: '2022-05-30', ingredientes: [{nome: 'Feijão'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}],
     }  */
 
-     console.log(cardapioFormado) 
+      /* cardapio.forEach(({tipo, data, nutricionista}) => {
+      switch(tipo){
+        case "CAFE":    cardapioFormado.CAFE.push({data, ingredientes:[{nome:'feijão'}], nutricionista}); break;
+        case "ALMOCO":    formatado.ALMOCO.push({data , itens, nutricionista}); break;
+        case "JANTA":    formatado.JANTA.push({data , itens, nutricionista}); break;
+      }
+    })      
+ */
+
+     
+
+       cardapioFormado = {
+      CAFE: cardapio.CAFE,
+      ALMOCO: [{data: '2022-05-30', ingredientes: [{nome: 'Feijão'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}],
+      JANTA: [{data: '2022-05-30', ingredientes: [{nome: 'Feijão'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}],
+    }   
+
+      
 
   btnLogar.addEventListener('click', async () => {
     const inputEmail = document.getElementById('email').value
@@ -95,7 +93,7 @@ onload = async () => {
       const {token, usuario} = data
       localStorage.setItem('token', token)
       localStorage.setItem('usuario', JSON.stringify(usuario))
-      location.href="//localhost/cardapio_ru/frontend/privado/index.php";
+      location.href="//localhost/arquivosphp/cardapio_ru/frontend/privado/index.php";
     }
   })
   
@@ -116,6 +114,8 @@ onload = async () => {
 
 
   const {CAFE, /* NUTRICIONISTA, */ ALMOCO, JANTA} = cardapioFormado
+
+  console.log(cardapioFormado)
 
   montaCabecalho(datas)
   const tbody = document.getElementById('tbody')
@@ -162,12 +162,14 @@ const montaLinha = (label, linha, datas) => {
     if (d === moment().format('YYYY-MM-DD'))
       td.style.backgroundColor = '#C2EBC9'
     const hoje = linha.find(l => l.data === d)
-    let ingredientes = []
-    if (hoje) ingredientes = hoje.ingredientes
-    td.innerHTML = `<ul>${ingredientes.reduce((prev, {nome}) => {
-      return `${prev}<li>${nome}</li>`
-    }, "")}</ul>`
-    tr.appendChild(td)
+    let nutricionista
+    if (hoje){ nutricionista = hoje.nutricionista
+    td.innerHTML = `<ul><li>${nutricionista}</li></ul>`
+    tr.appendChild(td)}
+    else{
+      td.innerHTML = ""
+      tr.appendChild(td)
+    }
   })
   
   tbody.appendChild(tr)
@@ -239,3 +241,25 @@ $vetor[$d['tipo']][] = [
   'data' => $d['data'],
   'itens' => []
 ] */
+
+/* const montaLinha = (label, linha, datas) => {
+  const tbody = document.getElementById('tbody')
+  const tr = document.createElement('TR')
+  const td = document.createElement('TD')
+  td.innerHTML = label
+  tr.appendChild(td)
+  datas.forEach(d => {
+    const td = document.createElement('TD')
+    if (d === moment().format('YYYY-MM-DD'))
+      td.style.backgroundColor = '#C2EBC9'
+    const hoje = linha.find(l => l.data === d)
+    let ingredientes = []
+    if (hoje) ingredientes = hoje.ingredientes
+    td.innerHTML = `<ul>${ingredientes.reduce((prev, {nome}) => {
+      return `${prev}<li>${nome}</li>`
+    }, "")}</ul>`
+    tr.appendChild(td)
+  })
+  
+  tbody.appendChild(tr)
+} */
