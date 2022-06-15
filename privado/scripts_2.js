@@ -132,7 +132,7 @@ onload = async () => {
       body.append('ingrediente_item_lista', ingrediente_item_lista)
       body.append('id_item_lista', id_item_lista)
 
-      const response = await fetch(`${baseUrl}alterarItem.php?id=${id_item_lista}`, {
+      const response = await fetch(`${baseUrl}alterarItens.php?id=${id_item_lista}`, {
           method: "POST",
           body
       })
@@ -220,6 +220,8 @@ onload = async () => {
       const tipo = document.getElementById("tipoRefeicao").value
       const itens = arrayItens
       const nutricionista = document.getElementById('nutricionista_refeicao').value
+
+      console.log(data, tipo, itens, nutricionista)
       
       const body = new FormData()
         body.append('data', data)

@@ -36,7 +36,6 @@ foreach ($data as $item) {
 $consulta = $database->prepare('SELECT * FROM cardapios');
 $consulta->execute();
 $data = $consulta->fetchAll();
-$refeicoes =[];
 foreach ($data as $refeicao) {
     $itens = [];
     foreach($database->query('select i.id, i.descricao from itens_cardapios ic inner join itens i on ic.id_item = i.id where id_cardapio = '.$refeicao['id']) as $item){

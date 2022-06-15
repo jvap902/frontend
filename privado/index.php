@@ -202,7 +202,7 @@ foreach ($data as $refeicao) {
                     <td><?php echo $item['descricao']; ?></td>
                     <td><?php echo $item['calorias_totais']; ?></td>
                     <td>
-                        <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_alteraItem" data-item="<?php echo $item['id']; ?>" onClick='alterarNutricionista(<?php echo json_encode($item["descricao"])?>, <?php echo json_encode($item["calorias_totais"])?>, <?php echo json_encode($item["id"])?>)'>Alterar</button>
+                        <button type="button" class="btn btn-outline-success" onClick='alterarItem(<?php echo json_encode($item["descricao"])?>, <?php echo json_encode($item["calorias_totais"])?>, <?php echo json_encode($item["id"])?>)'>Alterar</button>
                         <a href="../../pw3-cardapio_ru-backend/removerItens.php?id=<?php echo $item['id']; ?>" class="btn btn-outline-danger">Excluir</a>
                     </td>
                     </tr>
@@ -484,15 +484,15 @@ foreach ($data as $refeicao) {
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="div_alteraItemLabel">Cadastrar Item</h5>
+                    <h5 class="modal-title" id="div_alteraItemLabel">Altear Item</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form method="POST">
-                        <input type="hidden" id="id_item_lista" />
+                        <input type="hidden" id="id_item_lista" value="<?php echo $item['id']?>"/>
                         <div class="mb-3">
                             <label for="item_lista" class="form-label">Item</label>
-                            <input type="text" class="form-control" id="item_lista" placeholder="Insira o nome do item"name="item_lista" 
+                            <input type="text" class="form-control" id="item_lista" placeholder="Insira o nome do item"name="item_lista " 
                             value="<?php echo $item['descricao'] ?>">
                         </div>
                         <div class="mb-3">
@@ -652,8 +652,7 @@ foreach ($data as $refeicao) {
         }
 
         const alterarItem = (descricao, calorias_totais, id_item) => {
-            document.getElementById('item_lista').value = data;
-            document.getElementById('ingrediente_item_lista').value = calorias_totais;
+            document.getElementById('item_lista').value = descricao;
             document.getElementById('id_item_lista').value = id_item;
             modal_altera_item.show()
         }
