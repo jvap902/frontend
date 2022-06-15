@@ -39,7 +39,7 @@ onload = async () => {
     })
   
 
-    const response = await fetch('//localhost/arquivosphp/cardapio_ru/pw3-cardapio_ru-backend/cardapios/')
+    const response = await fetch('//localhost/cardapio_ru/pw3-cardapio_ru-backend/cardapios/')
     const cardapio = await response.json();
     
     console.log(cardapio)
@@ -93,7 +93,7 @@ onload = async () => {
       const {token, usuario} = data
       localStorage.setItem('token', token)
       localStorage.setItem('usuario', JSON.stringify(usuario))
-      location.href="//localhost/arquivosphp/cardapio_ru/frontend/privado/index.php";
+      location.href="//localhost/cardapio_ru/frontend/privado/index.php";
     }
   })
   
