@@ -22,8 +22,8 @@ let cardapio
  
  
 onload = async () => {
-    const token = localStorage.getItem('token')
-    if (token === null) location.href = "../publico/index.php"
+    // const token = localStorage.getItem('token')
+    // if (token === null) location.href = "../publico/index.php"
 
     //modal clonar cardápio
     modal_clona_cardapio = new bootstrap.Modal(document.getElementById('div_clonaCardapio'))
@@ -278,61 +278,61 @@ onload = async () => {
         modal_cadastra_nutricionista.hide()
     })
  
-    const semanaPassada = document.getElementById('prevSemana')
-    semanaPassada.addEventListener('click', async () =>{ 
-      if (!semanaAtual){
-        semanaAtual = moment().subtract(moment().day()-1, 'days') 
-      }
+    // const semanaPassada = document.getElementById('prevSemana')
+    // semanaPassada.addEventListener('click', async () =>{ 
+    //   if (!semanaAtual){
+    //     semanaAtual = moment().subtract(moment().day()-1, 'days') 
+    //   }
       
       
-      semanaAtual.subtract('1', 'week')
+    //   semanaAtual.subtract('1', 'week')
       
-      await montaCardapio(semanaAtual)
-    })
+    //   await montaCardapio(semanaAtual)
+    // })
 
-    const proximaSemana = document.getElementById('nextSemana')
-    proximaSemana.addEventListener('click', async () =>{ 
-      if (!semanaAtual){
-        semanaAtual = moment().subtract(moment().day()-1, 'days') 
-      }
+    // const proximaSemana = document.getElementById('nextSemana')
+    // proximaSemana.addEventListener('click', async () =>{ 
+    //   if (!semanaAtual){
+    //     semanaAtual = moment().subtract(moment().day()-1, 'days') 
+    //   }
       
       
-      semanaAtual.add('1', 'week')
+    //   semanaAtual.add('1', 'week')
       
-      await montaCardapio(semanaAtual)
-    })
+    //   await montaCardapio(semanaAtual)
+    // })
 
-    cardapio = {
-      CAFE: [{data: '2022-06-06', ingredientes: [{nome: 'Feijão'},{nome: 'Farinha'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}],
-      ALMOCO: [{data: '2022-05-30', ingredientes: [{nome: 'Feijão'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}],
-      JANTA: [{data: '2022-05-30', ingredientes: [{nome: 'Feijão'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}],
-    }
+    // cardapio = {
+    //   CAFE: [{data: '2022-06-06', ingredientes: [{nome: 'Feijão'},{nome: 'Farinha'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}],
+    //   ALMOCO: [{data: '2022-05-30', ingredientes: [{nome: 'Feijão'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}],
+    //   JANTA: [{data: '2022-05-30', ingredientes: [{nome: 'Feijão'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}],
+    // }
     
-  const hoje = moment().subtract(moment().day()-1, 'days') 
-  await montaCardapio(hoje)
+  // const hoje = moment().subtract(moment().day()-1, 'days') 
+  // await montaCardapio(hoje)
 }
  
-const montaCardapio = async ($segunda) => {
-  const datas = []
+// const montaCardapio = async ($segunda) => {
+//   const datas = []
   
-  const ini = $segunda.clone()
-  for(let i = 0; i < 5; i++){
-    datas.push(ini.format('YYYY-MM-DD'))
-    ini.add(1, 'day')
-  }
+//   const ini = $segunda.clone()
+//   for(let i = 0; i < 5; i++){
+//     datas.push(ini.format('YYYY-MM-DD'))
+//     ini.add(1, 'day')
+//   }
 
 
-  const {CAFE, ALMOCO, JANTA } = cardapio
+//   const {CAFE, ALMOCO, JANTA } = cardapio
 
-  montaCabecalho(datas)
-  const tbody = document.getElementById('tbody')
-  tbody.innerHTML = ""
+//   montaCabecalho(datas)
+//   const tbody = document.getElementById('tbody')
+//   tbody.innerHTML = ""
 
-  montaLinha('Café da manhã', CAFE, datas) 
-  montaLinha('Almoço', ALMOCO, datas) 
-  montaLinha('Jantar', JANTA, datas) 
+//   montaLinha('Café da manhã', CAFE, datas) 
+//   montaLinha('Almoço', ALMOCO, datas) 
+//   montaLinha('Jantar', JANTA, datas) 
 
-} 
+// } 
 
 const montaCabecalho = (datas) => {
   const thead = document.getElementById('thead')
