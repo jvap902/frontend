@@ -1,7 +1,58 @@
 <?php
+$database = new PDO('mysql:host=localhost;dbname=ru', 'root', '');
 
+
+foreach ($database->query('SELECT * FROM ingredientes') as $ingrediente) {
+    $ingredientes[] = [
+        'id' => $ingrediente['id'],
+        'descricao' => $ingrediente['descricao'],
+        'calorias' => $ingrediente['calorias'],
+    ];
+}
+foreach ($database->query('SELECT * FROM nutricionistas') as $nutricionista) {
+    $nutricionistas[] = [
+        'id' => $nutricionista['id'],
+        'crn' => $nutricionista['crn'],
+        'nome' => $nutricionista['nome']
+    ];
+}
+
+$consulta = $database->prepare('SELECT * FROM itens');
+$consulta->execute();
+$data = $consulta->fetchAll();
+foreach ($data as $item) {
+    $ingredientes = [];
+    foreach($database->query('select ingredientes.id, ingredientes.descricao from itens_ingredientes inner join ingredientes on itens_ingredientes.id_ingrediente = ingredientes.id where id_item = '.$item['id']) as $ingrediente){
+        $ingredientes[] = $ingrediente;
+    }
+    $itens[] = [
+        'id' => $item['id'],
+        'descricao' => $item['descricao'],
+        'calorias_totais' => $item['calorias_totais'],
+        'ingredientes' => $ingredientes
+    ];
+}
+
+$consulta = $database->prepare('SELECT * FROM cardapios');
+$consulta->execute();
+$data = $consulta->fetchAll();
+foreach ($data as $refeicao) {
+    $itens = [];
+    foreach($database->query('select i.id, i.descricao from itens_cardapios ic inner join itens i on ic.id_item = i.id where id_cardapio = '.$refeicao['id']) as $item){
+        
+        $itens[] = $item;
+    }
+    $refeicoes[] = [
+      'id' => $refeicao['id'],
+      'data' => $refeicao['data'],
+      'id_nutricionista' => $refeicao['id_nutricionista'],
+      'tipo' => $refeicao['tipo'],
+      'itens' => $itens
+    ];
+}
 
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -32,17 +83,53 @@
     </div>
   </nav>
 
+<div class="tabelaCardapio">
+  <table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Data</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Pratos</th>
+            <th scope="col">Nutricionista</th>
+        <tr>
+        <tr>
 
-  <div id="tabelas">
-    <table class="table table-bordered table-hover">
-      <thead id="thead"><tr id="fixo">
-          <th colspan="6" class="text-center" id="semana"><button id="prevSemana" class="btn btn-outline-success"><img src="http://cdn.onlinewebfonts.com/svg/img_72245.png" width="23"></button>Cardápio da semana<button id="nextSemana" class="btn btn-outline-success"><img src="https://cdn0.iconfinder.com/data/icons/arrows-volume-6/48/322-512.png" width="25"></button></th>
-        </tr></thead>
-      <tbody id="tbody">
-        
-      </tbody>
-    </table>
-  </div>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($refeicoes as $refeicao) { ?>
+        <tr>
+            <td>
+               <?php echo $refeicao['data']; ?>
+            </td>
+            <td><?php if($refeicao['tipo'] == 1){
+                  echo "Café da manhã";
+                  }elseif($refeicao['tipo'] == 2){
+                  echo "Almoço";
+                  }else{
+                  echo "Jantar";} ?>
+            </td>
+            <td>
+                <?php foreach ($refeicao['itens'] as $item) { 
+                 echo $item['descricao']; 
+                //  foreach($item['ingredientes']  as $ingrediente){
+                //     echo " - ".$ingrediente['descricao'];
+                //  }
+                 echo '<br> ';
+                 } ?>
+            </td>
+            <td><?php 
+             foreach ($nutricionistas as $nutricionista) {
+                if ($nutricionista['id'] == $refeicao['id_nutricionista']) {
+                    echo $nutricionista['nome'];
+                }
+            }
+            ?></td>
+        </tr>
+        <?php } ?>
+    </tbody>
+</table>
+</div>
   
 
   <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
