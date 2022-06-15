@@ -148,7 +148,7 @@ foreach ($data as $refeicao) {
                     <td><?php echo $nutricionista['nome']; ?></td>
                     <td><?php echo $nutricionista['crn']; ?></td>
                     <td>
-                <button type="button" class="btn btn-outline-success"  onClick="alterarNutricionista('<?php echo $nutricionista['nome']?>')">Alterar</button>
+                <button type="button" class="btn btn-outline-success"  onClick="alterarNutricionista('<?php echo json_encode($nutricionista)?>')">Alterar</button>
                 <a href="../../pw3-cardapio_ru-backend/removerNutricionista.php?id=<?php echo $nutricionista['id']; ?>" class="btn btn-outline-danger">Excluir</a>
               </td>
             </tr>
@@ -179,7 +179,7 @@ foreach ($data as $refeicao) {
               <td><?php echo $ingrediente['descricao']; ?></td>
               <td><?php echo $ingrediente['calorias']; ?></td>
               <td>
-                <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_alteraIngrediente" data-item="<?php echo $ingrediente['id']; ?>">Alterar</button>
+                <button type="button" class="btn btn-outline-success" onClick="alterarIngrediente(<?php echo json_encode($ingrediente); ?>)">Alterar</button>
                 <a href="../../pw3-cardapio_ru-backend/removerIngrediente.php?id=<?php echo $ingrediente['id']; ?>" class="btn btn-outline-danger">Excluir</a>
               </td>
             </tr>
