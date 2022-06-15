@@ -77,6 +77,7 @@ foreach ($data as $refeicao) {
         </div>
     </nav>
 
+<div id="tabelas">
     
 <!-- GERENCIAR REFEIÇÕES  -->
 <table class="table table-bordered table-hover">
