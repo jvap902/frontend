@@ -73,6 +73,8 @@ onload = async () => {
     const inputEmail = document.getElementById('email').value
     const inputSenha = document.getElementById('senha').value
 
+    console.log(inputEmail, inputSenha)
+
     const body = new FormData()
     body.append('email', inputEmail)
     body.append('senha', inputSenha)

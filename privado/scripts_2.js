@@ -22,8 +22,8 @@ let cardapio
  
  
 onload = async () => {
-    const token = localStorage.getItem('token')
-    if (token === null) location.href = "../publico/index.php"
+    // const token = localStorage.getItem('token')
+    // if (token === null) location.href = "../publico/index.php"
 
     //modal clonar cardápio
     modal_clona_cardapio = new bootstrap.Modal(document.getElementById('div_clonaCardapio'))

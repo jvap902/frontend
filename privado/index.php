@@ -1,6 +1,6 @@
 <?php
-require_once dirname(__FILE__) . "../../pw3-cardapio_ru-backend/class.DB.php";
-//require "../../pw3-cardapio_ru-backend/permissao.php"
+require_once "../../pw3-cardapio_ru-backend/class.DB.php";
+// require_once "../../pw3-cardapio_ru-backend/permissao.php";
 $database = DB::getInstance();
 //$database2 = new PDO('mysql:host=localhost;dbname=ru', 'root', '');
 
