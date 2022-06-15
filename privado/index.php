@@ -203,7 +203,7 @@ foreach ($data as $refeicao) {
                     <td><?php echo $item['calorias_totais']; ?></td>
                     <td>
                         <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_alteraItem" data-item="<?php echo $item['id']; ?>" onClick='alterarNutricionista(<?php echo json_encode($item["descricao"])?>, <?php echo json_encode($item["calorias_totais"])?>, <?php echo json_encode($item["id"])?>)'>Alterar</button>
-                        <a href="../../pw3-cardapio_ru-backend/removerItem.php?id=<?php echo $item['id']; ?>" class="btn btn-outline-danger">Excluir</a>
+                        <a href="../../pw3-cardapio_ru-backend/removerItens.php?id=<?php echo $item['id']; ?>" class="btn btn-outline-danger">Excluir</a>
                     </td>
                     </tr>
                 <?php }
