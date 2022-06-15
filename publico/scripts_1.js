@@ -6,15 +6,15 @@ let btnAdicionar = null
 let listaIngrediente = null
 
 const arrayIngredientes = []
-let semanaAtual = null
+/* let semanaAtual = null
 let cardapio
-let teste
+let teste */
 
 onload = async () => {
     modal = new bootstrap.Modal(document.getElementById('loginModal'))
     btnLogar = document.getElementById("logar")
 
-    const semanaPassada = document.getElementById('prevSemana')
+    /* const semanaPassada = document.getElementById('prevSemana')
     semanaPassada.addEventListener('click', async () =>{ 
       if (!semanaAtual){
         semanaAtual = moment().subtract(moment().day()-1, 'days') 
@@ -36,13 +36,13 @@ onload = async () => {
       semanaAtual.add('1', 'week')
       
       await montaCardapio(semanaAtual)
-    })
+    }) */
   
-
+/* 
     const response = await fetch('//localhost/cardapio_ru/pw3-cardapio_ru-backend/cardapios/')
     const cardapio = await response.json();
     
-    console.log(cardapio)
+    console.log(cardapio) */
 
       /* const formatado = {
       CAFE: [],
@@ -61,11 +61,11 @@ onload = async () => {
 
      
 
-       cardapioFormado = {
+       /* cardapioFormado = {
       CAFE: cardapio.CAFE,
       ALMOCO: [{data: '2022-05-30', ingredientes: [{nome: 'Feijão'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}],
       JANTA: [{data: '2022-05-30', ingredientes: [{nome: 'Feijão'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}],
-    }   
+    }  */  
 
       
 
@@ -100,12 +100,12 @@ onload = async () => {
   })
   
 
-  const hoje = moment().subtract(moment().day()-1, 'days') 
-  await montaCardapio(hoje)
+  /* const hoje = moment().subtract(moment().day()-1, 'days') 
+  await montaCardapio(hoje) */
 }
 
 
- const montaCardapio = async ($segunda) => {
+ /* const montaCardapio = async ($segunda) => {
   const datas = []
   
   const ini = $segunda.clone()
@@ -115,7 +115,7 @@ onload = async () => {
   }
 
 
-  const {CAFE, /* NUTRICIONISTA, */ ALMOCO, JANTA} = cardapioFormado
+  const {CAFE, ALMOCO, JANTA} = cardapioFormado
 
   console.log(cardapioFormado)
 
@@ -124,7 +124,6 @@ onload = async () => {
   tbody.innerHTML = ""
 
   montaLinha('Café da manhã', CAFE, datas) 
-  // montaLinha('Nutricionista', NUTRICIONISTACAFE, datas)
   montaLinha('Almoço', ALMOCO, datas) 
   montaLinha('Jantar', JANTA, datas) 
 
@@ -175,7 +174,7 @@ const montaLinha = (label, linha, datas) => {
   })
   
   tbody.appendChild(tr)
-}
+} */
  
 
 
