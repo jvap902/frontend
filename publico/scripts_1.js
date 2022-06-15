@@ -241,3 +241,25 @@ $vetor[$d['tipo']][] = [
   'data' => $d['data'],
   'itens' => []
 ] */
+
+/* const montaLinha = (label, linha, datas) => {
+  const tbody = document.getElementById('tbody')
+  const tr = document.createElement('TR')
+  const td = document.createElement('TD')
+  td.innerHTML = label
+  tr.appendChild(td)
+  datas.forEach(d => {
+    const td = document.createElement('TD')
+    if (d === moment().format('YYYY-MM-DD'))
+      td.style.backgroundColor = '#C2EBC9'
+    const hoje = linha.find(l => l.data === d)
+    let ingredientes = []
+    if (hoje) ingredientes = hoje.ingredientes
+    td.innerHTML = `<ul>${ingredientes.reduce((prev, {nome}) => {
+      return `${prev}<li>${nome}</li>`
+    }, "")}</ul>`
+    tr.appendChild(td)
+  })
+  
+  tbody.appendChild(tr)
+} */
