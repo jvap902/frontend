@@ -14,7 +14,7 @@ foreach ($database->query('SELECT * FROM nutricionistas') as $nutricionista) {
     $nutricionistas[] = [
         'id' => $nutricionista['id'],
         'crn' => $nutricionista['crn'],
-        'nome' => $nutricionista['nome'],
+        'nome' => $nutricionista['nome']
     ];
 }
 foreach ($database->query('SELECT * FROM itens') as $item) {
@@ -28,7 +28,6 @@ foreach ($database->query('SELECT * FROM itens') as $item) {
 $consulta = $database->prepare('SELECT * FROM cardapios');
 $consulta->execute();
 $data = $consulta->fetchAll();
-
 foreach ($data as $refeicao) {
     $itens = [];
     foreach($database->query('select i.id, i.descricao from itens_cardapios ic inner join itens i on ic.id_item = i.id where id_cardapio = '.$refeicao['id']) as $item){
@@ -67,9 +66,9 @@ foreach ($data as $refeicao) {
             <h2>Cardápio RU | Administração</h2>
         </div>
         <div class="d-flex">
-            <button type="button" class="btn" id="navPesquisa" data-bs-toggle="modal"
+            <!-- <button type="button" class="btn" id="navPesquisa" data-bs-toggle="modal"
                 data-bs-target="#pesquisaModal">Pesquisa <img
-                    src="https://www.iconpacks.net/icons/2/free-search-icon-2903-thumb.png" width="20" /></button>
+                    src="https://www.iconpacks.net/icons/2/free-search-icon-2903-thumb.png" width="20" /></button> -->
             <button id="navLogout" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#logoutModal">
                 <img src="https://moodle.bento.ifrs.edu.br/theme/image.php/academi/core/1652445467/u/f1" width="20" />
                 Logout
@@ -120,14 +119,12 @@ foreach ($data as $refeicao) {
                 <td>
                   <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_alteraRefeicao" data-refeicao="<?php echo $refeicao['id']; ?>">Alterar</button>
                   <a href="../../pw3-cardapio_ru-backend/removerCardapio.php?id=<?php echo $refeicao['id']; ?>" class="btn btn-outline-danger">Excluir</a>
-                  <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#div_clonaCardapio" data-refeicao="<?php echo $refeicao['id']; ?>">Clonar</button>
                 </td>
               </tr>
             <?php }
           } ?>
           <td colspan="6">
             <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_cadastraRefeicao">Cadastrar refeição</button>
-            <!-- <button type="button" id="btnClonaCardapio" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_clonaCardapio">Clonar refeição</button> -->
           </td>
         </tbody>
     </table>
@@ -151,7 +148,7 @@ foreach ($data as $refeicao) {
                     <td><?php echo $nutricionista['nome']; ?></td>
                     <td><?php echo $nutricionista['crn']; ?></td>
                     <td>
-                <button type="button" class="btn btn-outline-success"  onClick="alterarNutricionista('<?php echo $nutricionista['nome'] ?>')">Alterar</button>
+                <button type="button" class="btn btn-outline-success"  onClick="alterarNutricionista('<?php echo $nutricionista['nome']?>')">Alterar</button>
                 <a href="../../pw3-cardapio_ru-backend/removerNutricionista.php?id=<?php echo $nutricionista['id']; ?>" class="btn btn-outline-danger">Excluir</a>
               </td>
             </tr>
@@ -194,35 +191,36 @@ foreach ($data as $refeicao) {
       </tbody>
     </table>
 
-    <!-- GERENCIAR ITENS  -->
+     <!-- GERENCIAR ITENS  -->
     <table class="table table-bordered table-hover">
       <thead>
         <tr>
-          <th colspan="6" class="text-center" id="thItens">Gerenciar itens</th>
+        <th colspan="6" class="text-center" id="thItens">Gerenciar itens</th>
         </tr>
         <tr>
           <th scope="col">Descrição</th>
           <th scope="col">Calorias</th>
           <th scope="col">Ações</th>
         </tr>
-      </thead>
-      <tbody>
-        <?php 
-        if(isset($itens)){
-          foreach ($itens as $item) { ?>
-            <tr>
-              <td><?php echo $item['descricao']; ?></td>
-              <td><?php echo $item['calorias_totais']; ?></td>
-              <td>
-                <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_alteraItem" data-item="<?php echo $item['id']; ?>">Alterar</button>
-                <a href="../../pw3-cardapio_ru-backend/removerItens.php?id=<?php echo $item['id']; ?>" class="btn btn-outline-danger">Excluir</a>
-              </td>
-            </tr>
-            <?php }
-         } ?>
-        <td colspan="6">
-          <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_cadastraItem">Cadastrar item</button>
-        </td>
+        </thead>
+        <tbody>
+            <?php
+            if(isset($itens)){
+                foreach ($itens as $item) { ?>
+                    <tr>
+                    <td><?php echo $item['descricao']; ?></td>
+                    <td><?php echo $item['calorias_totais']; ?></td>
+                    <td>
+                        <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_alteraItem" data-item="<?php echo $item['id']; ?>">Alterar</button>
+                        <a href="../../pw3-cardapio_ru-backend/removerItem.php?id=<?php echo $item['id']; ?>" class="btn btn-outline-danger">Excluir</a>
+                    </td>
+                    </tr>
+                <?php }
+            } ?>
+            <td colspan="6">
+                <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_cadastraItem">Cadastrar item</button>
+            </td>
+        </tbody>
     </table>
 
   </div>
@@ -648,7 +646,6 @@ foreach ($data as $refeicao) {
     <script src="scripts_2.js"></script>
     <script>
         const alterarNutricionista = (data) => {
-            
             document.getElementById('nome_nutricionista_lista').value = data;
             document.getElementById('crn_lista').value = data;
             document.getElementById('id_nutricionista_lista').value = data;
