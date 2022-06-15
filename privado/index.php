@@ -1,6 +1,7 @@
 <?php
+require_once dirname(__FILE__) . "/class.DB.php";
 //require "../../pw3-cardapio_ru-backend/permissao.php"
-$database = new PDO('mysql:host=localhost;dbname=ru', 'root', '');
+$database = DB::getInstance();
 //$database2 = new PDO('mysql:host=localhost;dbname=ru', 'root', '');
 
 foreach ($database->query('SELECT * FROM ingredientes') as $ingrediente) {
