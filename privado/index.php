@@ -118,7 +118,7 @@ foreach ($data as $refeicao) {
                 </td>
                 <td><?php echo $refeicao['id_nutricionista']; ?></td>
                 <td>
-                  <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_alteraRefeicao" data-refeicao="<?php echo $refeicao['id']; ?>">Alterar</button>
+                  <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_alteraRefeicao" data-refeicao="<?php echo $refeicao['id']; ?>" onClick='alterarRefeicao(<?php echo json_encode($refeicao["data"])?>, <?php echo json_encode($refeicao["tipo"])?>, <?php echo json_encode($refeicao["id_nutricionista"])?>)'>Alterar</button>
                   <a href="../../pw3-cardapio_ru-backend/removerCardapio.php?id=<?php echo $refeicao['id']; ?>" class="btn btn-outline-danger">Excluir</a>
                 </td>
               </tr>
@@ -149,7 +149,7 @@ foreach ($data as $refeicao) {
                     <td><?php echo $nutricionista['nome']; ?></td>
                     <td><?php echo $nutricionista['crn']; ?></td>
                     <td>
-                <button type="button" class="btn btn-outline-success"  onClick="alterarNutricionista('<?php echo json_encode($nutricionista)?>')">Alterar</button>
+                <button type="button" class="btn btn-outline-success"  onClick='alterarNutricionista(<?php echo json_encode($nutricionista["nome"])?>, <?php echo json_encode($nutricionista["crn"])?>, <?php echo json_encode($nutricionista["id"])?>)'>Alterar</button>
                 <a href="../../pw3-cardapio_ru-backend/removerNutricionista.php?id=<?php echo $nutricionista['id']; ?>" class="btn btn-outline-danger">Excluir</a>
               </td>
             </tr>
@@ -180,7 +180,7 @@ foreach ($data as $refeicao) {
               <td><?php echo $ingrediente['descricao']; ?></td>
               <td><?php echo $ingrediente['calorias']; ?></td>
               <td>
-                <button type="button" class="btn btn-outline-success" onClick="alterarIngrediente(<?php echo json_encode($ingrediente); ?>)">Alterar</button>
+                <button type="button" class="btn btn-outline-success" onClick='alterarIngrediente(<?php echo json_encode($ingrediente['descricao']); ?>, <?php echo json_encode($ingrediente['calorias']);?>, <?php echo json_encode($ingrediente['id']);?>)'>Alterar</button>
                 <a href="../../pw3-cardapio_ru-backend/removerIngrediente.php?id=<?php echo $ingrediente['id']; ?>" class="btn btn-outline-danger">Excluir</a>
               </td>
             </tr>
@@ -212,7 +212,7 @@ foreach ($data as $refeicao) {
                     <td><?php echo $item['descricao']; ?></td>
                     <td><?php echo $item['calorias_totais']; ?></td>
                     <td>
-                        <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_alteraItem" data-item="<?php echo $item['id']; ?>">Alterar</button>
+                        <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#div_alteraItem" data-item="<?php echo $item['id']; ?>" onClick='alterarNutricionista(<?php echo json_encode($item["descricao"])?>, <?php echo json_encode($item["calorias_totais"])?>, <?php echo json_encode($item["id"])?>)'>Alterar</button>
                         <a href="../../pw3-cardapio_ru-backend/removerItem.php?id=<?php echo $item['id']; ?>" class="btn btn-outline-danger">Excluir</a>
                     </td>
                     </tr>
@@ -646,30 +646,32 @@ foreach ($data as $refeicao) {
     <script src="https://momentjs.com/downloads/moment.min.js"></script>
     <script src="scripts_2.js"></script>
     <script>
-        const alterarNutricionista = (data) => {
-            document.getElementById('nome_nutricionista_lista').value = data;
-            document.getElementById('crn_lista').value = data;
-            document.getElementById('id_nutricionista_lista').value = data;
+        const alterarNutricionista = (nome, crn, id) => {
+            document.getElementById('nome_nutricionista_lista').value = nome;
+            document.getElementById('crn_lista').value = crn;
+            document.getElementById('id_nutricionista_lista').value = id;
             modal_altera_nutricionista.show()
         }
 
-        const alterarRefeicao = (data) => {
+        const alterarRefeicao = (data, tipo, id_nutricionista) => {
             document.getElementById('data_refeicao_lista').value = data;
-            document.getElementById('tipo_refeicao_lista').value = data;
-            document.getElementById('item_refeicao_lista').value = data;
+            document.getElementById('tipo_refeicao_lista').value = tipo;
+            document.getElementById('id_nutricionista_lista').value = id_nutricionista;
+            document.getElementById('itens')
             modal_altera_refeicao.show()
         }
 
-        const alterarItem = (data) => {
+        const alterarItem = (descricao, calorias_totais, id_item) => {
             document.getElementById('item_lista').value = data;
-            document.getElementById('ingrediente_item_lista').value = data;
-            document.getElementById('id_item_lista').value = data;
+            document.getElementById('ingrediente_item_lista').value = calorias_totais;
+            document.getElementById('id_item_lista').value = id_item;
             modal_altera_item.show()
         }
 
-        const alterarIngrediente = (data) => {
-            document.getElementById('ingrediente_lista').value = data;
-            document.getElementById('id_ingrediente_lista').value = data;
+        const alterarIngrediente = (descricao, calorias, id) => {
+            document.getElementById('ingrediente_lista').value = descricao;
+            document.getElementById('calorias_lista').value = calorias;
+            document.getElementById('id_ingrediente_lista').value = id;
             modal_altera_ingrediente.show()
         }
         </script>

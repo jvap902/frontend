@@ -22,8 +22,8 @@ let cardapio
  
  
 onload = async () => {
-    // const token = localStorage.getItem('token')
-    // if (token === null) location.href = "../publico/index.php"
+    const token = localStorage.getItem('token')
+    if (token === null) location.href = "../publico/index.php"
 
     //modal clonar cardápio
     modal_clona_cardapio = new bootstrap.Modal(document.getElementById('div_clonaCardapio'))
@@ -95,11 +95,8 @@ onload = async () => {
           method: "POST",
           body
       })
-      // const ingrediente_linha = await response.json()
-      // atualizarLinha(ingrediente_linha)
 
       modal_altera_ingrediente.hide();
-      // toggleButton(btnAlterarIngrediente)
     })
 
 
@@ -156,8 +153,7 @@ onload = async () => {
       const body = new FormData()
         body.append('item', item)
         body.append('ingrediente_item_num[]', ingrediente_item_num)
-        //body.append('quantidade', gramas) - colocar campo para quantidade de cada ingrediente
- 
+
         const response = await fetch(`${baseUrl}salvarItens.php`, {
             method: "POST",
             body
@@ -230,8 +226,7 @@ onload = async () => {
         body.append('itens[]', itens)
         body.append('tipo', tipo)
         body.append('nutricionista', nutricionista)
-        //body.append('quantidade', gramas) - colocar campo para quantidade de cada ingrediente
- 
+
         const response = await fetch(`${baseUrl}salvarCardapio.php`, {
             method: "POST",
             body
@@ -245,12 +240,14 @@ onload = async () => {
     //nutricionista
     btnSalvarAlteracaoNutricionista.addEventListener('click', async () => {
       const nome_nutricionista_lista = document.getElementById("nome_nutricionista_lista").value
-      const crn_nutricionista_lista = document.getElementById("crn_nutricionista_lista").value
+      const crn_lista = document.getElementById("crn_lista").value
       const id_nutricionista_lista = document.getElementById("id_nutricionista_lista").value
+
+      console.log(nome_nutricionista_lista, crn_lista, id_nutricionista_lista)
 
       const body = new FormData()
       body.append('nome_nutricionista_lista', nome_nutricionista_lista)
-      body.append('crn_nutricionista_lista', crn_nutricionista_lista)
+      body.append('crn_lista', crn_lista)
       body.append('id_nutricionista_lista', id_nutricionista_lista)
 
       const response = await fetch(`${baseUrl}alterarNutricionista.php?id=${id_nutricionista_lista}`, {
@@ -281,8 +278,6 @@ onload = async () => {
         modal_cadastra_nutricionista.hide()
     })
  
-    //await montaCardapio()
-
     const semanaPassada = document.getElementById('prevSemana')
     semanaPassada.addEventListener('click', async () =>{ 
       if (!semanaAtual){
@@ -306,11 +301,6 @@ onload = async () => {
       
       await montaCardapio(semanaAtual)
     })
-
-
-    //const response = await fetch('http://localhost/cardapio_ru/pw3-cardapio_ru-backend/')
-    //console.log(response)
-    //const cardapio = await response.json();
 
     cardapio = {
       CAFE: [{data: '2022-06-06', ingredientes: [{nome: 'Feijão'},{nome: 'Farinha'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}, {data: '2022-06-02', ingredientes: [{nome: 'Arroz'}]}],
@@ -389,16 +379,6 @@ const montaLinha = (label, linha, datas) => {
   tbody.appendChild(tr)
 }
 
-// const cadastra_item = (id_item = "", item = "", arrayIngredientes = ""/*??*/) =>{
-//   const itemInput = document.getElementById('item')
-//   const ingredientesInput = document.getElementById('ingrediente_item')
-//   const id_itemInput = document.getElementById('id_item')
- 
-//   itemInput.value = item
-//   ingredientesInput.value = arrayIngredientes //?
-//   id_itemInput.value = id_item
-// }
-
 const  criarLinha = ({id, ingrediente, calorias}) => {
   const tr = document.createElement("TR")
   tr.setAttribute('id', id)
@@ -419,7 +399,6 @@ const  criarLinha = ({id, ingrediente, calorias}) => {
       })
       await response.json()
       
-      // await carregaPessoas()
       const [tbody] = document.getElementsByTagName('tbody')
       tbody.childNodes.forEach(tr=> {
           if (tr.getAttribute('id') == id) 
@@ -443,13 +422,3 @@ const novoBotao = (color, icon, cb, label = "") => {
   btn.addEventListener('click', cb)
   return btn
 }
-
-// const preencheFormularioIngrediente = (id_ingrediente_alterar = "", ingrediente_alterar = "", calorias_alterar = "") => {
-//   const id_ingrediente_alterar = document.getElementById('id_ingrediente_lista')
-//   const ingrediente_alterar = document.getElementById('ingrediente_lista')
-//   const calorias_alterar = document.getElementById('calorias_lista')
-
-//   id_ingrediente_alterar.value = id
-//   ingrediente_alterar.value = ingrediente
-//   calorias_alterar.value = calorias
-// }
